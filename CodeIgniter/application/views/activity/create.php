@@ -13,7 +13,7 @@
       <lable "location_lat">Location lat: <lable><br />
       <input type="input" name="location_lat" /><lable><br />
       <lable "description">Description: <lable><br />
-      <textarea cols="40" rows="10" name="notes"></textarea><br />
+      <textarea cols="40" rows="10" name="description"></textarea><br />
 
       <input type="submit" name="submit" value="Create an activity" >
 </form>
