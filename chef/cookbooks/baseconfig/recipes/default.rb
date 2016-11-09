@@ -10,8 +10,9 @@ end
 package "wget"
 package "ntp"
 package "nginx"
-package "mysql-server"
 package "php7.0"
+package "mysql-server"
+package "php7.0-mysqlnd"
 
 cookbook_file "nginx-default" do
     path "/etc/nginx/sites-available/default"
@@ -19,10 +20,6 @@ end
 
 cookbook_file "ntp.conf" do
     path "/etc/ntp.conf"
-end
-
-cookbook_file "pg_hba.conf" do
-    path "/etc/postgresql/9.5/main/pg_hba.conf"
 end
 
 execute 'ntp_restart' do
@@ -33,18 +30,23 @@ execute 'nginx_restart' do
     command 'service nginx restart'
 end
 
-execute 'psql_restart' do
-    command 'service postgresql restart'
-end
-
 execute 'database setup' do
-    command 'echo "CREATE DATABASE mydb; CREATE USER ubuntu; GRANT ALL PRIVILEGES ON DATABASE mydb TO ubuntu;" | sudo -u postgres psql'
+    command 'echo "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci; CREATE USER \'ubuntu\'@\'localhost\' IDENTIFIED BY \'ubuntu\'; GRANT ALL ON mydb.* TO \'ubuntu\'@\'localhost\';" | sudo -u root mysql'
 end
 
-execute 'create contacts table' do
-    command 'psql -U ubuntu -d mydb -a -f /home/ubuntu/project/chef/cookbooks/baseconfig/files/default/createtable.sql'
+execute 'create activity table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/activity.sql'
 end
 
-execute 'insert initial data' do
-    command 'psql -U ubuntu -d mydb -a -f /home/ubuntu/project/chef/cookbooks/baseconfig/files/default/initial.sql'
+execute 'create user table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/user.sql'
 end
+
+execute 'create user_rel table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/user_rel.sql'
+end
+
+execute 'create user_activity table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/user_activity.sql'
+end
+
