@@ -18,5 +18,20 @@ class Activity_model extends CI_Model
                  );
                  return $this->db->insert('activity',$data);
             }
+
+            public function get_activity($id = '0')
+            {
+                  if($id === '0')
+                  {
+                      $query = $this->db->get('activity');
+                      return $query->result_array();
+                  }
+                  else
+                  {
+                      $data = array( 'id'=> $id );
+                      $query = $this->db->get_where('activity', $data);
+                      return $query->db->row_array();
+                  }
+            }
 }
 ?>

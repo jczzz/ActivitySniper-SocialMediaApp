@@ -28,7 +28,21 @@ class Activity extends CI_Controller
                 else
                 {
                      $this->activity_model->set_activity();
+                     $suc="success";
+                     redirect("activity/index/$suc");
                 }
+         }
+         public function index($suc = null)
+         {
+                $data['success']=null;
+                $data['title']="Activity List";
+                $data['result']=$this->activity_model->get_activity();
+                if($suc === "success")
+                {
+                   $data['success']="Activity has been created.";
+                }
+                $this->load->view("templates/header",$data);
+                $this->load->view("activity/index",$data);
          }
 }
 
