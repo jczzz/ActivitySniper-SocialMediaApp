@@ -33,5 +33,11 @@ class Activity_model extends CI_Model
                       return $query->row_array();
                   }
             }
+
+            public function remove_activity($id = '0')
+            {
+               $data =array('id'=>$id);
+               return $this->db->delete('activity',$data);
+            }
 }
 ?>

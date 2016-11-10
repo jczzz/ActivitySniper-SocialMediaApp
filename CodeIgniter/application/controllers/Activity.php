@@ -32,6 +32,14 @@ class Activity extends CI_Controller
                      redirect("activity/index/$suc");
                 }
          }
+
+         public function delete($id = '0')
+         {
+            $data['result']=$this->activity_model->remove_activity($id);
+            $suc="delete";
+            redirect("activity/index/$suc");
+         }
+
          public function index($suc = null)
          {
                 $data['success']=null;
@@ -40,6 +48,10 @@ class Activity extends CI_Controller
                 if($suc === "success")
                 {
                    $data['success']="Activity has been created.";
+                }
+                if($suc === "delete")
+                {
+                  $data['success']="Activity has been deleted.";
                 }
                 $this->load->view("templates/header",$data);
                 $this->load->view("activity/index",$data);
@@ -52,6 +64,8 @@ class Activity extends CI_Controller
                 $this->load->view("templates/header",$data);
                 $this->load->view("activity/view",$data);
          }
+
+
 }
 
 ?>
