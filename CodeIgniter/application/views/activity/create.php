@@ -9,7 +9,7 @@
       <lable "catagory">Catagory: <lable><br />
       <input type="input" name="catagory" /><br />
       <lable "location_lng">Location lng: <lable><br />
-      <input type="input" name="location_lng" /><br />
+      <input type="input" name="location_lng" value="<?php echo $location ?>" /><br />
       <lable "location_lat">Location lat: <lable><br />
       <input type="input" name="location_lat" /><lable><br />
       <lable "description">Description: <lable><br />

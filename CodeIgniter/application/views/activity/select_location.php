@@ -3,11 +3,12 @@
 <head>
     <style type="text/css">
         html { height: 100%; }
-        body { height: 50%; margin: 0px; padding: 0px; }
-        #map_canvas { float:right; width:60%; height: 100%; margin: 0px auto; margin-top:20px;}
+        body { height: 150%; margin: 0px; padding: 0px; }
+        #map_canvas { width:90%; height: 50%; margin: 50px auto; }
     </style>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAnmxUGSXw3yYnu9tW-FLkaO1qGBb0pDfI&sensor=SET_TO_TRUE_OR_FALSE"></script>
     <script type="text/javascript">
+
     var geocoder;
     var map;
     function initialize()
@@ -65,24 +66,11 @@
     <div id="map_canvas">
     </div>
     <div>
-    <input id="address" type="hidden" name="location" value="<?php echo $result['location_lng']?>" >
+    <?php echo form_open("activity/select"); ?>
+    <input id="address" type="textbox" name="location" value="vancouver canada" >
+    <input type="button" value="Encode" onclick="codeAddress()">
+    <input type="submit" name="submit" value="Add to your activity">
+    </form>
     </div>
-    <h1><?php echo $result['name']?></h1>
-    Activity name:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['name'];?><br />
-    Activity date:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['date'];?><br />
-    Activity time:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['time'];?><br />
-    Catagory:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['catagory'];?><br />
-    Location Lng:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['location_lng'];?><br />
-    Location lat:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['location_lat'];?><br />
-    Description:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['description'];?><br />
-    <br />
-    <a href="http://localhost:9000/index.php/activity/index">List of Activities</a>
 </body>
 </html>
