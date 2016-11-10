@@ -5,7 +5,7 @@
       }
  ?>
  <?php foreach ($result as $activity_item): ?>
-   <?php echo "&nbsp","&nbsp",$activity_item['name'],"<br>";  ?>
+   <a href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name']; ?></a><br />
 
  <?php endforeach; ?>
  <p><a href="http://localhost:9000/index.php/activity/create">Add new activity</a></p>

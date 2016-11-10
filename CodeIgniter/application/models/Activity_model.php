@@ -30,7 +30,7 @@ class Activity_model extends CI_Model
                   {
                       $data = array( 'id'=> $id );
                       $query = $this->db->get_where('activity', $data);
-                      return $query->db->row_array();
+                      return $query->row_array();
                   }
             }
 }

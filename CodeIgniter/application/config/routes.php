@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['activity/index']='activity/index';
 $route['activity/index/(:any)']='activity/index/$1';
 $route['activity/create']='activity/create';
+$route['activity/(:any)']='activity/view/$1';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

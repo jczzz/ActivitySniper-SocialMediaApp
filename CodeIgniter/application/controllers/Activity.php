@@ -44,6 +44,14 @@ class Activity extends CI_Controller
                 $this->load->view("templates/header",$data);
                 $this->load->view("activity/index",$data);
          }
+
+         public function view($id = '0')
+         {
+                $data['result']=$this->activity_model->get_activity($id);
+                $data['title']=$data['result']['name'];
+                $this->load->view("templates/header",$data);
+                $this->load->view("activity/view",$data);
+         }
 }
 
 ?>
