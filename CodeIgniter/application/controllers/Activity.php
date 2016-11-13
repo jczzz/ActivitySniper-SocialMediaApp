@@ -1,4 +1,5 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Activity extends CI_Controller
 {
          public function __construct()
@@ -7,10 +8,12 @@ class Activity extends CI_Controller
                $this->load->model('activity_model');
                $this->load->helper('url_helper');
                $this->load->helper('url');
+
          }
-         public function create()
+         public function create($location=null)
          {
-                $this->load->helper('form');
+                $data['location']=$location;
+                $this->load->helper('form',$data);
                 $this->load->library('form_validation');
 
                 $this->form_validation->set_rules('name', 'activity_name', 'required');
@@ -28,8 +31,63 @@ class Activity extends CI_Controller
                 else
                 {
                      $this->activity_model->set_activity();
+                     $suc="success";
+                     redirect("activity/index/$suc");
                 }
          }
+
+         public function delete($id = '0')
+         {
+            $data['result']=$this->activity_model->remove_activity($id);
+            $suc="delete";
+            redirect("activity/index/$suc");
+         }
+
+         public function index($suc = null)
+         {
+                $data['success']=null;
+                $data['title']="Activity List";
+                $data['result']=$this->activity_model->get_activity();
+                if($suc === "success")
+                {
+                   $data['success']="Activity has been created.";
+                }
+                if($suc === "delete")
+                {
+                  $data['success']="Activity has been deleted.";
+                }
+                $this->load->view('templates/header',$data);
+                $this->load->view("activity/index",$data);
+         }
+
+         public function view($id = '0')
+         {
+                $data['result']=$this->activity_model->get_activity($id);
+                $data['title']=$data['result']['name'];
+                //$this->load->view("templates/header",$data);
+                $this->load->view("activity/view",$data);
+         }
+
+         public function location()
+         {
+
+                $this->load->helper('form');
+                $this->load->library('form_validation');
+                $this->form_validation->set_rules('location', 'location', 'required');
+                if($this->form_validation->run()==FALSE)
+                {
+                     $this->load->view("activity/select_location");
+                }
+                else
+                {
+                   $location=$this->input->post("location");
+                   redirect("activity/create/$location");
+                }
+
+
+         }
+
+
 }
 
 ?>
