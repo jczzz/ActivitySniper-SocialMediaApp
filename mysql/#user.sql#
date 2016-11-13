@@ -4,7 +4,6 @@ CREATE TABLE users (
         lastname varchar(128) NOT NULL,
   	phonenum varchar(128),
       	email varchar(128),
-	password varchar(256) NOT NULL,
 	notes text,
         PRIMARY KEY (id)
 );
