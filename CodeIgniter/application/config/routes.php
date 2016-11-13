@@ -59,3 +59,5 @@ $route['activity/(:any)']='activity/view/$1';
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['default_controller'] = "user/login";
