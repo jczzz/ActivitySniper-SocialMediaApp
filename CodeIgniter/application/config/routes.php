@@ -50,17 +50,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['activity/create/(:any)']='activity/create/$1';
-$route['activity/select']='activity/location';
-$route['activity/index']='activity/index';
-$route['activity/index/(:any)']='activity/index/$1';
+$route['logout']='user/logout';
+$route['activity/remove/(:any)/(:any)']='activity/remove/$1/$2';
+$route['activity/join/(:any)/(:any)']='activity/join/$1/$2';
+$route['activity/create/(:any)/(:any)']='activity/create/$1/$2';
+$route['activity/select/(:any)']='activity/location/$1';
+//$route['activity/index']='activity/index';
+$route['activity/index/(:any)/(:any)']='activity/index/$1/$2';
 $route['activity/create']='activity/create';
 $route['activity/(:any)/delete']='activity/delete/$1';
-$route['activity/(:any)']='activity/view/$1';
-$route['default_controller'] = 'welcome';
+$route['activity/(:any)/(:any)']='activity/view/$1/$2';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['default_controller'] = "user/login";
-$route['user/a_user/(:any)'] = 'user/view_a_user/$1';
-$route['user/delete'] = 'user/delete/$1';

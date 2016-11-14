@@ -83,6 +83,8 @@
     Description:<br/>
     <?php  echo "&nbsp","&nbsp",$result['description'];?><br />
     <br />
-    <a href="http://localhost:9000/index.php/activity/index">List of Activities</a>
+    <a href="<?php echo site_url("activity/index/sfu/".$user_id);?>">List of Activities</a>
+
+
 </body>
 </html>

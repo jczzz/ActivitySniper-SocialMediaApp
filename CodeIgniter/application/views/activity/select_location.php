@@ -66,7 +66,7 @@
     <div id="map_canvas">
     </div>
     <div>
-    <?php echo form_open("activity/select"); ?>
+    <?php echo form_open("activity/select/$user_id"); ?>
     <input id="address" type="textbox" name="location" value="vancouver canada" >
     <input type="button" value="Encode" onclick="codeAddress()">
     <input type="submit" name="submit" value="Add to your activity">

@@ -33,9 +33,9 @@ class User extends CI_Controller
                 //firstly make sure the just got form is valid or not,initial empty form is invalid
                 $this->form_validation->set_rules('firstname','First Name ','required');
                 $this->form_validation->set_rules('lastname','Last Name ','required');
-                $this->form_validation->set_rules('password',"Password",'required'); 
+                $this->form_validation->set_rules('password',"Password",'required');
                 $this->form_validation->set_rules('email',"Email",'required|valid_email');
-                            
+
 
                 if($this->form_validation->run() === FALSE)//invalid
                 {
@@ -86,7 +86,7 @@ class User extends CI_Controller
 
               $this->form_validation->set_rules('email', 'Email', 'trim|required');
               $this->form_validation->set_rules('password', 'Password', 'trim|callback_check_database');
-            
+
               if($this->form_validation->run() == FALSE)
               {
                 //Field validation failed.  User redirected to login page
@@ -109,7 +109,8 @@ class User extends CI_Controller
                   $session_data = $this->session->userdata('logged_in');
                   $data['email'] = $session_data['email'];
                   $data['id'] = $session_data['id'];
-                  $this->load->view('user/a_user', $data);
+                  $location="SFU";
+                  redirect("activity/index/$location/$user_id");
                   if($data['id']==1)//if logged in as admin
                   {
                     //redirect('user/index');
@@ -144,7 +145,7 @@ class User extends CI_Controller
               //concatenate 'Contact List' ,first name and last name
               $temp_string='User: '.$data['contacts_item']['firstname'].' '.$data['contacts_item']['lastname'];
               //show item title information
-              echo "<h1>".$temp_string."</h1>" ; 
+              echo "<h1>".$temp_string."</h1>" ;
 
               //load item view page
               $this->load->view('user/view_a_user',$data);
@@ -154,7 +155,7 @@ class User extends CI_Controller
             {
               redirect('user/a_user', 'refresh');
             }
-              
+
           }
 
 
@@ -200,10 +201,10 @@ class User extends CI_Controller
             {
               //Field validation succeeded.  Validate against database
               $email = $this->input->post('email');
-              
+
               //query the database
               $result = $this->user_model->login($email, $password);
-              
+
               if($result)
               {
                 $sess_array = array();

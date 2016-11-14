@@ -1,7 +1,7 @@
 <head><?php echo $map['js']; ?></head>
 
 <?php echo validation_errors(); ?>
-<?php echo form_open("activity/create"); ?>
+<?php echo form_open("activity/create/$location/$user_id"); ?>
       <lable "activity name">Activity name: <lable><br />
       <input type="input" name="name" /><br />
       <lable "activity date">Activity date: <lable><br />
