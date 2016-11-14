@@ -9,3 +9,6 @@
 
  <?php endforeach; ?>
  <p><a href="http://localhost:9000/index.php/activity/select">Add a new activity</a></p>
+
+<br><br><br>
+ <?php echo $map['html']; ?>

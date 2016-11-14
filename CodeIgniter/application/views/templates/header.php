@@ -1,6 +1,7 @@
 <html>
         <head>
                 <title><?php echo $title; ?></title>
+                <?php echo $map['js']; ?>
         </head>
         <body>
 

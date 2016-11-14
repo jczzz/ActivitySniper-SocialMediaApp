@@ -56,6 +56,53 @@ class Activity extends CI_Controller
                 {
                   $data['success']="Activity has been deleted.";
                 }
+
+                //google map
+                $this->load->library('googlemaps');
+                $config['center'] = '8041 12th ave, Burnaby, BC, Canada';
+                $config['zoom'] = "auto";
+                $this->googlemaps->initialize($config);
+
+                $coords = $this->activity_model->get_coordinates();
+
+                foreach ($coords as $coordinate) {
+                  $marker = array();
+                  $marker['position'] = $coordinate->location_lat.','.$coordinate->location_lng;
+                  $marker['title'] = $coordinate->name;
+                  $marker['animation'] = 'DROP';
+                  $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br> <a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>";
+                  date_default_timezone_set("America/Vancouver");
+
+                  $activity_time_stamp = strtotime($coordinate->date." ".$coordinate->time);
+                  $current_time_stamp = strtotime(date('Y-m-d H:i:s'));
+
+                  if($activity_time_stamp < $current_time_stamp){
+                    $marker['icon'] = 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
+                  }
+
+                  $this->googlemaps->add_marker($marker);
+                }
+
+
+
+
+
+                $data['map'] = $this->googlemaps->create_map();
+
+                print_r($data['map']['markers']);
+
+
+                print_r(date('Y-m-d H:i:s'));
+                echo '<br/>';
+                print_r($coordinate->date." ".$coordinate->time);
+                echo '<br/> activity:' ;
+                print_r($activity_time_stamp);
+                echo '<br/> current:';
+                print_r($current_time_stamp);
+                echo '<br/>';
+                print_r(date('Y-m-d H:i:s'));
+
+
                 $this->load->view('templates/header',$data);
                 $this->load->view("activity/index",$data);
          }

@@ -13,6 +13,7 @@ package "nginx"
 package "php7.0"
 package "mysql-server"
 package "php7.0-mysqlnd"
+package "php7.0-xml"
 
 cookbook_file "nginx-default" do
     path "/etc/nginx/sites-available/default"

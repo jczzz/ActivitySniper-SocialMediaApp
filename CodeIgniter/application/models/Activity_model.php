@@ -39,5 +39,18 @@ class Activity_model extends CI_Model
                $data =array('id'=>$id);
                return $this->db->delete('activity',$data);
             }
+
+            public function get_coordinates(){
+              $return = array();
+              $this->db->select("id,name,date,time,location_lat,location_lng");
+              $this->db->from("activity");
+              $query = $this->db->get();
+              if ($query->num_rows()>0) {
+                foreach ($query->result() as $row) {
+                  array_push($return, $row);
+                }
+              }
+              return $return;
+            }
 }
 ?>
