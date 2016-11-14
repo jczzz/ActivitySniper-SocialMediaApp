@@ -109,6 +109,7 @@ class User extends CI_Controller
                   $session_data = $this->session->userdata('logged_in');
                   $data['email'] = $session_data['email'];
                   $data['id'] = $session_data['id'];
+                  $user_id = $session_data['id'];
                   $location="SFU";
                   redirect("activity/index/$location/$user_id");
                   if($data['id']==1)//if logged in as admin
