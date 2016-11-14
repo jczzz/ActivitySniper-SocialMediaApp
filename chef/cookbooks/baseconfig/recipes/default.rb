@@ -50,3 +50,7 @@ execute 'create user_activity table' do
     command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/user_activity.sql'
 end
 
+# insert initial activities to db
+execute 'initial activities' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/initial_act.sql'
+end
