@@ -12,17 +12,17 @@ class Activity extends CI_Controller
          }
          public function create($location=null, $user_id='0')
          {
-           $data['location']=$location;
-           $data['user_id']=$user_id;
-           $this->load->helper('form',$data);
-           $this->load->library('form_validation');
+               $data['location']=$location;
+               $data['user_id']=$user_id;
+               $this->load->helper('form',$data);
+               $this->load->library('form_validation');
 
-           $this->form_validation->set_rules('name', 'activity_name', 'required');
-           $this->form_validation->set_rules('date', 'activity_date', 'required');
-           $this->form_validation->set_rules('time', 'activity_time', 'required');
-           $this->form_validation->set_rules('catagory', 'catagory', 'required');
+               $this->form_validation->set_rules('name', 'activity_name', 'required');
+               $this->form_validation->set_rules('date', 'activity_date', 'required');
+               $this->form_validation->set_rules('time', 'activity_time', 'required');
+               $this->form_validation->set_rules('catagory', 'catagory', 'required');
 
-           $data['title']="New Activity";
+               $data['title']="New Activity";
 
 
 
@@ -218,13 +218,48 @@ class Activity extends CI_Controller
           redirect("activity/index/remove/$u_id");
         }
 
-        public function view($a_id = '0', $u_id ='0')
+        public function view($a_id = '0', $u_id ='0',$suc=null)
         {
+              $data['success']=null;
+              if($suc === "success")
+              {
+                 $data['success']="your activity has been edited.";
+              }
               $data['result']=$this->activity_model->get_activity($a_id);
               $data['title']=$data['result']['name'];
               $data['user_id']=$u_id;
               $this->load->view("activity/view",$data);
         }
+
+        public function edit($a_id = '0', $u_id ='0')
+        {
+            $data['result']=$this->activity_model->get_activity($a_id);
+            $data['a_id']=$a_id;
+            $data['u_id']=$u_id;
+
+            $this->load->helper('form',$data);
+            $this->load->library('form_validation');
+            $data['title']="Edit your activity";
+
+
+            $this->form_validation->set_rules('name', 'activity_name', 'required');
+            $this->form_validation->set_rules('date', 'activity_date', 'required');
+            $this->form_validation->set_rules('time', 'activity_time', 'required');
+            $this->form_validation->set_rules('catagory', 'catagory', 'required');
+
+            if($this->form_validation->run()==FALSE)
+            {
+                 $this->load->view('templates/header',$data);
+                 $this->load->view('activity/edit');
+            }
+            else
+            {
+                 $this->activity_model->update_activity($a_id);
+                 redirect("activity/view/$a_id/$u_id/success");
+            }
+
+        }
+
 
         public function location($user_id = '0')
         {
@@ -242,8 +277,6 @@ class Activity extends CI_Controller
                  $location=$this->input->post("location");
                  redirect("activity/create/$location/$user_id");
               }
-
-
         }
 
 

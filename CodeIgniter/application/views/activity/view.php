@@ -61,6 +61,8 @@
     </script>
 
 </head>
+
+
 <body onload="initialize()">
     <div id="map_canvas">
     </div>
@@ -68,6 +70,12 @@
     <input id="address" type="hidden" name="location" value="<?php echo $result['location_lng']?>" >
     </div>
     <h1><?php echo $result['name']?></h1>
+    <?php
+      if($success !=null)
+      {
+        echo "&nbsp","&nbsp",$success,"<br>","<br>";
+      }
+     ?>
     Activity name:<br/>
     <?php  echo "&nbsp","&nbsp",$result['name'];?><br />
     Activity date:<br/>

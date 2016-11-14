@@ -107,7 +107,7 @@ class CI_Session {
 		{
 			if (is_php('5.4'))
 			{
-				session_set_save_handler($class, TRUE);
+				//session_set_save_handler($class, TRUE);
 			}
 			else
 			{

@@ -35,12 +35,13 @@
    ?>
    <?php $x=$x+1; ?>
 
-   <!--user can just delete its own activity from database!-->
+   <!--user can just delete or edit its own activity from database!-->
    <?php echo "&nbsp","&nbsp"; ?>
    <?php
    if($user_id == $activity_item['create_user_id']){
    ?>
    <a href="<?php echo site_url("activity/delete/".$activity_item['id']."/".$user_id);?>">Delete from database</a>
+   <?php echo "&nbsp","&nbsp"; ?><a href="<?php echo site_url("activity/edit/".$activity_item['id']."/".$user_id);?>">Edit your activity</a>
    <?php
    }
    ?>

@@ -35,6 +35,23 @@ class Activity_model extends CI_Model
                   }
             }
 
+            //update a activity.
+            public function update_activity($a_id = '0')
+            {
+                $data=array(
+                  'name'=>$this->input->post("name"),
+                  'date'=>$this->input->post("date"),
+                  'time'=>$this->input->post("time"),
+                  'description'=>$this->input->post("description"),
+                  'location_lng'=>$this->input->post("location_lng"),
+                  'location_lat'=>$this->input->post("location_lat"),
+                  'catagory'=>$this->input->post("catagory"),
+                );
+
+                $this->db->where('id',$a_id);
+                return $this->db->update('activity', $data);
+            }
+
             //new get all activities from this user.
             public function get_created_activity($user_id = '0')
             {
