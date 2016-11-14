@@ -17,7 +17,7 @@ class User extends CI_Controller
 
       	  function login($flag = null)
       	  {
-              if($flag !=null)
+              if($flag =='notNull')
               {
                   echo 'Successfully registered!';
               }
@@ -56,22 +56,16 @@ class User extends CI_Controller
 
 
 
-/*
-          public function index($flag = null)
-          {
-              //$flag is used to know this is just done by a create or not
-              if($flag !=null)
-              {
-                  echo 'A new person has been created !';
-              }
 
-              $data['title']='Contact List';
+          public function index()
+          {
+              $data['title']='All Registered users:';
               $data['table']= $this->user_model->get('0');//'0' means to get the whole tabel
               $this->load->view('templates/header', $data);
               $this->load->view('user/index',$data);
           }
 
-*/
+
 
           public function verify()
           {
@@ -100,7 +94,16 @@ class User extends CI_Controller
                 {
                   $session_data = $this->session->userdata('logged_in');
                   $data['lastname'] = $session_data['lastname'];
+                  $data['id'] = $session_data['id'];
                   $this->load->view('user/a_user', $data);
+                  if($data['id']==1)//if logged in as admin
+                  {
+                    //redirect('user/index');
+                    $data['title']='All Registered users:';
+                    $data['table']= $this->user_model->get('0');//'0' means to get the whole tabel
+                    $this->load->view('templates/header', $data);
+                    $this->load->view('user/index',$data);
+                  }
                 }
                 else
                 {
@@ -111,6 +114,64 @@ class User extends CI_Controller
 
 
           }
+
+
+
+
+
+          public function view_a_user($id = '0', $flag = null)
+          {
+
+            if($this->session->userdata('logged_in'))
+            {
+              if($flag !=null)
+              {
+                  echo 'A person has been edited !';
+              }
+
+              $data['contacts_item']=$this->user_model->get($id);
+
+              //concatenate 'Contact List' ,first name and last name
+              $temp_string='User: '.$data['contacts_item']['firstname'].' '.$data['contacts_item']['lastname'];
+              //show item title information
+              echo "<h1>".$temp_string."</h1>" ; 
+
+              //load item view page
+              $this->load->view('user/view_a_user',$data);
+            }
+
+            else
+            {
+              redirect('user/login', 'refresh');
+            }
+              
+          }
+
+
+
+
+
+
+
+
+
+
+              function delete($id)
+              {
+                  if($this->session->userdata('logged_in'))
+                  {
+                    $this->user_model->delete($id);
+                    redirect('user/a_user');
+                  }
+                  else
+                  {
+                    redirect('user/login', 'refresh');
+                  }
+
+              }
+
+
+
 
 
               function logout()

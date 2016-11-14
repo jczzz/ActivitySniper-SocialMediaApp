@@ -61,3 +61,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['default_controller'] = "user/login";
+$route['user/a_user/(:any)'] = 'user/view_a_user/$1';
+$route['user/delete'] = 'user/delete/$1';
+

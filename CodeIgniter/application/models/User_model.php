@@ -53,7 +53,21 @@ class User_model extends CI_Model
                 }
             }
 
+            public function delete($id)
+            {
 
+                if($id !=1)
+                {
+                    $data = array('id'=>$id);
+                    $query = $this->db->get_where('users',$data);
+                    return $this->db->delete('users', $query->row_array());
+                }
+
+                //$this -> db -> delete ;
+                //$this -> db -> from('users');
+                //$this -> db -> where('id = '  . $id ); 
+            
+            }
 
 
 

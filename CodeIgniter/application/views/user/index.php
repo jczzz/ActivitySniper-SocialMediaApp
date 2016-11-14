@@ -6,11 +6,31 @@
 
 <?php foreach ($table as $tuples): ?>
 
-    <?php echo"&nbsp" ?>
+    <?php echo"&nbsp"; ?>
     <B>·</B>
-    <a href="<?php echo site_url('user/'.$tuples['id']); //parameter for the 'view' function is this id?>">
-    	<?php echo $tuples['lastname'],' ',$tuples['password'] ;?> 
+    <a href="<?php echo site_url('user/a_user/'.$tuples['id']); //parameter for the 'view' function is this id?>">
+    	<?php echo $tuples['lastname'] ;?> 
     </a>
+
+	<?php  
+		if($tuples['id']==1)
+		{
+			echo '(admin)';
+		}
+		else
+		{
+			echo '(regular user)';
+		}
+
+	?>
+    
+	
+	<a href="<?php echo site_url('user/delete/'.$tuples['id']);?>">delete</a>
+
+
+	
+
+
     <br/>
 
 <?php endforeach; ?>
@@ -18,7 +38,7 @@
 
 
 
- <p><a href="http://localhost:9000/index.php/contacts/create">Add new contact</a></p>
+
 
 
 

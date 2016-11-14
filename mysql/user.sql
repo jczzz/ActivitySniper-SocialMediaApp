@@ -8,3 +8,5 @@ CREATE TABLE users (
 		notes text,
         PRIMARY KEY (id)
 );
+
+INSERT INTO users VALUES(1,'admin','admin','7783166613','zgeng@sfu.ca','14789632','I am the admin');
