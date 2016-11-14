@@ -1,3 +1,5 @@
+<head><?php echo $map['js']; ?></head>
+
 <?php
       if($success != null)
       {

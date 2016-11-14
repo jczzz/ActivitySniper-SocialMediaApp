@@ -1,3 +1,5 @@
+<head><?php echo $map['js']; ?></head>
+
 <?php echo validation_errors(); ?>
 <?php echo form_open("activity/create"); ?>
       <lable "activity name">Activity name: <lable><br />
@@ -17,3 +19,7 @@
 
       <input type="submit" name="submit" value="Create an activity" >
 </form>
+
+<br><br><br>
+<input type="text" id="myPlaceTextBox" />
+ <?php echo $map['html']; ?>
