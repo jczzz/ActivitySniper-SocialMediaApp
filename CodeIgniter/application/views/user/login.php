@@ -10,8 +10,8 @@
 
     <?php echo validation_errors(); ?>
     <?php echo form_open('user/verify'); ?>
-        <lable for="Lastname">Last name: </lable>
-        <input type="input" name="lastname" /><br />
+        <lable for="Email">Email: </lable>
+        <input type="input" name="email" /><br />
       <br/>
       <label for="password">Password:</label>
       <input type="password" size="20" id="passowrd" name="password"/>

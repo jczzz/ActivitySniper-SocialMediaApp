@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Home</h1>
-    <h2>Welcome <?php echo $lastname; ?>!</h2>
+    <h2>Welcome <?php echo $email; ?>!</h2>
 
 
 

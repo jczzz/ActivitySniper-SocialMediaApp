@@ -29,11 +29,12 @@ class User extends CI_Controller
 
           public function create()
           {
+
                 //firstly make sure the just got form is valid or not,initial empty form is invalid
                 $this->form_validation->set_rules('firstname','First Name ','required');
                 $this->form_validation->set_rules('lastname','Last Name ','required');
                 $this->form_validation->set_rules('password',"Password",'required'); 
-                $this->form_validation->set_rules('email',"Email",'valid_email');
+                $this->form_validation->set_rules('email',"Email",'required|valid_email');
                             
 
                 if($this->form_validation->run() === FALSE)//invalid
@@ -46,10 +47,23 @@ class User extends CI_Controller
                 }
                 else
                 {
+
+                  //check email and phonenum are unique,if not redirect to create again
+                  if($this->user_model->check_unique()==false)//not unique
+                  {
+                    $data['title']='Register';
+                    //go to the 'creat' view again
+                    $this->load->view('templates/header', $data);
+                    echo'the email or phonenum has been used,please enter another one';
+                    $this->load->view('user/create');
+                  }
+                  else
+                  {
                     $this->user_model->set();
                     $flag='notNull';
                     //go to the home page with flag!=null, to show success message
                     redirect("user/login/$flag");
+                  }
                 }
           }
 
@@ -70,7 +84,7 @@ class User extends CI_Controller
           public function verify()
           {
 
-              $this->form_validation->set_rules('lastname', 'Lastname', 'trim|required');
+              $this->form_validation->set_rules('email', 'Email', 'trim|required');
               $this->form_validation->set_rules('password', 'Password', 'trim|callback_check_database');
             
               if($this->form_validation->run() == FALSE)
@@ -93,7 +107,7 @@ class User extends CI_Controller
                 if($this->session->userdata('logged_in'))
                 {
                   $session_data = $this->session->userdata('logged_in');
-                  $data['lastname'] = $session_data['lastname'];
+                  $data['email'] = $session_data['email'];
                   $data['id'] = $session_data['id'];
                   $this->load->view('user/a_user', $data);
                   if($data['id']==1)//if logged in as admin
@@ -119,15 +133,11 @@ class User extends CI_Controller
 
 
 
-          public function view_a_user($id = '0', $flag = null)
+          public function view_a_user($id = '0')
           {
 
-            if($this->session->userdata('logged_in'))
+            if($this->session->userdata('logged_in') and $this->session->userdata('logged_in')['id']==1)
             {
-              if($flag !=null)
-              {
-                  echo 'A person has been edited !';
-              }
 
               $data['contacts_item']=$this->user_model->get($id);
 
@@ -142,7 +152,7 @@ class User extends CI_Controller
 
             else
             {
-              redirect('user/login', 'refresh');
+              redirect('user/a_user', 'refresh');
             }
               
           }
@@ -189,10 +199,10 @@ class User extends CI_Controller
             function check_database($password)
             {
               //Field validation succeeded.  Validate against database
-              $lastname = $this->input->post('lastname');
+              $email = $this->input->post('email');
               
               //query the database
-              $result = $this->user_model->login($lastname, $password);
+              $result = $this->user_model->login($email, $password);
               
               if($result)
               {
@@ -201,7 +211,7 @@ class User extends CI_Controller
                 {
                   $sess_array = array(
                     'id' => $row->id,
-                    'lastname' => $row->lastname
+                    'email' => $row->email
                   );
                   //session is automatically created here
                   $this->session->set_userdata('logged_in', $sess_array);
@@ -210,7 +220,7 @@ class User extends CI_Controller
               }
               else
               {
-                $this->form_validation->set_message('check_database', 'Invalid lastname or password');
+                $this->form_validation->set_message('check_database', 'Invalid email or password');
                 return false;
               }
             }

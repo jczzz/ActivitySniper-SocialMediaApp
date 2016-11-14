@@ -1,11 +1,11 @@
 <?php
 class User_model extends CI_Model
 {
-	function login($lastname, $password)
+	function login($email, $password)
 	{
-		$this -> db -> select('id, lastname, password');
+		$this -> db -> select('id, email, password');
 		$this -> db -> from('users');
-		$this -> db -> where('lastname = ' . "'" . $lastname . "'"); 
+		$this -> db -> where('email = ' . "'" . $email . "'"); 
 		$this -> db -> where('password = ' . "'" . $password . "'"); 
 		$this -> db -> limit(1);
 
@@ -53,6 +53,13 @@ class User_model extends CI_Model
                 }
             }
 
+
+
+
+
+
+
+
             public function delete($id)
             {
 
@@ -68,7 +75,43 @@ class User_model extends CI_Model
                 //$this -> db -> where('id = '  . $id ); 
             
             }
+            public function check_unique()
+            {
 
+
+                      $data1 = array('email'=>$this->input->post('email'));
+                      $check1 = $this->db->get_where('users',$data1);
+     
+                     if($this->input->post('phonenum')==null)
+                     {
+                          if($check1->row_array()!=null)
+                          {
+                            return false; 
+                          }
+                          else
+                          {
+                            return true;
+                          }           
+                     }
+                     else
+                    {
+                      $data2 = array('phonenum'=>$this->input->post('phonenum'));
+                      $check2 = $this->db->get_where('users',$data2);
+
+                      if($check1->row_array()!=null or $check2->row_array()!=null)
+                      {
+                        return false; 
+                      }
+                      else
+                      {
+                        return true;
+                      }
+
+                    }
+
+
+
+            }
 
 
 }
