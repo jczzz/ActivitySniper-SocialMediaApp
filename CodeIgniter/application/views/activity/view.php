@@ -1,4 +1,5 @@
 <head><?php echo $map['js']; ?></head>
+
     <h1><?php echo $result['name']?></h1>
     <?php
       if($success !=null)
@@ -43,5 +44,19 @@
       }
 
     ?>
-
     <?php endforeach; ?>
+
+    <?php $aid = $result['id']; ?>
+    <?php
+      date_default_timezone_set("America/Vancouver");
+    ?>
+
+    <?php echo form_open("activity/view/$aid/$user_id"); ?>
+          <input type="hidden" name="uid" value="<?php echo $user_id; ?>"/>
+          <input type="hidden" name="aid" value="<?php echo $result['id']; ?>"/>
+          <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>"/>
+          <input type="hidden" name="time" value="<?php echo date('H:i:s'); ?>"/>
+          <input type="text" id="myComment" name="comment"/><br />
+          <?php echo validation_errors(); ?>
+          <input type="submit" name="submit" value="Make a comment" >
+    </form>
