@@ -6,6 +6,6 @@ INSERT INTO activity VALUES(NULL,'1','football','2016/11/14','00:50:00','dinner 
 
 
 
-insert into comment_board values(NULL,'1','2','2016','12:00','ahhahahaha');
-insert into comment_board values(NULL,'1','2','2016','11:00','ahehehehe');
-insert into comment_board values(NULL,'1','3','2015','18:00','a a a a a a ');
+insert into comment_board values(NULL,'1','2','2016-12-11','12:00','ahhahahaha');
+insert into comment_board values(NULL,'1','2','2016-11-10','11:00','ahehehehe');
+insert into comment_board values(NULL,'1','3','2015-10-10','18:00','a a a a a a ');

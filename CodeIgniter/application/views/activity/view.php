@@ -96,10 +96,17 @@
     <br>
     <br>
     <br>
-    Comment:<br>
+    Comments:<br>
 
     <?php foreach ($comments as $comment_item): ?>
-      <?php echo $comment_item['comment'] ?><br>
+    <?php
+      if($result['id'] === $comment_item['activity_id']){
+        echo "User: ",$comment_item['email'],"&nbsp";
+        echo "On: ",$comment_item['date'],"&nbsp", $comment_item['time'],"&nbsp", "<br>";
+        echo "Said: ",$comment_item['comment'];
+      }
+    ?>
+       <br><br>
     <?php endforeach; ?>
 
 

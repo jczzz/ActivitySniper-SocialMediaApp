@@ -3,7 +3,7 @@ CREATE TABLE users (
         firstname varchar(128) NOT NULL,
         lastname varchar(128) NOT NULL,
   		phonenum varchar(128),
-      	email varchar(128),
+      	email varchar(128) NOT NULL,
 		password varchar(256) NOT NULL,
 		notes text,
         PRIMARY KEY (id)
