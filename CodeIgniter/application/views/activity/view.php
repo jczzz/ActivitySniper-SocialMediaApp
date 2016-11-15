@@ -1,81 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style type="text/css">
-        html { height: 100%; }
-        body { height: 50%; margin: 0px; padding: 0px; }
-        #map_canvas { float:right; width:60%; height: 100%; margin: 0px auto; margin-top:20px;}
-    </style>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAnmxUGSXw3yYnu9tW-FLkaO1qGBb0pDfI&sensor=SET_TO_TRUE_OR_FALSE"></script>
-    <script type="text/javascript">
-    var geocoder;
-    var map;
-    function initialize()
-    {
-        geocoder = new google.maps.Geocoder();
-        var myOptions = {
-            zoom : 12,
-            mapTypeId : google.maps.MapTypeId.ROADMAP
-        }
-        map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-        codeAddress();
-    }
-    function codeAddress()
-    {
-          var address = document.getElementById("address").value;
-          //地址解析
-          geocoder.geocode({
-              'address' : address
-          }, function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK)
-              {
-                  //依据解析的经度纬度设置坐标居中
-                  map.setCenter(results[0].geometry.location);
-                  var marker = new google.maps.Marker({
-                      map : map,
-                      position : results[0].geometry.location,
-                      title : address,
-                      //坐标动画效果
-                      animation : google.maps.Animation.DROP
-                  });
-                  var display = "Location: " + results[0].formatted_address;
-                  var infowindow = new google.maps.InfoWindow({
-                      content : "<span style='font-size:11px'><b>name: </b>"
-                              + address + "<br>" + display + "</span>",
-                      //坐标偏移量，一般不用修改
-                      pixelOffset : 0,
-                      position : results[0].geometry.location
-                  });
-              //默认打开信息窗口,点击做伴弹出信息窗口
-                    infowindow.open(map, marker);
-                    google.maps.event.addListener(marker, 'click', function() {
-                    infowindow.open(map, marker);
-                });
-              }
-              else
-              {
-                    alert("Geocode was not successful for the following reason: " + status);
-              }
-          });
-    }
-    </script>
+<head><?php echo $map['js']; ?></head>
 
-</head>
-
-
-<body onload="initialize()">
-    <div id="map_canvas">
-    </div>
-    <div>
-    <input id="address" type="hidden" name="location" value="<?php echo $result['location_lng']?>" >
-    </div>
     <h1><?php echo $result['name']?></h1>
     <?php
       if($success !=null)
       {
         echo "&nbsp","&nbsp",$success,"<br>","<br>";
       }
-     ?>
+    ?>
     Activity name:<br/>
     <?php  echo "&nbsp","&nbsp",$result['name'];?><br />
     Activity date:<br/>
@@ -93,6 +24,39 @@
     <br />
     <a href="<?php echo site_url("activity/index/sfu/".$user_id);?>">List of Activities</a>
 
+    <br>
+    <br>
+    <br>
 
-</body>
-</html>
+    <?php echo $map['html']; ?>
+
+    <br>
+    <br>
+    <br>
+    Comments:<br>
+
+    <?php foreach ($comments as $comment_item): ?>
+    <?php
+      if($result['id'] === $comment_item['activity_id']){
+        echo "User: ",$comment_item['email'],"&nbsp";
+        echo "On: ",$comment_item['date'],"&nbsp", $comment_item['time'],"&nbsp", "<br>";
+        echo "Said: ",$comment_item['comment'],"<br> <br>";
+      }
+
+    ?>
+    <?php endforeach; ?>
+
+    <?php $aid = $result['id']; ?>
+    <?php
+      date_default_timezone_set("America/Vancouver");
+    ?>
+
+    <?php echo form_open("activity/view/$aid/$user_id"); ?>
+          <input type="hidden" name="uid" value="<?php echo $user_id; ?>"/>
+          <input type="hidden" name="aid" value="<?php echo $result['id']; ?>"/>
+          <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>"/>
+          <input type="hidden" name="time" value="<?php echo date('H:i:s'); ?>"/>
+          <input type="text" id="myComment" name="comment"/><br />
+          <?php echo validation_errors(); ?>
+          <input type="submit" name="submit" value="Make a comment" >
+    </form>

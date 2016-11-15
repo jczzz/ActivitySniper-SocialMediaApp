@@ -146,5 +146,21 @@ class Activity_model extends CI_Model
               }
               return $return;
             }
+
+            public function get_comments(){
+              $sql = "select A.*, B.email from comment_board A, users B where A.user_id=B.id";
+              $query = $this->db->query($sql);
+              return $query->result_array();
+            }
+            public function set_comment(){
+              $data = array(
+                'user_id' => $this->input->post('uid'),
+                'activity_id' => $this->input->post('aid'),
+                'date' => $this->input->post('date'),
+                'time' => $this->input->post('time'),
+                'comment' => $this->input->post('comment')
+              );
+              return $this->db->insert('comment_board',$data);
+            }
 }
 ?>
