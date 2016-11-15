@@ -1,4 +1,4 @@
-<head><?php echo $map['js']; ?></head>
+<head><?php echo $google['map']['js']; ?></head>
 <!-- show a hint information to user-->
 <?php
       if($success != null)
@@ -39,4 +39,4 @@
 <a href="<?php echo site_url("logout");?>">Logout</a>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br><br><br>
-<?php echo $map['html']; ?>
+<?php echo $google['map']['html']; ?>

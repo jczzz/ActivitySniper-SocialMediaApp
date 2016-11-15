@@ -1,4 +1,6 @@
-<head><?php echo $map['js']; ?></head>
+<head><?php echo $map['js']; ?>
+
+</head>
 
 <?php echo validation_errors(); ?>
 <?php echo form_open("activity/create/$location/$user_id"); ?>
@@ -11,7 +13,7 @@
       <lable "catagory">Catagory: <lable><br />
       <input type="input" name="catagory" /><br />
       <lable "location_lng">Location lng: <lable><br />
-      <input type="input" name="location_lng" value="<?php echo $location ?>" /><br />
+      <input  type="input" id="location" name="location_lng" /><br />
       <lable "location_lat">Location lat: <lable><br />
       <input type="input" name="location_lat" /><lable><br />
       <lable "description">Description: <lable><br />
@@ -22,4 +24,19 @@
 
 <br><br><br>
 <input type="text" id="myPlaceTextBox" />
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	function change_location()
+	{
+		var loc=$(this).val();
+		document.getElementById("location").value=loc;
+	}
+	$('#myPlaceTextBox').on('keyup',change_location);
+  $('#myPlaceTextBox').on('mouseleave',change_location);
+  $('#myPlaceTextBox').on('mouseenter',change_location);
+});
+</script>
+
  <?php echo $map['html']; ?>

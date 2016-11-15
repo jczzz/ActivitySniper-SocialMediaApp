@@ -7,12 +7,6 @@
     <h1>Home</h1>
     <h2>Welcome <?php echo $email; ?>!</h2>
 
-
-
-
-
-
-
     <a href="logout">Logout</a>
   </body>
 </html>
