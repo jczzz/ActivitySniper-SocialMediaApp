@@ -13,8 +13,6 @@ class User extends CI_Controller
                 $this->load->model('user_model');
 
       }
-
-
       	  function login($flag = null)
       	  {
               if($flag =='notNull')
@@ -24,8 +22,6 @@ class User extends CI_Controller
 
       	    $this->load->view('user/login');
       	  }
-
-
 
           public function create()
           {
@@ -67,10 +63,6 @@ class User extends CI_Controller
                 }
           }
 
-
-
-
-
           public function index()
           {
               $data['title']='All Registered users:';
@@ -100,8 +92,6 @@ class User extends CI_Controller
 
           }
 
-
-
           public function a_user()
           {
                 if($this->session->userdata('logged_in'))
@@ -126,8 +116,6 @@ class User extends CI_Controller
                   //If no session, redirect to login page
                   redirect('user/login', 'refresh');
                 }
-
-
 
           }
 
@@ -160,14 +148,6 @@ class User extends CI_Controller
           }
 
 
-
-
-
-
-
-
-
-
               function delete($id)
               {
                   if($this->session->userdata('logged_in'))
@@ -183,19 +163,12 @@ class User extends CI_Controller
               }
 
 
-
-
-
               function logout()
               {
                 $this->session->unset_userdata('logged_in');
                 session_destroy();
                 redirect('user/a_user', 'refresh');
               }
-
-
-
-
 
             //helper function for verify function
             function check_database($password)
@@ -226,6 +199,54 @@ class User extends CI_Controller
                 return false;
               }
             }
+
+
+            //show user information
+            public function information($user_id, $view_user_id)
+            {
+                $data['result']=$this->user_model->get($user_id);
+                $data['title']=$data['result']['firstname'].",".$data['result']['lastname'];
+                $data['user_id']=$user_id;
+                $data['view_user_id']=$view_user_id;
+                $data['check']=$this->check_friend($user_id, $view_user_id);
+
+                $this->load->view("templates/header",$data);
+                $this->load->view("user/information",$data);
+            }
+
+            //add friend. make relationship.
+            public function friend($user_id, $view_user_id)
+            {
+                $this->user_model->set_user_relation($user_id, $view_user_id);
+                redirect("activity/index/friend/$view_user_id");
+            }
+
+            //check friend. relationship
+            public function check_friend($user_id, $view_user_id)
+            {
+                $result=$this->user_model->check_user_relation($user_id, $view_user_id);
+                return $result;
+            }
+
+            //friend List
+            public function friendlist($view_user_id)
+            {
+                  $data['result']=$this->user_model->get_user_by_view($view_user_id);
+                  $data['view_user_id']=$view_user_id;
+                  $data['title']="Friend List";
+
+                  $this->load->view("templates/header",$data);
+                  $this->load->view("user/friendlist",$data);
+
+            }
+            //delete friend
+            public function deletefriend($user_id,$view_user_id)
+            {
+                $this->user_model->delete_friend($user_id,$view_user_id);
+                redirect("activity/index/deletefriend/$view_user_id");
+            }
+
+
 
 
 

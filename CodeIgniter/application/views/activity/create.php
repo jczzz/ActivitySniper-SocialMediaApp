@@ -2,20 +2,21 @@
 
 </head>
 
-<?php echo validation_errors(); ?>
 <?php echo form_open("activity/create/$location/$user_id"); ?>
+
       <lable "activity name">Activity name: <lable><br />
-      <input type="input" name="name" /><br />
+      <input type="input" name="name" /><?php echo form_error('name') ?><br />
+
       <lable "activity date">Activity date: <lable><br />
-      <input type="input" name="date" /><br />
+      <input type="input" name="date" /><?php echo form_error('date') ?><br />
       <lable "activity time">Activity time: <lable><br />
-      <input type="input" name="time" /><br />
+      <input type="input" name="time" /><?php echo form_error('time') ?><br />
       <lable "catagory">Catagory: <lable><br />
-      <input type="input" name="catagory" /><br />
+      <input type="input" name="catagory" /><?php echo form_error('catagory') ?><br />
       <lable "location_lng">Location lng: <lable><br />
-      <input  type="input" id="location" name="location_lng" /><br />
+      <input  type="input" id="location" name="location_lng" /><?php echo form_error('location_lng') ?><br />
       <lable "location_lat">Location lat: <lable><br />
-      <input type="input" name="location_lat" /><lable><br />
+      <input type="input" name="location_lat" /><?php echo form_error('location_lat') ?><lable><br />
       <lable "description">Description: <lable><br />
       <textarea cols="40" rows="10" name="description"></textarea><br />
 

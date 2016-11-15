@@ -7,15 +7,33 @@
       }
  ?>
  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+  <?php $x=0; ?>
 <!-- user delete, remove, join the activities!-->
  <?php foreach ($result as $activity_item): ?>
    <a href="<?php echo site_url("activity/".$activity_item['id']."/".$user_id);?>"><?php echo $activity_item['name']; ?></a>
+   <?php echo "&nbsp","&nbsp"; ?>
+   <?php echo "created by "?>
+   <?php
+   if($user_id != $user_result[$x]['id']){
+   ?>
+         <a href="<?php echo site_url("user/information/".$user_result[$x]['id']."/".$user_id);?>"><?php echo $user_result[$x]['email'];?></a>
+    <?php
+    }
+    ?>
+    <?php
+    if($user_id == $user_result[$x]['id']){
+    ?>
+          <?php echo "You";?>
+    <?php
+    }
+    ?>
    <!--user can remove another activities off his list!-->
    <?php echo "&nbsp","&nbsp"; ?>
    <?php
    if($user_id != $activity_item['create_user_id']){
    ?>
           <a href="<?php echo site_url("activity/remove/".$activity_item['id']."/".$user_id);?>">Cancel</a>
+          <?php echo "&nbsp","&nbsp"; ?>
    <?php
    }
    ?>
@@ -29,12 +47,14 @@
    <?php
    }
    ?>
+   <?php $x=$x+1;?>
    <br /><br />
 <?php endforeach; ?>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--link to another page!-->
 <p><a href="<?php echo site_url("activity/select/".$user_id);?>">Add a new activity</a>|
-<a href="<?php echo site_url("activity/showall/".$user_id);?>">See All activities</a></p>
+<a href="<?php echo site_url("activity/showall/".$user_id);?>">See All activities</a>|
+<a href="<?php echo site_url("user/friendlist/".$user_id);?>">Friend List</a></p>
 <br /><br />
 <a href="<?php echo site_url("logout");?>">Logout</a>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

@@ -104,13 +104,21 @@ class Activity extends CI_Controller
 
          public function index($suc = null, $user_id = '0')
          {
+                 $data['user_result']=null;
                  $data['success']=null;
                  $data['title']="Activity List";
                  $data['result']=null;
                  $data['result1']=null;
                  //show activities in databases.
                  $data['result']=$this->activity_model->get_activity_by_user($user_id);
+
                  $data['user_id']=$user_id;
+
+                 foreach($data['result'] as $a_result)
+                 {
+                      $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                 }
+
                  if($suc === "success")
                  {
                     $data['success']="Activity has been created.";
@@ -126,6 +134,14 @@ class Activity extends CI_Controller
                  if($suc === "remove")
                  {
                    $data['success']="Activity has been removed.";
+                 }
+                 if($suc === "friend")
+                 {
+                   $data['success']="Add a friend successful!";
+                 }
+                 if($suc === "deletefriend")
+                 {
+                    $data['success']="delete a friend successful!";
                  }
 
                 $data["google"]=$this->google_map_add_location();
@@ -165,16 +181,6 @@ class Activity extends CI_Controller
 
                $data['map'] = $this->googlemaps->create_map();
 
-               print_r($data['map']['markers']);
-               print_r(date('Y-m-d H:i:s'));
-               echo '<br/>';
-               print_r($coordinate->date." ".$coordinate->time);
-               echo '<br/> activity:' ;
-               print_r($activity_time_stamp);
-               echo '<br/> current:';
-               print_r($current_time_stamp);
-               echo '<br/>';
-               print_r(date('Y-m-d H:i:s'));
                return $data;
          }
 
@@ -188,6 +194,7 @@ class Activity extends CI_Controller
             $data['success']="All Activities in database has been shown.";
             $data['user_id']=$user_id;
             $data['array_1']=array();
+            $data['user_result']=null;
             foreach($data['result'] as $result_1)
             {
                 $data['result1']=$this->activity_model->check_rel_user_activity($user_id,$result_1['id']);
@@ -200,6 +207,12 @@ class Activity extends CI_Controller
                     $data['array_1'][]="flase";
                 }
             }
+
+            foreach($data['result'] as $a_result)
+            {
+                 $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+            }
+
             $this->load->view('templates/header',$data);
             $this->load->view('activity/show_all',$data);
         }
@@ -261,6 +274,7 @@ class Activity extends CI_Controller
         }
 
 
+
         public function location($user_id = '0')
         {
 
@@ -278,6 +292,8 @@ class Activity extends CI_Controller
                  redirect("activity/create/$location/$user_id");
               }
         }
+
+
 
 
 }

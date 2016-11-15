@@ -53,10 +53,6 @@ class User_model extends CI_Model
 
 
 
-
-
-
-
             public function delete($id)
             {
 
@@ -109,6 +105,42 @@ class User_model extends CI_Model
 
 
             }
+
+
+						//set relationship
+						public function set_user_relation($user_id, $view_user_id)
+						{
+									$data=array('user_id1'=>$user_id, 'user_id2'=>$view_user_id);
+									return $this->db->insert('user_rel',$data);
+						}
+
+						//check relationship
+						public function check_user_relation($user_id, $view_user_id)
+						{
+									$sql="select * from user_rel where $user_id=user_id1 and $view_user_id=user_id2";
+									$query=$this->db->query($sql);
+									$result=$query->row_array();
+									if($result)
+									{
+											return "false";
+									}
+									return "true";
+						}
+
+						//search all friend by userid.
+						public function get_user_by_view($view_user_id)
+						{
+								 $sql="select A.firstname, A.lastname, A.email, A.id, A.notes from users A, user_rel B where $view_user_id=B.user_id2 and B.user_id1=A.id";
+								 $query=$this->db->query($sql);
+								 return $query->result_array();
+						}
+
+						//delete friend.
+						public function delete_friend($user_id,$view_user_id)
+						{
+								$sql="delete from user_rel where $user_id=user_id1 and $view_user_id=user_id2";
+								return $this->db->query($sql);
+						}
 
 
 }

@@ -50,6 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['logout']='user/logout';
+$route['user/friend/(:any)/(:any)']='user/friend/$1/$2';
+$route['user/information/(:any)/(:any)']='user/information/$1/$2';
 $route['activity/showall/(:any)']='activity/showall/$1';
 $route['activity/view/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3';
 $route['activity/remove/(:any)/(:any)']='activity/remove/$1/$2';

@@ -118,13 +118,21 @@ class Activity_model extends CI_Model
                 return $query->result_array();
             }
 
-
-
             public function remove_activity($id = '0')
             {
                $data =array('id'=>$id);
                return $this->db->delete('activity',$data);
             }
+
+            public function get_owner_email($a_id ='0')
+            {
+               $sql="select A.email, A.id from activity B, users A where $a_id=B.id and B.create_user_id=A.id";
+               $query= $this-> db ->query($sql);
+               return $query->row_array();
+            }
+
+
+
 
             public function get_coordinates(){
               $return = array();
