@@ -230,6 +230,34 @@ class Activity extends CI_Controller
 
               $data['title']=$data['result']['name'];
               $data['user_id']=$u_id;
+
+
+              // google map
+              $this->load->library('googlemaps');
+              $lng = $data['result']['location_lng'];
+              $lat = $data['result']['location_lat'];
+
+              $config['center'] = $lat.','.$lng;
+              $config['zoom'] = "15";
+              $this->googlemaps->initialize($config);
+
+              $marker = array();
+              $marker['position'] = $lat.','.$lng;
+              $marker['title'] = $data['result']['name'];
+              $marker['animation'] = 'DROP';
+              $marker['infowindow_content'] = $data['result']['name']."<br>".$data['result']['date']."<br>".$data['result']['time']."<br> <a href=\"".base_url()."activity/".$data['result']['id']."\">show details</a>";
+              date_default_timezone_set("America/Vancouver");
+
+              $activity_time_stamp = strtotime($data['result']['date']." ".$data['result']['time']);
+              $current_time_stamp = strtotime(date('Y-m-d H:i:s'));
+
+              if($activity_time_stamp < $current_time_stamp){
+                $marker['icon'] = 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
+              }
+              $this->googlemaps->add_marker($marker);
+
+              $data['map'] = $this->googlemaps->create_map();
+
               $this->load->view("activity/view",$data);
         }
 

@@ -140,14 +140,6 @@ class Activity_model extends CI_Model
             }
 
             public function get_comments(){
-/*
-              $query = $this->db->get('comment_board');
-
-              $this->db->select("email");
-              $this->db->from("users");
-              $this->db->where('id', $query->result_array()['user_id']);
-              $query_email = $this->db->get();
-*/
               $sql = "select A.*, B.email from comment_board A, users B where A.user_id=B.id";
               $query = $this->db->query($sql);
               return $query->result_array();
