@@ -35,12 +35,12 @@ execute 'database setup' do
     command 'echo "CREATE DATABASE mydb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci; CREATE USER \'ubuntu\'@\'localhost\' IDENTIFIED BY \'ubuntu\'; GRANT ALL ON mydb.* TO \'ubuntu\'@\'localhost\';" | sudo -u root mysql'
 end
 
-execute 'create activity table' do
-    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/activity.sql'
-end
-
 execute 'create user table' do
     command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/user.sql'
+end
+
+execute 'create activity table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/activity.sql'
 end
 
 execute 'create user_rel table' do
