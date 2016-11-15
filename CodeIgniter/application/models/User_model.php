@@ -5,8 +5,8 @@ class User_model extends CI_Model
 	{
 		$this -> db -> select('id, email, password');
 		$this -> db -> from('users');
-		$this -> db -> where('email = ' . "'" . $email . "'"); 
-		$this -> db -> where('password = ' . "'" . $password . "'"); 
+		$this -> db -> where('email = ' . "'" . $email . "'");
+		$this -> db -> where('password = ' . "'" . $password . "'");
 		$this -> db -> limit(1);
 
 		$query = $this -> db -> get();
@@ -21,9 +21,6 @@ class User_model extends CI_Model
 		}
 
 	}
-
-
-
             public function set()
             {
                 $data= array(
@@ -72,8 +69,8 @@ class User_model extends CI_Model
 
                 //$this -> db -> delete ;
                 //$this -> db -> from('users');
-                //$this -> db -> where('id = '  . $id ); 
-            
+                //$this -> db -> where('id = '  . $id );
+
             }
             public function check_unique()
             {
@@ -81,17 +78,17 @@ class User_model extends CI_Model
 
                       $data1 = array('email'=>$this->input->post('email'));
                       $check1 = $this->db->get_where('users',$data1);
-     
+
                      if($this->input->post('phonenum')==null)
                      {
                           if($check1->row_array()!=null)
                           {
-                            return false; 
+                            return false;
                           }
                           else
                           {
                             return true;
-                          }           
+                          }
                      }
                      else
                     {
@@ -100,7 +97,7 @@ class User_model extends CI_Model
 
                       if($check1->row_array()!=null or $check2->row_array()!=null)
                       {
-                        return false; 
+                        return false;
                       }
                       else
                       {

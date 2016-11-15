@@ -24,10 +24,6 @@ class Activity extends CI_Controller
 
                $data['title']="New Activity";
 
-
-
-
-
                 //google map
                 $this->load->library('googlemaps');
                 $config['center'] = '8041 12th ave, Burnaby, BC, Canada';
@@ -113,30 +109,8 @@ class Activity extends CI_Controller
                  $data['title']="Activity List";
                  $data['result']=null;
                  $data['result1']=null;
-                 //show all activities in databases.
-                 $data['array_1']=array();
-                 if($suc ==="all")
-                 {
-                     $data['result']=$this->activity_model->get_activity();
-                     $data['success']="All Activities in database has been shown.";
-                     foreach($data['result'] as $result_1)
-                     {
-                         $data['result1']=$this->activity_model->check_rel_user_activity($user_id,$result_1['id']);
-                         if($data['result1'] === null)
-                         {
-                             $data['array_1'][]="true";
-                         }
-                         else
-                         {
-                             $data['array_1'][]="flase";
-                         }
-                     }
-                 }
-                 else
-                 {
-                     $data['result']=$this->activity_model->get_activity_by_user($user_id);
-                 }
-
+                 //show activities in databases.
+                 $data['result']=$this->activity_model->get_activity_by_user($user_id);
                  $data['user_id']=$user_id;
                  if($suc === "success")
                  {
@@ -181,10 +155,6 @@ class Activity extends CI_Controller
                   $this->googlemaps->add_marker($marker);
                 }
 
-
-
-
-
                 $data['map'] = $this->googlemaps->create_map();
 
                 print_r($data['map']['markers']);
@@ -204,6 +174,33 @@ class Activity extends CI_Controller
                 $this->load->view('templates/header',$data);
                 $this->load->view("activity/index",$data);
          }
+
+        //show all activities in database.
+        public function showall($user_id = '0')
+        {
+            $data['success']=null;
+            $data['result1']=null;
+            $data['title']="All Activities";
+            $data['result']=$this->activity_model->get_activity();
+            $data['success']="All Activities in database has been shown.";
+            $data['user_id']=$user_id;
+            $data['array_1']=array();
+            foreach($data['result'] as $result_1)
+            {
+                $data['result1']=$this->activity_model->check_rel_user_activity($user_id,$result_1['id']);
+                if($data['result1'] === null)
+                {
+                    $data['array_1'][]="true";
+                }
+                else
+                {
+                    $data['array_1'][]="flase";
+                }
+            }
+            $this->load->view('templates/header',$data);
+            $this->load->view('activity/show_all',$data);
+        }
+
          //use for user join another user's activities
         public function join($a_id = '0', $u_id='0')
         {
