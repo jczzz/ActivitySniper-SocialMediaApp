@@ -138,5 +138,10 @@ class Activity_model extends CI_Model
               }
               return $return;
             }
+
+            public function get_comments(){
+              $query = $this->db->get('comment_board');
+              return $query->result_array();
+            }
 }
 ?>

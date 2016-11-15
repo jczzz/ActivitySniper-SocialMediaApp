@@ -96,8 +96,12 @@
     <br>
     <br>
     <br>
-    Comment:
-    
+    Comment:<br>
+
+    <?php foreach ($comments as $comment_item): ?>
+      <?php echo $comment_item['comment'] ?><br>
+    <?php endforeach; ?>
+
 
 
 
