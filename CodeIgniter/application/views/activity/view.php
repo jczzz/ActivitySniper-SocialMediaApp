@@ -93,6 +93,14 @@
     <br />
     <a href="<?php echo site_url("activity/index/sfu/".$user_id);?>">List of Activities</a>
 
+    <br>
+    <br>
+    <br>
+    Comment:
+    
+
+
+
 
 </body>
 </html>

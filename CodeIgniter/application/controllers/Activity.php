@@ -226,6 +226,8 @@ class Activity extends CI_Controller
                  $data['success']="your activity has been edited.";
               }
               $data['result']=$this->activity_model->get_activity($a_id);
+              //$data['comments']=$this->activity_model->get_comments();
+
               $data['title']=$data['result']['name'];
               $data['user_id']=$u_id;
               $this->load->view("activity/view",$data);
@@ -278,8 +280,6 @@ class Activity extends CI_Controller
                  redirect("activity/create/$location/$user_id");
               }
         }
-
-
 }
 
 ?>
