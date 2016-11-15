@@ -140,7 +140,7 @@ class Activity_model extends CI_Model
             }
 
             public function get_comments(){
-              $sql = "select A.*, B.email from comment_board A, users B where A.user_id=B.id";
+              $sql = "select A.*, B.email from comment_board A, users B where A.user_id=B.id ORDER BY date asc, time asc";
               $query = $this->db->query($sql);
               return $query->result_array();
             }
