@@ -1,3 +1,4 @@
+<head><?php echo $google['map']['js']; ?></head>
 <!-- show a hint information to user-->
 <?php echo "&nbsp","&nbsp",$success,"<br>","<br>"; ?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -42,3 +43,6 @@
 <?php endforeach; ?>
 <!--link to another page!-->
 <p><a href="<?php echo site_url("activity/index/SFU/".$user_id);?>">Back to your activities</a>
+
+  <br><br><br>
+  <?php echo $google['map']['html']; ?>

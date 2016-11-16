@@ -9,10 +9,7 @@ class Activity extends CI_Controller
                $this->load->model('user_model');
                $this->load->helper('url_helper');
                $this->load->helper('url');
-
          }
-
-
 
          public function create($location=null, $user_id='0')
          {
@@ -61,9 +58,6 @@ class Activity extends CI_Controller
                 }
 
                 $data['map'] = $this->googlemaps->create_map();
-
-
-
 
                 if($this->form_validation->run()==FALSE)
                 {
@@ -217,6 +211,8 @@ class Activity extends CI_Controller
                  $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
             }
 
+            $data["google"]=$this->google_map_add_location();
+            
             $this->load->view('templates/header',$data);
             $this->load->view('activity/show_all',$data);
         }
