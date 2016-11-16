@@ -2,14 +2,18 @@
 
 </head>
 
+<?php
+  date_default_timezone_set("America/Vancouver");
+?>
+
 <?php echo form_open("activity/create/$location/$user_id"); ?>
 
       <lable "activity name">Activity name: </lable><br />
       <input type="input" name="name" /><br />
       <lable "activity date">Activity date: </lable><br />
-      <input type="input" name="date" /><br />
+      <input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" /><br />
       <lable "activity time">Activity time: </lable><br />
-      <input type="input" name="time" /><br />
+      <input type="time" name="time" value="<?php echo date('H:i'); ?>"/><br />
       <lable "catagory">Catagory: </lable><br />
       <input type="input" name="catagory" /><br />
       <lable "location_lng">Location lng: </lable><br />
