@@ -1,5 +1,5 @@
 <?php echo validation_errors(); ?>
-<?php echo form_open('user/create'); 
+<?php echo form_open('user/create');
 //form data is for the create function,after submit, doing create function again with the new form input?>
         <lable for="Firstname">First name: (must needed)</lable><br />
         <input type="input" name="firstname" /><br />
@@ -18,13 +18,6 @@
 
         <lable for="Notes">Notes:</lable>  <br />
         <textarea cols="40" rows="10" name="notes"></textarea><br />
-
-
-
-
-
-
-        
         
         <input type="submit" name="submit" value="Regisger">
 </form>
