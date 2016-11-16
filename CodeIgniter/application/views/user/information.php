@@ -17,7 +17,7 @@ if($check == "true"){
 <?php
 if($check == "false"){
 ?>
-<?php echo "This person is already your friend.   "; ?>
+<a href="<?php echo site_url("activity/friendactivity/$user_id/$view_user_id")?>">See your friend Activities?</a>    |
 <a href="<?php echo site_url("user/deletefriend/$user_id/$view_user_id")?>">Delete from friend List?</a>
 <?php
 }

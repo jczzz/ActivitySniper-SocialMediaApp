@@ -6,10 +6,14 @@ class Activity extends CI_Controller
          {
                parent::__construct();
                $this->load->model('activity_model');
+               $this->load->model('user_model');
                $this->load->helper('url_helper');
                $this->load->helper('url');
 
          }
+
+
+
          public function create($location=null, $user_id='0')
          {
                $data['location']=$location;
@@ -224,6 +228,13 @@ class Activity extends CI_Controller
            redirect("activity/index/join/$u_id");
         }
 
+        //user can join to activites when he is in his friend list.
+        public function join_friend_activity($a_id, $view_user_id, $user_id)
+        {
+            $this->activity_model->set_rel_user_activity($view_user_id,$a_id);
+            redirect("activity/friendactivity/$user_id/$view_user_id");
+        }
+
         //user can remove another user's activities off his list.
         public function remove($a_id = '0', $u_id='0')
         {
@@ -231,10 +242,13 @@ class Activity extends CI_Controller
           redirect("activity/index/remove/$u_id");
         }
 
-        public function view($a_id = '0', $u_id ='0',$suc=null)
+        public function view($a_id = '0', $u_id ='0',$suc=null,$view_user_id=null)
         {
               $this->load->helper('form');
               $this->load->library('form_validation');
+              $data['friend']=$suc;
+              $data['view_user_id']=$view_user_id;
+
 
               $this->form_validation->set_rules('comment','Comment','required');
               if($this->form_validation->run() === FALSE){
@@ -246,6 +260,7 @@ class Activity extends CI_Controller
                 {
                    $data['success']="your activity has been edited.";
                 }
+
                 $data['result']=$this->activity_model->get_activity($a_id);
                 $data['comments']=$this->activity_model->get_comments();
 
@@ -280,7 +295,14 @@ class Activity extends CI_Controller
                 $data['map'] = $this->googlemaps->create_map();
 
                 $this->load->view("activity/view",$data);
-              }else{
+              }
+              elseif ($view_user_id != null)
+              {
+                $this->activity_model->set_comment();
+                redirect("activity/view/$a_id/$u_id/friend/$view_user_id");
+              }
+              else
+              {
                 $this->activity_model->set_comment();
                 redirect("activity/view/$a_id/$u_id");
               }
@@ -314,6 +336,36 @@ class Activity extends CI_Controller
                  redirect("activity/view/$a_id/$u_id/success");
             }
 
+        }
+
+        //see freind activities
+        public function friendactivity($user_id, $view_user_id)
+        {
+            $data['user_id']=$user_id;
+            $data['view_user_id']=$view_user_id;
+            $data['user_infor']=$this->user_model->get($user_id);
+            $data['result']=$this->activity_model->get_activity_by_user($user_id);
+            $data['title']=$data['user_infor']['firstname'].",".$data['user_infor']['lastname'];
+            $data['user_result']=null;
+            $data['array_1']=null;
+            $data['result_1']=null;
+
+            foreach($data['result'] as $a_result)
+            {
+                $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                $data['result1']=$this->activity_model->check_rel_user_activity($view_user_id,$a_result['id']);
+                if($data['result1'] === null)
+                {
+                    $data['array_1'][]="true";
+                }
+                else
+                {
+                    $data['array_1'][]="flase";
+                }
+            }
+
+            $this->load->view("templates/header",$data);
+            $this->load->view("activity/friendactivity",$data);
         }
 
 

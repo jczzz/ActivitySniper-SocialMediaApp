@@ -22,7 +22,21 @@
     Description:<br/>
     <?php  echo "&nbsp","&nbsp",$result['description'];?><br />
     <br />
-    <a href="<?php echo site_url("activity/index/sfu/".$user_id);?>">List of Activities</a>
+    <?php
+    if($friend != "friend"){
+    ?>
+          <a href="<?php echo site_url("activity/index/sfu/".$user_id);?>">List of Activities</a>
+    <?php
+     }
+     ?>
+
+     <?php
+     if($friend == "friend"){
+     ?>
+           <a href="<?php echo site_url("activity/friendactivity/$user_id/$view_user_id");?>">Go back to your friend Activities</a>
+     <?php
+      }
+      ?>
 
     <br>
     <br>
