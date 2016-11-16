@@ -147,6 +147,20 @@ class Activity_model extends CI_Model
               return $return;
             }
 
+            public function get_coordinates_singleUser($u_id){
+              $return = array();
+              $sql = "select A.* from activity A, user_activity B where B.user_id=$u_id and A.id=B.activity_id";
+              $query = $this->db->query($sql);
+              if ($query->num_rows()>0) {
+                foreach ($query->result() as $row) {
+                  array_push($return, $row);
+                }
+              }
+              return $return;
+            }
+
+
+
             public function get_comments(){
               $sql = "select A.*, B.email from comment_board A, users B where A.user_id=B.id ORDER BY date asc, time asc";
               $query = $this->db->query($sql);

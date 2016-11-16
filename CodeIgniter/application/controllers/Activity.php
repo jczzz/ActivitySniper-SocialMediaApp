@@ -26,7 +26,7 @@ class Activity extends CI_Controller
 
                 //google map
                 $this->load->library('googlemaps');
-                $config['center'] = '8041 12th ave, Burnaby, BC, Canada';
+                $config['center'] = '8888 University Drive, Burnaby, BC, Canada';
                 $config['zoom'] = "auto";
 
                 $config['places'] = TRUE;
@@ -142,22 +142,35 @@ class Activity extends CI_Controller
                     $data['success']="delete a friend successful!";
                  }
 
-                $data["google"]=$this->google_map_add_location();
+                $data["google"]=$this->google_map_add_location($user_id);
 
                 $this->load->view('templates/header',$data);
                 $this->load->view("activity/index",$data);
          }
 
          //google map add mark for activities.
-         public function google_map_add_location()
+         public function google_map_add_location($user_id)
          {
+               $coords = $this->activity_model->get_coordinates_singleUser($user_id);
 
                $this->load->library('googlemaps');
-               $config['center'] = '8041 12th ave, Burnaby, BC, Canada';
-               $config['zoom'] = "auto";
+               $config['center'] = '8888 University Drive, Burnaby, BC, Canada';
+
+               // config zoom levels
+               if(count($coords) > 1){
+                 $config['zoom'] = "auto";
+               }else{
+                 if(count($coords) === 1){
+                   $config['center'] = $coords['0']->location_lat.','.$coords['0']->location_lng;
+                 }
+                 $config['zoom'] = "11";
+               }
+
+
+
                $this->googlemaps->initialize($config);
 
-               $coords = $this->activity_model->get_coordinates();
+
 
                foreach ($coords as $coordinate) {
                  $marker = array();
@@ -212,7 +225,7 @@ class Activity extends CI_Controller
             }
 
             $data["google"]=$this->google_map_add_location();
-            
+
             $this->load->view('templates/header',$data);
             $this->load->view('activity/show_all',$data);
         }
