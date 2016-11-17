@@ -246,6 +246,17 @@ class User extends CI_Controller
                 redirect("activity/index/deletefriend/$view_user_id");
             }
 
+            //user account information
+
+
+            //edit user_information
+            public function edit($user_id)
+            {
+
+                $this->user_model->edit_account($user_id);
+                $this->load->view("user/edit",$data);
+            }
+
 
 
 
