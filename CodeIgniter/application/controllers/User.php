@@ -9,7 +9,6 @@ class User extends CI_Controller
                 $this->load->library('form_validation');
                 $this->load->helper('url_helper');
                 $this->load->helper('url');
-                $this->load->helper('form');
                 $this->load->model('user_model');
 
       }
@@ -26,6 +25,7 @@ class User extends CI_Controller
           public function create()
           {
 
+                $this->load->helper('form');
                 //firstly make sure the just got form is valid or not,initial empty form is invalid
                 $this->form_validation->set_rules('firstname','First Name ','required');
                 $this->form_validation->set_rules('lastname','Last Name ','required');
@@ -50,7 +50,7 @@ class User extends CI_Controller
                     $data['title']='Register';
                     //go to the 'creat' view again
                     $this->load->view('templates/header', $data);
-                    echo'the email or phonenum has been used,please enter another one';
+                    echo'the email has been used,please enter another one';
                     $this->load->view('user/create');
                   }
                   else
@@ -244,6 +244,56 @@ class User extends CI_Controller
             {
                 $this->user_model->delete_friend($user_id,$view_user_id);
                 redirect("activity/index/deletefriend/$view_user_id");
+            }
+
+            //user account information
+            public function check_information($user_id)
+            {
+                $data['result']=$this->user_model->get($user_id);
+                $data['title']=$data['result']['firstname'].",".$data['result']['lastname'];
+                $data['user_id']=$user_id;
+                $this->load->view("templates/header",$data);
+                $this->load->view("user/user_information",$data);
+
+            }
+
+            //edit user_information
+            public function edit($user_id)
+            {
+                  $data['result']=$this->user_model->get($user_id);
+                  $data['user_id']=$user_id;
+                  $this->load->helper('form',$user_id);
+                  //firstly make sure the just got form is valid or not,initial empty form is invalid
+                  $this->form_validation->set_rules('firstname','First Name ','required');
+                  $this->form_validation->set_rules('lastname','Last Name ','required');
+                  $this->form_validation->set_rules('password',"Password",'required');
+                  $this->form_validation->set_rules('email',"Email",'required|valid_email');
+
+
+                  if($this->form_validation->run() === FALSE)//invalid
+                  {
+                      $data['title']='Edit your Account';
+                      //go to the 'creat' view again
+                      $this->load->view('templates/header', $data);
+                      $this->load->view('user/edit');
+
+                  }
+                  else
+                  {
+                    if($this->user_model->check_unique($user_id)==false)
+                    {
+                      $data['title']='Edit your Account';
+                      $this->load->view('templates/header', $data);
+                      echo'the email has been used,please enter another one';
+                      $this->load->view('user/edit');
+                    }
+                    else
+                    {
+                      $this->user_model->edit_account($user_id);
+                      redirect("user/checkinfor/$user_id");
+                    }
+                  }
+
             }
 
 
