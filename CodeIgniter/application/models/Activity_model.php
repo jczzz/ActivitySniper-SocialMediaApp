@@ -13,8 +13,7 @@ class Activity_model extends CI_Model
                    'date' => $this->input->post('date'),
                    'time' => $this->input->post('time'),
                    'description' => $this->input->post('description'),
-                   'location_lng' => $this->input->post('location_lng'),
-                   'location_lat' => $this->input->post('location_lat'),
+                   'address' => $this->input->post('address'),
                    'catagory' => $this->input->post('catagory')
                  );
                  return $this->db->insert('activity',$data);
@@ -43,7 +42,7 @@ class Activity_model extends CI_Model
                   'date'=>$this->input->post("date"),
                   'time'=>$this->input->post("time"),
                   'description'=>$this->input->post("description"),
-                  'location_lng'=>$this->input->post("location_lng"),
+                  'address'=>$this->input->post("address"),
                   'location_lat'=>$this->input->post("location_lat"),
                   'catagory'=>$this->input->post("catagory"),
                 );
@@ -136,7 +135,7 @@ class Activity_model extends CI_Model
 
             public function get_coordinates(){
               $return = array();
-              $this->db->select("id,name,date,time,location_lat,location_lng");
+              $this->db->select("id,name,date,time,address");
               $this->db->from("activity");
               $query = $this->db->get();
               if ($query->num_rows()>0) {
@@ -156,6 +155,7 @@ class Activity_model extends CI_Model
                   array_push($return, $row);
                 }
               }
+              //print_r($query);
               return $return;
             }
 
