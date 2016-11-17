@@ -6,8 +6,7 @@ create table activity
   date varchar(128) NOT NULL,
 	time varchar(128) NOT NULL,
 	description text,
-	location_lng varchar(128) NOT NULL,
-	location_lat varchar(128) NOT NULL,
+	address varchar(128) NOT NULL,
 	catagory varchar(128) NOT NULL,
 	foreign key (create_user_id) references users (id)
 	on delete cascade,

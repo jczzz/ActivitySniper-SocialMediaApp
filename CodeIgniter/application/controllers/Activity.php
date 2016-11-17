@@ -41,7 +41,7 @@ class Activity extends CI_Controller
 
                 foreach ($coords as $coordinate) {
                   $marker = array();
-                  $marker['position'] = $coordinate->location_lat.','.$coordinate->location_lng;
+                  $marker['position'] = $coordinate->address;
                   $marker['title'] = $coordinate->name;
                   $marker['animation'] = 'DROP';
                   $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br> <a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>";
@@ -160,9 +160,14 @@ class Activity extends CI_Controller
          }
 
          //google map add mark for activities.
-         public function google_map_add_location($user_id)
+         public function google_map_add_location($user_id='0')
          {
-               $coords = $this->activity_model->get_coordinates_singleUser($user_id);
+               if($user_id === '0'){
+                 $coords = $this->activity_model->get_coordinates();
+               }else{
+                 $coords = $this->activity_model->get_coordinates_singleUser($user_id);
+               }
+
 
                $this->load->library('googlemaps');
                $config['center'] = '8888 University Drive, Burnaby, BC, Canada';
@@ -172,7 +177,7 @@ class Activity extends CI_Controller
                  $config['zoom'] = "auto";
                }else{
                  if(count($coords) === 1){
-                   $config['center'] = $coords['0']->location_lat.','.$coords['0']->location_lng;
+                   $config['center'] = $coords['0']->address;
                  }
                  $config['zoom'] = "11";
                }
@@ -185,7 +190,7 @@ class Activity extends CI_Controller
 
                foreach ($coords as $coordinate) {
                  $marker = array();
-                 $marker['position'] = $coordinate->location_lat.','.$coordinate->location_lng;
+                 $marker['position'] = $coordinate->address;
                  $marker['title'] = $coordinate->name;
                  $marker['animation'] = 'DROP';
                  $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br> <a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>";
@@ -202,6 +207,8 @@ class Activity extends CI_Controller
                }
 
                $data['map'] = $this->googlemaps->create_map();
+
+               print_r($data['map']['markers']);
 
                return $data;
          }
@@ -290,15 +297,14 @@ class Activity extends CI_Controller
 
                 // google map
                 $this->load->library('googlemaps');
-                $lng = $data['result']['location_lng'];
-                $lat = $data['result']['location_lat'];
+                $address = $data['result']['address'];
 
-                $config['center'] = $lat.','.$lng;
+                $config['center'] = $address;
                 $config['zoom'] = "15";
                 $this->googlemaps->initialize($config);
 
                 $marker = array();
-                $marker['position'] = $lat.','.$lng;
+                $marker['position'] = $address;
                 $marker['title'] = $data['result']['name'];
                 $marker['animation'] = 'DROP';
                 $marker['infowindow_content'] = $data['result']['name']."<br>".$data['result']['date']."<br>".$data['result']['time']."<br> <a href=\"".base_url()."activity/".$data['result']['id']."\">show details</a>";
