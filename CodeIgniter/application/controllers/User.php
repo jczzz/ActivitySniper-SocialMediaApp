@@ -247,12 +247,19 @@ class User extends CI_Controller
             }
 
             //user account information
+            public function check_information($user_id)
+            {
+                $data['result']=$this->user_model->get($user_id);
+                $data['title']=$data['result']['firstname'].",".$data['result']['lastname'];
+                $data['user_id']=$user_id;
+                $this->load->view("templates/header",$data);
+                $this->load->view("user/user_information",$data);
 
-
+            }
+            
             //edit user_information
             public function edit($user_id)
             {
-
                 $this->user_model->edit_account($user_id);
                 $this->load->view("user/edit",$data);
             }
