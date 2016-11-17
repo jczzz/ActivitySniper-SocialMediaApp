@@ -80,7 +80,7 @@ class Activity extends CI_Controller
                     }else{
                      $data = array('upload_data' => $this->upload->data());
 
-                     $this->activity_model->set_activity($user_id);
+                     $this->activity_model->set_activity($user_id,$data['upload_data']);
                      //add the relationship between the new activity and its user.
                      $this->relate_user_with_new_activity($user_id);
 
@@ -399,12 +399,27 @@ class Activity extends CI_Controller
             if($this->form_validation->run()==FALSE)
             {
                  $this->load->view('templates/header',$data);
-                 $this->load->view('activity/edit');
+                 $this->load->view('activity/edit',array('error' => ' ' ));
             }
             else
             {
-                 $this->activity_model->update_activity($a_id);
-                 redirect("activity/view/$a_id/$u_id/success");
+
+              $this->load->library('upload', $this->upload_config());
+              if ((isset($_FILES['userfile']) && $_FILES['userfile']['size'] > 0) && ! $this->upload->do_upload('userfile'))
+              {
+
+                $error = array('error' => $this->upload->display_errors());
+                $this->load->view('templates/header', $data);
+                $this->load->view('activity/edit',$error);
+
+                }else{
+                 $data = array('upload_data' => $this->upload->data());
+
+                 $this->activity_model->update_activity($a_id,$data['upload_data']);
+                 print_r($data['upload_data']);
+                 //redirect("activity/view/$a_id/$u_id/success");
+               }
+
             }
 
         }

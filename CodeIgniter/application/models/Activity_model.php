@@ -5,7 +5,7 @@ class Activity_model extends CI_Model
             {
                 $this->load->database();
             }
-            public function set_activity($user_id)
+            public function set_activity($user_id,$upload_data = ' ')
             {
                  $data=array(
                    'name' => $this->input->post('name'),
@@ -16,6 +16,11 @@ class Activity_model extends CI_Model
                    'address' => $this->input->post('address'),
                    'catagory' => $this->input->post('catagory')
                  );
+
+                 if($upload_data['file_name'] != ''){
+                   $data['picture'] = $upload_data['file_name'];
+                 }
+
                  return $this->db->insert('activity',$data);
             }
 
@@ -35,7 +40,7 @@ class Activity_model extends CI_Model
             }
 
             //update a activity.
-            public function update_activity($a_id = '0')
+            public function update_activity($a_id = '0', $upload_data = ' ')
             {
                 $data=array(
                   'name'=>$this->input->post("name"),
@@ -47,6 +52,11 @@ class Activity_model extends CI_Model
                 );
 
                 $this->db->where('id',$a_id);
+
+                if($upload_data['file_name'] != ''){
+                  $data['picture'] = $upload_data['file_name'];
+                }
+
                 return $this->db->update('activity', $data);
             }
 

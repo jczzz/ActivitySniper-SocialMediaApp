@@ -1,4 +1,5 @@
 <?php echo validation_errors(); ?>
+<?php echo $error;?>
 <?php
   date_default_timezone_set("America/Vancouver");
 ?>
@@ -14,6 +15,8 @@
       <input type="input" name="catagory" value="<?php echo $result['catagory']  ?>"/><br />
       <lable "address">address: <lable><br />
       <input type="input" name="address" value="<?php echo $result['address']  ?>" /><br />
+      <lable "file">Choose a picture: </lable><br />
+      <input type="file" name="userfile" size="20" /><br>
       <lable "description">Description: <lable><br />
       <textarea cols="40" rows="10" name="description" ><?php echo $result['description']?></textarea><br />
 

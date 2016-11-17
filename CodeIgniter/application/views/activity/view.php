@@ -20,6 +20,7 @@
     Description:<br/>
     <?php  echo "&nbsp","&nbsp",$result['description'];?><br />
     <br />
+    <img src="/static/<?php echo $result['picture'];?>" ><br />
     <?php
     if($friend != "friend"){
     ?>
