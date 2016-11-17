@@ -111,7 +111,7 @@ class Activity_model extends CI_Model
             //new //get the activity according to user id.
             public function get_activity_by_user($user_id)
             {
-                $sql="select A.name, A.id, A.create_user_id from activity A, user_activity B where $user_id=B.user_id and B.activity_id=A.id";
+                $sql="select A.name, A.id, A.create_user_id, A.date, A.time from activity A, user_activity B where $user_id=B.user_id and B.activity_id=A.id";
                 $query = $this -> db -> query($sql);
                 return $query->result_array();
             }

@@ -1,7 +1,7 @@
 <head>
 <?php echo $google['map']['js']; ?>
 <style type="text/css">
-    #calendar { float:right; width:40%; height: 40%; margin: -120px; margin-top:-300px; margin-right:-250px; }
+    #calendar { float:right; width:40%; height: 40%; margin: -120px; margin-top:-200px; margin-right:-250px; }
 </style>
 </head>
 <!-- show a hint information to user-->
@@ -64,7 +64,7 @@
 <a href="<?php echo site_url("logout");?>">Logout</a>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br><br><br>
-
+<!--calendar!-->
 <div id="calendar">
 <?php echo $calendar_1;?>
 </div>
