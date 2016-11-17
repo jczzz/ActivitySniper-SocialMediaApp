@@ -68,41 +68,42 @@ class User_model extends CI_Model
                 //$this -> db -> where('id = '  . $id );
 
             }
-            public function check_unique()
+            public function check_unique($user_id = '0')
             {
-
-
-                      $data1 = array('email'=>$this->input->post('email'));
-                      $check1 = $this->db->get_where('users',$data1);
-
-                     if($this->input->post('phonenum')==null)
-                     {
-                          if($check1->row_array()!=null)
-                          {
-                            return false;
-                          }
-                          else
-                          {
-                            return true;
-                          }
-                     }
-                     else
-                    {
-                      $data2 = array('phonenum'=>$this->input->post('phonenum'));
-                      $check2 = $this->db->get_where('users',$data2);
-
-                      if($check1->row_array()!=null or $check2->row_array()!=null)
-                      {
-                        return false;
-                      }
-                      else
-                      {
-                        return true;
-                      }
-
-                    }
-
-
+										if($user_id != '0')
+										{
+														$data=array('email'=> $this->input->post('email'));
+														$result1 = $this->db->get_where('users',$data);
+														if($result1->row_array() >0 )
+														{
+															 $result=$result1->row_array();
+															 if($result['id']==$user_id)
+															 {
+																 return true;
+															 }
+															 else
+															 {
+																 return false;
+															 }
+														}
+														else
+														{
+																return true;
+														}
+									 }
+									 else
+									 {
+										 				 $data=array('email'=> $this->input->post('email'));
+														 $result1 = $this->db->get_where('users',$data);
+														 if($result1->row_array() >0 )
+														 {
+																	return false;
+														 }
+														 else
+														 {
+																 return true;
+														 }
+									 }
 
             }
 
@@ -140,6 +141,22 @@ class User_model extends CI_Model
 						{
 								$sql="delete from user_rel where $user_id=user_id1 and $view_user_id=user_id2";
 								return $this->db->query($sql);
+						}
+
+						//user edit their account.
+						public function edit_account($user_id)
+						{
+								$data=array(
+									'firstname'=> $this->input->post('firstname'),
+	                'lastname' =>$this->input->post('lastname'),
+	                'email' =>$this->input->post('email'),
+	                'phonenum' =>$this->input->post('phonenum'),
+	                'notes' =>$this->input->post('notes'),
+	                'password' =>$this->input->post('password'),
+									'picture' => $this->input->post('picture')
+								);
+								$this->db->where('id',$user_id);
+								$this->db->update('users',	$data);
 						}
 
 
