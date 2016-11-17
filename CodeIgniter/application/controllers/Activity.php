@@ -205,11 +205,7 @@ class Activity extends CI_Controller
 
                  $this->googlemaps->add_marker($marker);
                }
-
                $data['map'] = $this->googlemaps->create_map();
-
-               print_r($data['map']['markers']);
-
                return $data;
          }
 
@@ -421,8 +417,18 @@ class Activity extends CI_Controller
 
         public function get_date($a_date=null)
         {
-            $sep_date = explode("/",$a_date);
-            return $sep_date[2];
+
+              $sep_date = explode("/",$a_date);
+              if(count($sep_date)>1)
+              {
+                return $sep_date[2];
+              }
+              else
+              {
+                 $sep_date = explode("-",$a_date);
+                 return $sep_date[2];
+              }
+
         }
 
 }

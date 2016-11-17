@@ -43,7 +43,6 @@ class Activity_model extends CI_Model
                   'time'=>$this->input->post("time"),
                   'description'=>$this->input->post("description"),
                   'address'=>$this->input->post("address"),
-                  'location_lat'=>$this->input->post("location_lat"),
                   'catagory'=>$this->input->post("catagory"),
                 );
 
