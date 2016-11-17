@@ -57,7 +57,7 @@
 <?php endforeach; ?>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--link to another page!-->
-<p><a href="<?php echo site_url("activity/select/".$user_id);?>">Add a new activity</a>|
+<p><a href="<?php echo site_url("activity/create/".$user_id);?>">Add a new activity</a>|
 <a href="<?php echo site_url("activity/showall/".$user_id);?>">See All activities</a>|
 <a href="<?php echo site_url("user/friendlist/".$user_id);?>">Friend List</a></p>
 <br /><br />

@@ -43,7 +43,6 @@ class Activity_model extends CI_Model
                   'time'=>$this->input->post("time"),
                   'description'=>$this->input->post("description"),
                   'address'=>$this->input->post("address"),
-                  'location_lat'=>$this->input->post("location_lat"),
                   'catagory'=>$this->input->post("catagory"),
                 );
 
@@ -162,7 +161,7 @@ class Activity_model extends CI_Model
 
 
             public function get_comments(){
-              $sql = "select A.*, B.email from comment_board A, users B where A.user_id=B.id ORDER BY date asc, time asc";
+              $sql = "select A.*, B.email, B.id as user_id from comment_board A, users B where A.user_id=B.id ORDER BY date asc, time asc";
               $query = $this->db->query($sql);
               return $query->result_array();
             }
