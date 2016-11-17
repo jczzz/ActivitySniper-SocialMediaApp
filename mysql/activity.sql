@@ -8,7 +8,7 @@ create table activity
 	description text,
 	address varchar(128) NOT NULL,
 	catagory varchar(128) NOT NULL,
-  picture varchar(128),
+  picture varchar(128) DEFAULT 'default_act_pic.jpg',
 	foreign key (create_user_id) references users (id)
 	on delete cascade,
   PRIMARY KEY (id)
