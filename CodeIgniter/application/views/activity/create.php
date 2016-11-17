@@ -20,7 +20,8 @@
 
       <lable "address">Address: </lable><br />
       <input type="text" name="address" id="myPlaceTextBox" /><br />
-<input type="file" name="userfile" size="20" /><br>
+      <lable "file">Choose a picture: </lable><br />
+      <input type="file" name="userfile" size="20" /><br>
       <lable "description">Description: </lable><br />
       <textarea cols="40" rows="10" name="description"></textarea><br />
 

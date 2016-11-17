@@ -38,7 +38,7 @@ class User extends CI_Controller
                     $data['title']='Register';
                     //go to the 'creat' view again
                     $this->load->view('templates/header', $data);
-                    $this->load->view('user/create');
+                    $this->load->view('user/create',array('error' => ' ' ));
 
                 }
                 else
@@ -51,16 +51,33 @@ class User extends CI_Controller
                     //go to the 'creat' view again
                     $this->load->view('templates/header', $data);
                     echo'the email has been used,please enter another one';
-                    $this->load->view('user/create');
+                    $this->load->view('user/create',array('error' => ' ' ));
                   }
                   else
                   {
-                    $this->user_model->set();
-                    $flag='notNull';
-                    //go to the home page with flag!=null, to show success message
-                    redirect("user/login/$flag");
+
+
+                    $this->load->library('upload', $this->upload_config());
+                    if ((isset($_FILES['userfile']) && $_FILES['userfile']['size'] > 0) && ! $this->upload->do_upload('userfile'))
+                    {
+                      $data['title']='Register';
+                      //go to the 'creat' view again
+                      $error = array('error' => $this->upload->display_errors());
+                      $this->load->view('templates/header', $data);
+                      $this->load->view('user/create',$error);
+
+                      }else{
+                       $data = array('upload_data' => $this->upload->data());
+
+                       $this->user_model->set($data['upload_data']);
+                       $flag='notNull';
+                       //go to the home page with flag!=null, to show success message
+                       redirect("user/login/$flag");
+                     }
+
                   }
                 }
+
           }
 
           public function index()
@@ -296,7 +313,16 @@ class User extends CI_Controller
 
             }
 
+            public function upload_config()
+            {
+                    $config['upload_path']          = '/home/ubuntu/project/static';
+                    $config['allowed_types']        = 'gif|jpg|png';
+                    $config['max_size']             = 100;
+                    $config['max_width']            = 1024;
+                    $config['max_height']           = 768;
+                    return $config;
 
+            }
 
 
 
