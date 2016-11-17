@@ -129,6 +129,13 @@ class Activity_model extends CI_Model
                return $query->row_array();
             }
 
+            public function search_activity($input)
+            {
+                $sql="select * from activity where name like '%$input%'";
+                $query=$this->db->query($sql);
+                return $query->result_array();
+            }
+
 
 
 

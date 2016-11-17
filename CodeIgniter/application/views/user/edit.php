@@ -19,5 +19,5 @@
         <lable for="Notes">Notes:</lable>  <br />
         <textarea cols="40" rows="10" name="notes"><?php echo $result['notes'] ?></textarea><br />
 
-        <input type="submit" name="submit" value="Regisger">
+        <input type="submit" name="submit" value="Edit">
 </form>

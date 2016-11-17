@@ -2,6 +2,13 @@
 <!-- show a hint information to user-->
 <?php echo "&nbsp","&nbsp",$success,"<br>","<br>"; ?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<!--search-->
+<?php echo form_open("activity/showall/$user_id"); ?>
+      Type some key words here:<br />
+      <input type="input" name="search" />
+      <input type="submit" name="submit" value="search" >
+</form>
+
 <!--show all activities-->
 <?php $x=0; ?>
 <?php foreach($result as $activity_item): ?>

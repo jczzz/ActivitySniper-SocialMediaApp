@@ -221,28 +221,61 @@ class Activity extends CI_Controller
             $data['user_id']=$user_id;
             $data['array_1']=array();
             $data['user_result']=null;
-            foreach($data['result'] as $result_1)
+
+            $this->load->helper('form',$data);
+
+            if($this->input->post('search')==null )
             {
-                $data['result1']=$this->activity_model->check_rel_user_activity($user_id,$result_1['id']);
-                if($data['result1'] === null)
-                {
-                    $data['array_1'][]="true";
-                }
-                else
-                {
-                    $data['array_1'][]="flase";
-                }
+                  foreach($data['result'] as $result_1)
+                  {
+                      $data['result1']=$this->activity_model->check_rel_user_activity($user_id,$result_1['id']);
+                      if($data['result1'] === null)
+                      {
+                          $data['array_1'][]="true";
+                      }
+                      else
+                      {
+                          $data['array_1'][]="flase";
+                      }
+                  }
+
+                  foreach($data['result'] as $a_result)
+                  {
+                       $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                  }
+
+                  $data["google"]=$this->google_map_add_location();
+
+                  $this->load->view('templates/header',$data);
+                  $this->load->view('activity/show_all',$data);
+            }
+            else
+            {
+                    $data['result']=$this->activity_model->search_activity($this->input->post('search'));
+                    foreach($data['result'] as $result_1)
+                    {
+                        $data['result1']=$this->activity_model->check_rel_user_activity($user_id,$result_1['id']);
+                        if($data['result1'] === null)
+                        {
+                            $data['array_1'][]="true";
+                        }
+                        else
+                        {
+                            $data['array_1'][]="flase";
+                        }
+                    }
+
+                    foreach($data['result'] as $a_result)
+                    {
+                         $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                    }
+
+                    $data["google"]=$this->google_map_add_location();
+                    $this->load->view('templates/header',$data);
+                    $this->load->view('activity/show_all',$data);
             }
 
-            foreach($data['result'] as $a_result)
-            {
-                 $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
-            }
 
-            $data["google"]=$this->google_map_add_location();
-
-            $this->load->view('templates/header',$data);
-            $this->load->view('activity/show_all',$data);
         }
 
          //use for user join another user's activities
