@@ -310,7 +310,7 @@ class User extends CI_Controller
                       $data['title']='Edit your Account';
                       //go to the 'creat' view again
                       $this->load->view('templates/header', $data);
-                      $this->load->view('user/edit');
+                      $this->load->view('user/edit',array('error' => ' ' ));
 
                   }
                   else
