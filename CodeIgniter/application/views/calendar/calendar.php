@@ -1,12 +1,11 @@
 <?php
-
- 
-  class Calendar {
+    class Calendar{
     /**
     ** Constructor
     **/
-    public function __construct() {
-      $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
+    public function __construct()
+    {
+          $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
     }
     /********************* PROPERTY ********************/
     private $dayLabels = array("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
@@ -53,7 +52,7 @@
       $content .= '</div>' . "\r\n";
       return $content;
     }
-    /********************* PRIVATE **********************/ 
+    /********************* PRIVATE **********************/
     /**
     ** create the li element for ul
     **/
@@ -87,14 +86,14 @@
       $preMonth = $this->currentMonth == 1 ? 12 : intval($this->currentMonth)-1;
       $preYear = $this->currentMonth == 1 ? intval($this->currentYear)-1 : $this->currentYear;
       $getMonth = date('Y M', strtotime($this->currentYear . '-' . $this->currentMonth . '-1'));
-   
+
       return
-          '<div class="calendar_header">' . "\r\n" . 
-          
-            '<a class="calendar_prev" href="' . $this->naviHref . '?month=' . sprintf('%02d', $preMonth) . '&amp;year=' . $preYear.'">Prev</a>' . "\r\n" . 
-              '<span class="calendar_title">' .date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')). '</span>' . "\r\n" . 
-            '<a class="calendar_next" href="' . $this->naviHref . '?month=' . sprintf("%02d", $nextMonth) . '&amp;year=' . $nextYear . '">Next</a>' . "\r\n"  . 
-              
+          '<div class="calendar_header">' . "\r\n" .
+
+            '<a class="calendar_prev" href="' . $this->naviHref . '?month=' . sprintf('%02d', $preMonth) . '&amp;year=' . $preYear.'">Prev</a>' . "\r\n" .
+              '<span class="calendar_title">' .date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')). '</span>' . "\r\n" .
+            '<a class="calendar_next" href="' . $this->naviHref . '?month=' . sprintf("%02d", $nextMonth) . '&amp;year=' . $nextYear . '">Next</a>' . "\r\n"  .
+
           '</div>';
     }
     /**
@@ -137,4 +136,4 @@
     }
   }
 
-?>
+  ?>

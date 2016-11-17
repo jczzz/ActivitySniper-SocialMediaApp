@@ -1,4 +1,9 @@
-<head><?php echo $google['map']['js']; ?></head>
+<head>
+<?php echo $google['map']['js']; ?>
+<style type="text/css">
+    #calendar { float:right; width:40%; height: 40%; margin: -120px; margin-top:-300px; margin-right:-250px; }
+</style>
+</head>
 <!-- show a hint information to user-->
 <?php
       if($success != null)
@@ -59,4 +64,8 @@
 <a href="<?php echo site_url("logout");?>">Logout</a>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br><br><br>
+
+<div id="calendar">
+<?php echo $calendar_1;?>
+</div>
 <?php echo $google['map']['html']; ?>

@@ -102,6 +102,11 @@ class Activity extends CI_Controller
 
          public function index($suc = null, $user_id = '0')
          {
+
+                date_default_timezone_set("America/Vancouver");
+
+                 $this->load->library('calendar');
+                 $data['calendar_1']=$this->calendar->generate(strtotime(date('y')),strtotime(date('m')));
                  $data['user_result']=null;
                  $data['success']=null;
                  $data['title']="Activity List";
