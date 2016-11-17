@@ -16,13 +16,9 @@
       <input type="time" name="time" value="<?php echo date('H:i'); ?>"/><br />
       <lable "catagory">Catagory: </lable><br />
       <input type="input" name="catagory" /><br />
-      <lable "location_lng">Location lng: </lable><br />
-      <input  type="input" id="location" name="location_lng" /><br />
-      <lable "location_lat">Location lat: </lable><br />
-      <input type="input" name="location_lat" /></lable><br />
 
-      <lable "placeBox">Address: </lable><br />
-      <input type="text" id="myPlaceTextBox" /><br />
+      <lable "address">Address: </lable><br />
+      <input type="text" name="address" id="myPlaceTextBox" /><br />
 
       <lable "description">Description: </lable><br />
       <textarea cols="40" rows="10" name="description"></textarea><br />

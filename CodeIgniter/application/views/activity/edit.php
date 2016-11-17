@@ -8,10 +8,8 @@
       <input type="input" name="time" value="<?php echo $result['time']  ?>"/><br />
       <lable "catagory">Catagory: <lable><br />
       <input type="input" name="catagory" value="<?php echo $result['catagory']  ?>"/><br />
-      <lable "location_lng">Location lng: <lable><br />
-      <input type="input" name="location_lng" value="<?php echo $result['location_lng']  ?>" /><br />
-      <lable "location_lat">Location lat: <lable><br />
-      <input type="input" name="location_lat" value="<?php echo $result['location_lat']  ?>"/><lable><br />
+      <lable "address">address: <lable><br />
+      <input type="input" name="address" value="<?php echo $result['address']  ?>" /><br />
       <lable "description">Description: <lable><br />
       <textarea cols="40" rows="10" name="description" ><?php echo $result['description']?></textarea><br />
 

@@ -15,10 +15,8 @@
     <?php  echo "&nbsp","&nbsp",$result['time'];?><br />
     Catagory:<br/>
     <?php  echo "&nbsp","&nbsp",$result['catagory'];?><br />
-    Location Lng:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['location_lng'];?><br />
-    Location lat:<br/>
-    <?php  echo "&nbsp","&nbsp",$result['location_lat'];?><br />
+    Address:<br/>
+    <?php  echo "&nbsp","&nbsp",$result['address'];?><br />
     Description:<br/>
     <?php  echo "&nbsp","&nbsp",$result['description'];?><br />
     <br />
