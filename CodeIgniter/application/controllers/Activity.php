@@ -397,8 +397,8 @@ class Activity extends CI_Controller
                  $data = array('upload_data' => $this->upload->data());
 
                  $this->activity_model->update_activity($a_id,$data['upload_data']);
-                 print_r($data['upload_data']);
-                 //redirect("activity/view/$a_id/$u_id/success");
+                 //print_r($data['upload_data']);
+                 redirect("activity/view/$a_id/$u_id/success");
                }
 
             }
