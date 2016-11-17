@@ -183,10 +183,13 @@ class Activity extends CI_Controller
 
                foreach ($coords as $coordinate) {
                  $marker = array();
+                 $id=$coordinate->id;
                  $marker['position'] = $coordinate->address;
                  $marker['title'] = $coordinate->name;
                  $marker['animation'] = 'DROP';
-                 $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br> <a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>";
+                 $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br><a href=\"".base_url()."activity/".$coordinate->id."/".$user_id."\">show details</a>" ;
+
+
                  date_default_timezone_set("America/Vancouver");
 
                  $activity_time_stamp = strtotime($coordinate->date." ".$coordinate->time);
