@@ -1,11 +1,15 @@
 <?php echo validation_errors(); ?>
+<?php
+  date_default_timezone_set("America/Vancouver");
+?>
+
 <?php echo form_open("activity/edit/$a_id/$u_id"); ?>
       <lable "activity name">Activity name: <lable><br />
       <input type="input" name="name" value="<?php echo $result['name']  ?>"/><br />
       <lable "activity date">Activity date: <lable><br />
-      <input type="input" name="date"  value="<?php echo $result['date']  ?>"/><br />
+      <input type="date" name="date"  value="<?php echo $result['date']  ?>"/><br />
       <lable "activity time">Activity time: <lable><br />
-      <input type="input" name="time" value="<?php echo $result['time']  ?>"/><br />
+      <input type="time" name="time" value="<?php echo $result['time']  ?>"/><br />
       <lable "catagory">Catagory: <lable><br />
       <input type="input" name="catagory" value="<?php echo $result['catagory']  ?>"/><br />
       <lable "address">address: <lable><br />

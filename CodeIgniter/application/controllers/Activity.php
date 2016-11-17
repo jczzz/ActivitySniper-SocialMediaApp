@@ -11,9 +11,9 @@ class Activity extends CI_Controller
                $this->load->helper('url');
          }
 
-         public function create($location=null, $user_id='0')
+         public function create($user_id='0')
          {
-               $data['location']=$location;
+               //$data['location']=$location;
                $data['user_id']=$user_id;
                $this->load->helper('form',$data);
                $this->load->library('form_validation');
@@ -206,6 +206,7 @@ class Activity extends CI_Controller
                  $this->googlemaps->add_marker($marker);
                }
                $data['map'] = $this->googlemaps->create_map();
+
                return $data;
          }
 
@@ -391,7 +392,7 @@ class Activity extends CI_Controller
         }
 
 
-
+/*
         public function location($user_id = '0')
         {
 
@@ -409,6 +410,9 @@ class Activity extends CI_Controller
                  redirect("activity/create/$location/$user_id");
               }
         }
+
+*/
+
 
         public function cal()
         {
@@ -430,7 +434,6 @@ class Activity extends CI_Controller
               }
 
         }
-
 }
 
 ?>

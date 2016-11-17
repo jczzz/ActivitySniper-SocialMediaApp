@@ -50,7 +50,11 @@
     <?php foreach ($comments as $comment_item): ?>
     <?php
       if($result['id'] === $comment_item['activity_id']){
-        echo "User: ",$comment_item['email'],"&nbsp";
+        echo "User: ";
+    ?>
+    <a href="<?php echo site_url("user/information/".$comment_item['user_id']."/".$user_id);?>"><?php echo $comment_item['email'];?></a>
+    <?php
+        echo "&nbsp";
         echo "On: ",$comment_item['date'],"&nbsp", $comment_item['time'],"&nbsp", "<br>";
         echo "Said: ",$comment_item['comment'],"<br> <br>";
       }
