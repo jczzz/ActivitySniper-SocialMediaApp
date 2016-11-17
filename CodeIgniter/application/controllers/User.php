@@ -302,14 +302,30 @@ class User extends CI_Controller
                       $data['title']='Edit your Account';
                       $this->load->view('templates/header', $data);
                       echo'the email has been used,please enter another one';
-                      $this->load->view('user/edit');
+                      $this->load->view('user/edit',array('error' => ' ' ));
                     }
                     else
                     {
-                      $this->user_model->edit_account($user_id);
-                      redirect("user/checkinfor/$user_id");
+                      $this->load->library('upload', $this->upload_config());
+                      if ((isset($_FILES['userfile']) && $_FILES['userfile']['size'] > 0) && ! $this->upload->do_upload('userfile'))
+                      {
+                        $data['title']='Register';
+                        //go to the 'creat' view again
+                        $error = array('error' => $this->upload->display_errors());
+                        $this->load->view('templates/header', $data);
+                        $this->load->view('user/create',$error);
+
+                        }else{
+                         $data = array('upload_data' => $this->upload->data());
+
+                         $this->user_model->edit_account($user_id, $data['upload_data']);
+                         redirect("user/checkinfor/$user_id");
                     }
                   }
+                }
+
+
+
 
             }
 

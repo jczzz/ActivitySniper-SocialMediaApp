@@ -150,7 +150,7 @@ class User_model extends CI_Model
 						}
 
 						//user edit their account.
-						public function edit_account($user_id)
+						public function edit_account($user_id, $upload_data = ' ')
 						{
 								$data=array(
 									'firstname'=> $this->input->post('firstname'),
@@ -158,9 +158,15 @@ class User_model extends CI_Model
 	                'email' =>$this->input->post('email'),
 	                'phonenum' =>$this->input->post('phonenum'),
 	                'notes' =>$this->input->post('notes'),
-	                'password' =>$this->input->post('password'),
-									'picture' => $this->input->post('picture')
+	                'password' =>$this->input->post('password')
 								);
+
+								if($upload_data['file_name'] != ''){
+									$data['picture'] = $upload_data['file_name'];
+								}else{
+									//$data['picture'] = 'default_user_pic.jpg';
+								}
+
 								$this->db->where('id',$user_id);
 								$this->db->update('users',	$data);
 						}
