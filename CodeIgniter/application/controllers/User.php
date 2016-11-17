@@ -31,6 +31,7 @@ class User extends CI_Controller
                 $this->form_validation->set_rules('lastname','Last Name ','required');
                 $this->form_validation->set_rules('password',"Password",'required');
                 $this->form_validation->set_rules('email',"Email",'required|valid_email');
+                $this->form_validation->set_rules('phonenum',"phonenum",'trim|callback_check_phone_number');
 
 
                 if($this->form_validation->run() === FALSE)//invalid
@@ -134,6 +135,22 @@ class User extends CI_Controller
                   redirect('user/login', 'refresh');
                 }
 
+          }
+
+          //check phone NumberFormatter
+          public function check_phone_number()
+          {
+             $phonenum = $this->input->post('phonenum');
+             $result=preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phonenum);
+             if($result)
+             {
+               return true;
+             }
+             else
+             {
+                $this->form_validation->set_message('check_phone_number', 'Invalid phone number');
+                return false;
+             }
           }
 
 
@@ -285,6 +302,7 @@ class User extends CI_Controller
                   $this->form_validation->set_rules('lastname','Last Name ','required');
                   $this->form_validation->set_rules('password',"Password",'required');
                   $this->form_validation->set_rules('email',"Email",'required|valid_email');
+                  $this->form_validation->set_rules('phonenum',"phonenum",'trim|callback_check_phone_number');
 
 
                   if($this->form_validation->run() === FALSE)//invalid
