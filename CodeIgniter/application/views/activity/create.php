@@ -2,11 +2,12 @@
 
 </head>
 <?php echo validation_errors(); ?>
+<?php echo $error;?>
 <?php
   date_default_timezone_set("America/Vancouver");
 ?>
 
-<?php echo form_open("activity/create/$user_id"); ?>
+<?php echo form_open_multipart("activity/create/$user_id"); ?>
 
       <lable "activity name">Activity name: </lable><br />
       <input type="input" name="name" /><br />
@@ -19,7 +20,7 @@
 
       <lable "address">Address: </lable><br />
       <input type="text" name="address" id="myPlaceTextBox" /><br />
-
+<input type="file" name="userfile" size="20" /><br>
       <lable "description">Description: </lable><br />
       <textarea cols="40" rows="10" name="description"></textarea><br />
 
@@ -27,6 +28,9 @@
 </form>
 
 <br><br><br>
+
+
+
 
 
 <!--
