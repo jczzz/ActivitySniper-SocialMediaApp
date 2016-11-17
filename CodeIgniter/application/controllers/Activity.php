@@ -13,8 +13,10 @@ class Activity extends CI_Controller
 
          public function create($user_id='0')
          {
+
                //$data['location']=$location;
                $data['user_id']=$user_id;
+
                $this->load->helper('form',$data);
                $this->load->library('form_validation');
                $data['title']="New Activity";
@@ -59,20 +61,33 @@ class Activity extends CI_Controller
 
                 $data['map'] = $this->googlemaps->create_map();
 
+
+
+
                 if($this->form_validation->run()==FALSE)
                 {
                      $this->load->view('templates/header',$data);
-                     $this->load->view('activity/create');
+                     $this->load->view('activity/create',array('error' => ' ' ));
                 }
                 else
                 {
+                  $this->load->library('upload', $this->upload_config());
+                  if ((isset($_FILES['userfile']) && $_FILES['userfile']['size'] > 0) && ! $this->upload->do_upload('userfile'))
+                  {
+                      $error = array('error' => $this->upload->display_errors());
+                      $this->load->view('templates/header',$data);
+                      $this->load->view('activity/create',$error);
+                    }else{
+                     $data = array('upload_data' => $this->upload->data());
+
                      $this->activity_model->set_activity($user_id);
                      //add the relationship between the new activity and its user.
                      $this->relate_user_with_new_activity($user_id);
 
                      $suc="success";
                      redirect("activity/index/$suc/$user_id");
-                }
+                   }
+                 }
 
          }
          //add the relationship between the new activity and its user.
@@ -432,6 +447,17 @@ class Activity extends CI_Controller
                  $sep_date = explode("-",$a_date);
                  return $sep_date[2];
               }
+
+        }
+
+        public function upload_config()
+        {
+                $config['upload_path']          = '/home/ubuntu/project/static';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 100;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+                return $config;
 
         }
 }
