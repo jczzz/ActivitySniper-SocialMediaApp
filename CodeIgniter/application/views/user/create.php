@@ -14,12 +14,12 @@
         <lable for="Email">Email: (must be unique,and needed)</lable><br />
         <input type="input" name="email" /><br />
 
-        <lable for="Phone Number">Phone Number: (must be unique)</lable><br />
+        <lable for="Phone Number">Phone Number: (XXX-XXX-XXXX)</lable><br />
         <input type="input" name="phonenum"><br />
 
         <lable "file">Choose a picture: </lable><br />
         <input type="file" name="userfile" size="20" /><br>
-        
+
         <lable for="Notes">Notes:</lable>  <br />
         <textarea cols="40" rows="10" name="notes"></textarea><br />
 

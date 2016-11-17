@@ -14,7 +14,7 @@
         <lable for="Email">Email: (must be unique,and needed)</lable><br />
         <input type="input" name="email" value="<?php echo $result['email'] ?>"/><br />
 
-        <lable for="Phone Number">Phone Number: (must be unique)</lable><br />
+        <lable for="Phone Number">Phone Number: (XXX-XXX-XXXX)</lable><br />
         <input type="input" name="phonenum" value="<?php echo $result['phonenum'] ?>"/><br />
 
         <lable "file">Choose a picture: </lable><br />

@@ -39,29 +39,7 @@ class Activity extends CI_Controller
 
                 $this->googlemaps->initialize($config);
 
-                $coords = $this->activity_model->get_coordinates();
-
-                foreach ($coords as $coordinate) {
-                  $marker = array();
-                  $marker['position'] = $coordinate->address;
-                  $marker['title'] = $coordinate->name;
-                  $marker['animation'] = 'DROP';
-                  $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br> <a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>";
-                  date_default_timezone_set("America/Vancouver");
-
-                  $activity_time_stamp = strtotime($coordinate->date." ".$coordinate->time);
-                  $current_time_stamp = strtotime(date('Y-m-d H:i:s'));
-
-                  if($activity_time_stamp < $current_time_stamp){
-                    $marker['icon'] = 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
-                  }
-
-                  $this->googlemaps->add_marker($marker);
-                }
-
                 $data['map'] = $this->googlemaps->create_map();
-
-
 
 
                 if($this->form_validation->run()==FALSE)
@@ -205,10 +183,13 @@ class Activity extends CI_Controller
 
                foreach ($coords as $coordinate) {
                  $marker = array();
+                 $id=$coordinate->id;
                  $marker['position'] = $coordinate->address;
                  $marker['title'] = $coordinate->name;
                  $marker['animation'] = 'DROP';
-                 $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br> <a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>";
+                 $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br><a href=\"".base_url()."activity/".$coordinate->id."/".$user_id."\">show details</a>" ;
+
+
                  date_default_timezone_set("America/Vancouver");
 
                  $activity_time_stamp = strtotime($coordinate->date." ".$coordinate->time);
