@@ -137,3 +137,6 @@
   }
 
   ?>
+<?php date_default_timezone_set("America/Vancouver");  ?>
+<?php $c1=new Calendar();?>
+<?php echo $c1->show(); ?>

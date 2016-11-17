@@ -102,11 +102,6 @@ class Activity extends CI_Controller
 
          public function index($suc = null, $user_id = '0')
          {
-
-                date_default_timezone_set("America/Vancouver");
-
-                 $this->load->library('calendar');
-                 $data['calendar_1']=$this->calendar->generate(strtotime(date('y')),strtotime(date('m')));
                  $data['user_result']=null;
                  $data['success']=null;
                  $data['title']="Activity List";
@@ -114,7 +109,6 @@ class Activity extends CI_Controller
                  $data['result1']=null;
                  //show activities in databases.
                  $data['result']=$this->activity_model->get_activity_by_user($user_id);
-
                  $data['user_id']=$user_id;
 
                  foreach($data['result'] as $a_result)
@@ -149,6 +143,18 @@ class Activity extends CI_Controller
 
                 $data["google"]=$this->google_map_add_location($user_id);
 
+                //calendar.
+                date_default_timezone_set("America/Vancouver");
+                $this->load->library('calendar');
+                $set=array();
+                foreach($data['result'] as $a_result)
+                {
+                   $a_id=$a_result['id'];
+                   $date_day=(int)$this->get_date($a_result['date']);
+                   $set[$date_day]="http://localhost:9000/index.php/activity/$a_id/$user_id";
+                }
+
+                $data['calendar_1']=$this->calendar->generate(strtotime(date('y')),strtotime(date('m')),$set);
                 $this->load->view('templates/header',$data);
                 $this->load->view("activity/index",$data);
          }
@@ -401,6 +407,18 @@ class Activity extends CI_Controller
                  redirect("activity/create/$location/$user_id");
               }
         }
+
+        public function cal()
+        {
+           $this->load->view("calendar/calendar");
+        }
+
+        public function get_date($a_date=null)
+        {
+            $sep_date = explode("/",$a_date);
+            return $sep_date[2];
+        }
+
 }
 
 ?>
