@@ -108,7 +108,7 @@ class Activity extends CI_Controller
          {
               if($this->session->userdata('logged_in'))
               {
-                      $session_data=$this->$session->userdata('logged_in');
+                      $session_data=$this->session->userdata('logged_in');
                       $user_id=$session_data['id'];
 
                       $data['user_result']=null;
@@ -201,7 +201,7 @@ class Activity extends CI_Controller
                  $marker['position'] = $coordinate->address;
                  $marker['title'] = $coordinate->name;
                  $marker['animation'] = 'DROP';
-                 $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br><a href=\"".base_url()."activity/".$coordinate->id.\">show details</a>" ;
+                 $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br><a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>" ;
                  date_default_timezone_set("America/Vancouver");
                  $activity_time_stamp = strtotime($coordinate->date." ".$coordinate->time);
                  $current_time_stamp = strtotime(date('Y-m-d H:i:s'));
@@ -226,13 +226,13 @@ class Activity extends CI_Controller
                    $data['result1']=null;
                    $data['title']="All Activities";
                    $data['result']=$this->activity_model->get_activity();
-                   $data['success']="All Activities in database has been shown.";
                    $data['user_id']=$user_id;
                    $data['array_1']=array();
                    $data['user_result']=null;
                    $this->load->helper('form',$data);
                    if($this->input->post('search')==null )
                    {
+                         $data['success']="All Activities in database has been shown.";
                          foreach($data['result'] as $result_1)
                          {
                              $data['result1']=$this->activity_model->check_rel_user_activity($user_id,$result_1['id']);
@@ -258,6 +258,7 @@ class Activity extends CI_Controller
                    }
                    else
                    {
+                           $data['success']="Activities you chose has been shown.";
                            $data['result']=$this->activity_model->search_activity($this->input->post('search'));
                            foreach($data['result'] as $result_1)
                            {
@@ -324,9 +325,9 @@ class Activity extends CI_Controller
         //user can remove another user's activities off his list.
         public function remove($a_id = '0')
         {
-            if($this->session->user_data('logged_in'))
+            if($this->session->userdata('logged_in'))
             {
-                $session_data=$this->session->user_data('logged_in');
+                $session_data=$this->session->userdata('logged_in');
                 $u_id=$session_data['id'];
                 $this->activity_model->remove_rel_user_activity($u_id,$a_id);
                 redirect("activity/index/remove");

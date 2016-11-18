@@ -3,7 +3,7 @@
 <?php echo "&nbsp","&nbsp",$success,"<br>","<br>"; ?>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--search-->
-<?php echo form_open("activity/showall/$user_id"); ?>
+<?php echo form_open("activity/showall"); ?>
       Type some key words here:<br />
       <input type="input" name="search" />
       <input type="submit" name="submit" value="search" >
