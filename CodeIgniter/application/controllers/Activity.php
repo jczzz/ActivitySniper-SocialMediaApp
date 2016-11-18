@@ -333,7 +333,7 @@ class Activity extends CI_Controller
                 $marker['position'] = $address;
                 $marker['title'] = $data['result']['name'];
                 $marker['animation'] = 'DROP';
-                $marker['infowindow_content'] = $data['result']['name']."<br>".$data['result']['date']."<br>".$data['result']['time']."<br> <a href=\"".base_url()."activity/".$data['result']['id']."\">show details</a>";
+                $marker['infowindow_content'] = $data['result']['name']."<br>".$data['result']['date']."<br>".$data['result']['time'];
                 date_default_timezone_set("America/Vancouver");
 
                 $activity_time_stamp = strtotime($data['result']['date']." ".$data['result']['time']);

@@ -141,16 +141,24 @@ class User extends CI_Controller
           public function check_phone_number()
           {
              $phonenum = $this->input->post('phonenum');
-             $result=preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phonenum);
-             if($result)
+             if($phonenum == null)
              {
-               return true;
+                  return  true;
              }
              else
              {
-                $this->form_validation->set_message('check_phone_number', 'Invalid phone number');
-                return false;
+                   $result=preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phonenum);
+                   if($result)
+                   {
+                     return true;
+                   }
+                   else
+                   {
+                      $this->form_validation->set_message('check_phone_number', 'Invalid phone number');
+                      return false;
+                   }
              }
+
           }
 
 
@@ -308,9 +316,10 @@ class User extends CI_Controller
                   if($this->form_validation->run() === FALSE)//invalid
                   {
                       $data['title']='Edit your Account';
+                      $error = array('error' => $this->upload->display_errors());
                       //go to the 'creat' view again
                       $this->load->view('templates/header', $data);
-                      $this->load->view('user/edit');
+                      $this->load->view('user/edit',$error);
 
                   }
                   else
@@ -327,11 +336,11 @@ class User extends CI_Controller
                       $this->load->library('upload', $this->upload_config());
                       if ((isset($_FILES['userfile']) && $_FILES['userfile']['size'] > 0) && ! $this->upload->do_upload('userfile'))
                       {
-                        $data['title']='Register';
+                        $data['title']='Edit your Account';
                         //go to the 'creat' view again
                         $error = array('error' => $this->upload->display_errors());
                         $this->load->view('templates/header', $data);
-                        $this->load->view('user/create',$error);
+                        $this->load->view('user/edit',$error);
 
                         }else{
                          $data = array('upload_data' => $this->upload->data());
