@@ -1,5 +1,6 @@
 <?php echo validation_errors(); ?>
 <?php echo $error;?>
+<h1>Register</h1>
 <?php echo form_open_multipart('user/create');
 //form data is for the create function,after submit, doing create function again with the new form input?>
         <lable for="Firstname">First name: (must needed)</lable><br />

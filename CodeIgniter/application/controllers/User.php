@@ -34,7 +34,6 @@ class User extends CI_Controller
     {
       $data['title']='Register';
       //go to the 'creat' view again
-      $this->load->view('templates/header', $data);
       $this->load->view('user/create',array('error' => ' ' ));
     }
     else
@@ -44,7 +43,6 @@ class User extends CI_Controller
       {
         $data['title']='Register';
         //go to the 'creat' view again
-        $this->load->view('templates/header', $data);
         echo'the email has been used,please enter another one';
         $this->load->view('user/create',array('error' => ' ' ));
       }
