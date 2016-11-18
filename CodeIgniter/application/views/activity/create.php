@@ -73,7 +73,7 @@
     <?php
       date_default_timezone_set("America/Vancouver");
     ?>
-    <?php echo form_open("activity/create/$user_id"); ?>
+    <?php echo form_open_multipart("activity/create/$user_id"); ?>
 
           <lable "activity name">Activity name: </lable><br />
           <input type="input" name="name" /><br />

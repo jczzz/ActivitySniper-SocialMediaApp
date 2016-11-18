@@ -316,10 +316,10 @@ class User extends CI_Controller
                   if($this->form_validation->run() === FALSE)//invalid
                   {
                       $data['title']='Edit your Account';
-                      $error = array('error' => $this->upload->display_errors());
                       //go to the 'creat' view again
                       $this->load->view('templates/header', $data);
-                      $this->load->view('user/edit',$error);
+
+                      $this->load->view('user/edit',array('error' => ' ' ));
 
                   }
                   else
