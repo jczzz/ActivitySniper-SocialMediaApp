@@ -418,7 +418,8 @@ class Activity extends CI_Controller
                           $this->load->helper('form');
                           $this->load->library('form_validation');
                           $data['view_user_id']=$view_user_id;
-
+                          $data['success']=null;
+                          $data['friend']="friend";
                           $this->form_validation->set_rules('comment','Comment','required');
                           if($this->form_validation->run() === FALSE){
 
