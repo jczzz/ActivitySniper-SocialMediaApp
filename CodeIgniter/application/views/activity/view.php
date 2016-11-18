@@ -24,7 +24,7 @@
     <?php
     if($friend != "friend"){
     ?>
-          <a href="<?php echo site_url("activity/index/sfu/".$user_id);?>">List of Activities</a>
+          <a href="<?php echo site_url("activity/index/sfu");?>">List of Activities</a>
     <?php
      }
      ?>
@@ -32,7 +32,7 @@
      <?php
      if($friend == "friend"){
      ?>
-           <a href="<?php echo site_url("activity/friendactivity/$user_id/$view_user_id");?>">Go back to your friend Activities</a>
+           <a href="<?php echo site_url("activity/friendactivity/$user_id");?>">Go back to your friend Activities</a>
      <?php
       }
       ?>
@@ -53,7 +53,7 @@
       if($result['id'] === $comment_item['activity_id']){
         echo "User: ";
     ?>
-    <a href="<?php echo site_url("user/information/".$comment_item['user_id']."/".$user_id);?>"><?php echo $comment_item['email'];?></a>
+    <a href="<?php echo site_url("user/information/".$comment_item['user_id']);?>"><?php echo $comment_item['email'];?></a>
     <?php
         echo "&nbsp";
         echo "On: ",$comment_item['date'],"&nbsp", $comment_item['time'],"&nbsp", "<br>";

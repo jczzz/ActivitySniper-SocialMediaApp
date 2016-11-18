@@ -49,26 +49,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+$route['activity/view_friend_activity/(:any)/(:any)']='activity/view_friend_activity/$1/$2';
 $route['user/edit/(:any)']='user/edit/$1';
 $route['user/checkinfor/(:any)']='user/check_information/$1';
-$route['activity/cal']='activity/cal';
 $route['logout']='user/logout';
-$route['activity/view/(:any)/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3/$4';
-$route['activity/join_friend_activity/(:any)/(:any)/(:any)']='activity/join_friend_activity/$1/$2/$3';
-$route['activity/friendactivity/(:any)/(:any)']='activity/friendactivity/$1/$2';
+//$route['activity/view/(:any)/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3/$4';
+$route['activity/join_friend_activity/(:any)/(:any)']='activity/join_friend_activity/$1/$2';
+$route['activity/friendactivity/(:any)']='activity/friendactivity/$1';
 $route['user/friend/(:any)/(:any)']='user/friend/$1/$2';
 $route['user/information/(:any)/(:any)']='user/information/$1/$2';
-$route['activity/showall/(:any)']='activity/showall/$1';
+$route['activity/showall']='activity/showall';
 $route['activity/view/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3';
-$route['activity/remove/(:any)/(:any)']='activity/remove/$1/$2';
-$route['activity/join/(:any)/(:any)']='activity/join/$1/$2';
-$route['activity/create/(:any)']='activity/create/$1';
+$route['activity/view/(:any)/(:any)']='activity/view/$1/$2';
+$route['activity/view/(:any)']='activity/view/$1';
+$route['activity/remove/(:any)']='activity/remove/$1';
+$route['activity/join/(:any)']='activity/join/$1';
+//$route['activity/create/(:any)']='activity/create/$1';
 //$route['activity/select/(:any)']='activity/location/$1';
 //$route['activity/index']='activity/index';
-$route['activity/index/(:any)/(:any)']='activity/index/$1/$2';
-$route['activity/create']='activity/create';
+$route['activity/index/(:any)']='activity/index/$1';
+//$route['activity/create']='activity/create';
 $route['activity/(:any)/delete']='activity/delete/$1';
-$route['activity/(:any)/(:any)']='activity/view/$1/$2';
+$route['activity/(:any)']='activity/view/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 

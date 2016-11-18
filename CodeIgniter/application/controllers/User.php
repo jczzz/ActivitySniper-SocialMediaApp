@@ -40,7 +40,6 @@ class User extends CI_Controller
                     //go to the 'creat' view again
                     $this->load->view('templates/header', $data);
                     $this->load->view('user/create',array('error' => ' ' ));
-
                 }
                 else
                 {

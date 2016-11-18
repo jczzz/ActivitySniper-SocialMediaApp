@@ -1,0 +1,28 @@
+controller: activity
+
+
+1.create($user_id='0')//创建一个activity
+
+2.delete($id = '0', $user_id = '0')//用户可以删除自己的activity
+
+3.edit($a_id = '0', $u_id ='0')//用户可以编辑自己的activity
+
+4.join($a_id = '0', $u_id='0')//用户可以加入别人创建的activity
+
+5.remove($a_id = '0', $u_id='0')//用户可以移除别人创建的activity
+
+6.view($a_id = '0', $u_id ='0',$suc=null,$view_user_id=null) //用户可以看到activity里面的细节信息
+
+7.showall($user_id = '0')//用户可以看到数据库中所有的activities
+
+8.index($suc = null, $user_id = '0') //用户主页，可以看到自己创建并且参加的activity。
+
+9.relate_user_with_new_activity($user_id)//当用户创建一个新activity的时候，关联他的创建人
+
+10.join_friend_activity($a_id, $view_user_id, $user_id)//用户可以加入朋友的activity
+
+11.friendactivity($user_id, $view_user_id)//用户可以看到朋友的activity
+
+12.google_map_add_location($user_id='0')// google api
+
+

@@ -15,13 +15,13 @@
   <?php $x=0; ?>
 <!-- user delete, remove, join the activities!-->
  <?php foreach ($result as $activity_item): ?>
-   <a href="<?php echo site_url("activity/".$activity_item['id']."/".$user_id);?>"><?php echo $activity_item['name']; ?></a>
+   <a href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name']; ?></a>
    <?php echo "&nbsp","&nbsp"; ?>
    <?php echo "created by "?>
    <?php
    if($user_id != $user_result[$x]['id']){
    ?>
-         <a href="<?php echo site_url("user/information/".$user_result[$x]['id']."/".$user_id);?>"><?php echo $user_result[$x]['email'];?></a>
+         <a href="<?php echo site_url("user/information/".$user_result[$x]['id']);?>"><?php echo $user_result[$x]['email'];?></a>
     <?php
     }
     ?>
@@ -37,7 +37,7 @@
    <?php
    if($user_id != $activity_item['create_user_id']){
    ?>
-          <a href="<?php echo site_url("activity/remove/".$activity_item['id']."/".$user_id);?>">Cancel</a>
+          <a href="<?php echo site_url("activity/remove/".$activity_item['id']);?>">Cancel</a>
           <?php echo "&nbsp","&nbsp"; ?>
    <?php
    }
@@ -46,9 +46,9 @@
    <?php
    if($user_id == $activity_item['create_user_id']){
    ?>
-           <a href="<?php echo site_url("activity/delete/".$activity_item['id']."/".$user_id);?>">Delete</a>
+           <a href="<?php echo site_url("activity/delete/".$activity_item['id']);?>">Delete</a>
            <?php echo "&nbsp","&nbsp"; ?>
-           <a href="<?php echo site_url("activity/edit/".$activity_item['id']."/".$user_id);?>">Edit</a>
+           <a href="<?php echo site_url("activity/edit/".$activity_item['id']);?>">Edit</a>
    <?php
    }
    ?>
@@ -57,11 +57,11 @@
 <?php endforeach; ?>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--link to another page!-->
-<p><a href="<?php echo site_url("activity/create/".$user_id);?>">Add a new activity</a>|
-<a href="<?php echo site_url("activity/showall/".$user_id);?>">See All activities</a>|
-<a href="<?php echo site_url("user/friendlist/".$user_id);?>">Friend List</a></p>
+<p><a href="<?php echo site_url("activity/create/");?>">Add a new activity</a>|
+<a href="<?php echo site_url("activity/showall/");?>">See All activities</a>|
+<a href="<?php echo site_url("user/friendlist/");?>">Friend List</a></p>
 <br /><br />
-<a href="<?php echo site_url("logout");?>">Logout</a>|<a href="<?php echo site_url("user/checkinfor/".$user_id);?>">See your account</a>
+<a href="<?php echo site_url("logout");?>">Logout</a>|<a href="<?php echo site_url("user/checkinfor/");?>">See your account</a>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br><br><br>
 <!--calendar!-->
