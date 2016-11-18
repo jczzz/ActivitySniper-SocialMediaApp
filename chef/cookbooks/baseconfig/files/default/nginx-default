@@ -68,7 +68,7 @@ server {
         }
 
 				location /static {
-    			alias /home/ubuntu/project/static;
+    			alias /home/ubuntu/static;
 				}
 
 

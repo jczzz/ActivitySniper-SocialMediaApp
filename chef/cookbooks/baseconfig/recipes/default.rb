@@ -55,6 +55,23 @@ execute 'create comment_board table' do
     command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/comment_board.sql'
 end
 
+execute 'create static folder' do
+  command 'mkdir /home/ubuntu/static'
+end
+
+execute 'change folder permission' do
+  command 'chmod 777 /home/ubuntu/static'
+end
+
+cookbook_file "default_act_pic.jpg" do
+    path "/home/ubuntu/static/default_act_pic.jpg"
+end
+
+cookbook_file "default_user_pic.jpg" do
+    path "/home/ubuntu/static/default_user_pic.jpg"
+end
+
+
 # insert initial activities to db
 execute 'initial activities' do
     command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/initial_act.sql'

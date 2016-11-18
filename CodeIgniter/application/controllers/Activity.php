@@ -436,33 +436,6 @@ class Activity extends CI_Controller
         }
 
 
-/*
-        public function location($user_id = '0')
-        {
-
-              $data['user_id']=$user_id;
-              $this->load->helper('form');
-              $this->load->library('form_validation');
-              $this->form_validation->set_rules('location', 'location', 'required');
-              if($this->form_validation->run()==FALSE)
-              {
-                   $this->load->view("activity/select_location",$data);
-              }
-              else
-              {
-                 $location=$this->input->post("location");
-                 redirect("activity/create/$location/$user_id");
-              }
-        }
-
-*/
-
-
-        public function cal()
-        {
-           $this->load->view("calendar/calendar");
-        }
-
         public function get_date($a_date=null)
         {
 
@@ -481,7 +454,7 @@ class Activity extends CI_Controller
 
         public function upload_config()
         {
-                $config['upload_path']          = '/home/ubuntu/project/static';
+                $config['upload_path']          = '/home/ubuntu/static';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['max_size']             = 100;
                 $config['max_width']            = 1024;

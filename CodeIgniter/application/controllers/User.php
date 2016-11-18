@@ -358,7 +358,7 @@ class User extends CI_Controller
 
             public function upload_config()
             {
-                    $config['upload_path']          = '/home/ubuntu/project/static';
+                    $config['upload_path']          = '/home/ubuntu/static';
                     $config['allowed_types']        = 'gif|jpg|png';
                     $config['max_size']             = 100;
                     $config['max_width']            = 1024;
