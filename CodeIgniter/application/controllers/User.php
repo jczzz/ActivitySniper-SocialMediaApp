@@ -327,11 +327,11 @@ class User extends CI_Controller
                       $this->load->library('upload', $this->upload_config());
                       if ((isset($_FILES['userfile']) && $_FILES['userfile']['size'] > 0) && ! $this->upload->do_upload('userfile'))
                       {
-                        $data['title']='Register';
+                        $data['title']='Edit your Account';
                         //go to the 'creat' view again
                         $error = array('error' => $this->upload->display_errors());
                         $this->load->view('templates/header', $data);
-                        $this->load->view('user/create',$error);
+                        $this->load->view('user/edit',$error);
 
                         }else{
                          $data = array('upload_data' => $this->upload->data());

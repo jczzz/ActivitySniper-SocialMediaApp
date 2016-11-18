@@ -4,7 +4,7 @@
   date_default_timezone_set("America/Vancouver");
 ?>
 
-<?php echo form_open("activity/edit/$a_id/$u_id"); ?>
+<?php echo form_open_multipart("activity/edit/$a_id/$u_id"); ?>
       <lable "activity name">Activity name: <lable><br />
       <input type="input" name="name" value="<?php echo $result['name']  ?>"/><br />
       <lable "activity date">Activity date: <lable><br />
