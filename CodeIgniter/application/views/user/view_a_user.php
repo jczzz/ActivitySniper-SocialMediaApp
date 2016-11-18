@@ -1,9 +1,7 @@
-
-
 <?php
 	//needed variable for the view : $contacts_item
 	//show all tuples with their links in this page
-?>	
+?>
 
 <?php if ($contacts_item ===null )//if the $id is not found, then show 404
 	  {show_404();}
@@ -24,6 +22,3 @@ Password:<br/>
 
 <a href="http://localhost:9000/user/a_user">Back to admin page</a>
 <br/>
-
-
-

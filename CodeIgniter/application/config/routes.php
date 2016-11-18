@@ -52,14 +52,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['activity/view_friend_activity/(:any)/(:any)']='activity/view_friend_activity/$1/$2';
 $route['user/edit/(:any)']='user/edit/$1';
-$route['user/checkinfor/(:any)']='user/check_information/$1';
-$route['logout']='user/logout';
 //$route['activity/view/(:any)/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3/$4';
 $route['activity/join_friend_activity/(:any)/(:any)']='activity/join_friend_activity/$1/$2';
 $route['activity/friendactivity/(:any)']='activity/friendactivity/$1';
-$route['user/friend/(:any)/(:any)']='user/friend/$1/$2';
-$route['user/information/(:any)/(:any)']='user/information/$1/$2';
 $route['activity/showall']='activity/showall';
+$route['user/checkinfor/']='user/check_information/';
+$route['logout']='user/logout';
+$route['user/friend/(:any)']='user/friend/$1';
+$route['user/information/(:any)']='user/information/$1';
+
+
 $route['activity/view/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3';
 $route['activity/view/(:any)/(:any)']='activity/view/$1/$2';
 $route['activity/view/(:any)']='activity/view/$1';
