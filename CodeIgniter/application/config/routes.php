@@ -50,14 +50,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['user/edit/(:any)']='user/edit/$1';
-$route['user/checkinfor/(:any)']='user/check_information/$1';
+$route['user/checkinfor/']='user/check_information/';
 $route['activity/cal']='activity/cal';
 $route['logout']='user/logout';
 $route['activity/view/(:any)/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3/$4';
 $route['activity/join_friend_activity/(:any)/(:any)/(:any)']='activity/join_friend_activity/$1/$2/$3';
 $route['activity/friendactivity/(:any)/(:any)']='activity/friendactivity/$1/$2';
-$route['user/friend/(:any)/(:any)']='user/friend/$1/$2';
-$route['user/information/(:any)/(:any)']='user/information/$1/$2';
+$route['user/friend/(:any)']='user/friend/$1';
+$route['user/information/(:any)']='user/information/$1';
 $route['activity/showall/(:any)']='activity/showall/$1';
 $route['activity/view/(:any)/(:any)/(:any)']='activity/view/$1/$2/$3';
 $route['activity/remove/(:any)/(:any)']='activity/remove/$1/$2';
