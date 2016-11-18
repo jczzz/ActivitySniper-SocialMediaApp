@@ -61,7 +61,7 @@
 <a href="<?php echo site_url("activity/showall/");?>">See All activities</a>|
 <a href="<?php echo site_url("user/friendlist/");?>">Friend List</a></p>
 <br /><br />
-<a href="<?php echo site_url("logout");?>">Logout</a>|<a href="<?php echo site_url("user/checkinfor/");?>">See your account</a>
+
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <br><br><br>
 <!--calendar!-->

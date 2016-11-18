@@ -174,36 +174,44 @@ class Activity extends CI_Controller
          }
 
          //google map add mark for activities.
-         public function google_map_add_location($user_id='0')
+         public function google_map_add_location($user_id='0' , $input=null)
          {
-               if($user_id === '0'){
-                 $coords = $this->activity_model->get_coordinates();
-               }else{
-                 $coords = $this->activity_model->get_coordinates_singleUser($user_id);
+                $data2['coords']=null;
+               if($user_id === '0' && $input==null)
+               {
+                   $data2['coords'] = $this->activity_model->get_coordinates_1();
+               }
+               else if($user_id === '0'&& $input!=null)
+               {
+                   $data2['coords'] = $this->activity_model->search_activity($input);
+               }
+               else
+               {
+                    $data2['coords'] = $this->activity_model->get_coordinates_singleUser_1($user_id);
                }
                $this->load->library('googlemaps');
                $config['center'] = '8888 University Drive, Burnaby, BC, Canada';
                // config zoom levels
-               if(count($coords) > 1){
+               if(count($data2['coords']) > 1){
                  $config['zoom'] = "auto";
                }else{
-                 if(count($coords) === 1){
-                   $config['center'] = $coords['0']->address;
+                 if(count($data2['coords']) === 1){
+                   $config['center'] = $data2['coords'][0]['address'];
                  }
                  $config['zoom'] = "11";
                }
 
                $this->googlemaps->initialize($config);
 
-               foreach ($coords as $coordinate) {
+               foreach ($data2['coords'] as $coordinate) {
                  $marker = array();
-                 $id=$coordinate->id;
-                 $marker['position'] = $coordinate->address;
-                 $marker['title'] = $coordinate->name;
+                 $id=$coordinate['id'];
+                 $marker['position'] = $coordinate['address'];
+                 $marker['title'] = $coordinate['name'];
                  $marker['animation'] = 'DROP';
-                 $marker['infowindow_content'] = $coordinate->name."<br>".$coordinate->date."<br>".$coordinate->time."<br><a href=\"".base_url()."activity/".$coordinate->id."\">show details</a>" ;
+                 $marker['infowindow_content'] = $coordinate['name']."<br>".$coordinate['date']."<br>".$coordinate['time']."<br><a href=\"".base_url()."activity/".$coordinate['id']."\">show details</a>" ;
                  date_default_timezone_set("America/Vancouver");
-                 $activity_time_stamp = strtotime($coordinate->date." ".$coordinate->time);
+                 $activity_time_stamp = strtotime($coordinate['date']." ".$coordinate['time']);
                  $current_time_stamp = strtotime(date('Y-m-d H:i:s'));
                  if($activity_time_stamp < $current_time_stamp){
                    $marker['icon'] = 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
@@ -277,7 +285,7 @@ class Activity extends CI_Controller
                                 $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
                            }
 
-                           $data["google"]=$this->google_map_add_location();
+                           $data["google"]=$this->google_map_add_location('0',$this->input->post('search'));
                            $this->load->view('templates/header',$data);
                            $this->load->view('activity/show_all',$data);
                    }

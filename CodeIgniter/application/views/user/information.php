@@ -8,7 +8,15 @@ Introduction:<?php echo "&nbsp",$result['notes']; ?><br /><br /><br /><br />
 
 <a href="<?php echo site_url("activity/index/SFU/");?>">Back to your activities</a>|
 <?php
-if($check == "true"){
+if($user_id == $view_user_id){
+?>
+This is your account.
+<?php
+}
+?>
+
+<?php
+if($check == "true" && $user_id != $view_user_id){
 ?>
 <a href="<?php echo site_url("user/friend/$user_id/")?>">Add to friend List?</a>
 <?php
@@ -16,7 +24,7 @@ if($check == "true"){
 ?>
 
 <?php
-if($check == "false"){
+if($check == "false" && $user_id != $view_user_id){
 ?>
 <a href="<?php echo site_url("activity/friendactivity/$user_id/")?>">See your friend Activities?</a>    |
 <a href="<?php echo site_url("user/deletefriend/$user_id/")?>">Delete from friend List?</a>
