@@ -14,9 +14,9 @@
       <label for="password">Password:</label>
       <input type="password" size="20" id="passowrd" name="password"/>
       <br/>
-      <input type="submit" value="Login"/>
+      <input type="submit" value="Login" class="btn btn-default"/>
     </form>
 
-    <p><a href="http://localhost:9000/index.php/user/create">Register</a></p>
+    <p><a href="http://localhost:9000/index.php/user/create" class="btn btn-default">Register</a></p>
   </body>
 </html>
