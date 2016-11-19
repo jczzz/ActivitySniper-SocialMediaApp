@@ -21,6 +21,7 @@ class User_model extends CI_Model
 
 	public function set($upload_data = ' ')
 	{
+		$encrypted_pw = md5($this->input->post('password'));
 		$data= array(
 			//names are corresponding to the names of fields in the input form
 			'firstname'=> $this->input->post('firstname'),
@@ -28,7 +29,7 @@ class User_model extends CI_Model
 			'email' =>$this->input->post('email'),
 			'phonenum' =>$this->input->post('phonenum'),
 			'notes' =>$this->input->post('notes'),
-			'password' =>$this->input->post('password')
+			'password' => $encrypted_pw
 		);
 
 		if($upload_data['file_name'] != ''){

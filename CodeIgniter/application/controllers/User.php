@@ -186,11 +186,13 @@ class User extends CI_Controller
   //helper function for verify function
   public function check_database($password)
   {
+    $encrypted_pw = md5($password);
+
     //Field validation succeeded.  Validate against database
     $email = $this->input->post('email');
 
     //query the database
-    $result = $this->user_model->login($email, $password);
+    $result = $this->user_model->login($email, $encrypted_pw);
 
     if($result)
     {

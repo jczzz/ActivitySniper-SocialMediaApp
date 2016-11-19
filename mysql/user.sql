@@ -10,4 +10,4 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
-INSERT INTO users (id,firstname,lastname,phonenum,email,password,notes) VALUES(1,'admin','admin','7783166613','zgeng@sfu.ca','14789632','I am the admin');
+INSERT INTO users (id,firstname,lastname,phonenum,email,password,notes) VALUES(1,'admin_firstname','admin_lastname','111-111-1111','admin@admin.com','21232f297a57a5a743894a0e4a801fc3','I am the admin');
