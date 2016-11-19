@@ -8,8 +8,8 @@
 
     <?php echo"&nbsp"; ?>
     <B>·</B>
-    <a href="<?php echo site_url('user/a_user/'.$tuples['id']); //parameter for the 'view' function is this id?>">
-    	<?php echo $tuples['email'] ;?> 
+    <a href="<?php echo site_url('user/information/'.$tuples['id']); //parameter for the 'view' function is this id?>">
+    	<?php echo $tuples['email'] ;?>
     </a>
 
 	<?php
