@@ -17,7 +17,9 @@ class User extends CI_Controller
     {
       echo 'Successfully registered!';
     }
+    $this->load->view('templates/header2');
     $this->load->view('user/login');
+    $this->load->view('templates/footer');
   }
 
   public function create()
@@ -34,7 +36,9 @@ class User extends CI_Controller
     {
       $data['title']='Register';
       //go to the 'creat' view again
+      $this->load->view('templates/header2', $data);
       $this->load->view('user/create',array('error' => ' ' ));
+      $this->load->view('templates/footer', $data);
     }
     else
     {
@@ -44,7 +48,9 @@ class User extends CI_Controller
         $data['title']='Register';
         //go to the 'creat' view again
         echo'the email has been used,please enter another one';
+        $this->load->view('templates/header2', $data);
         $this->load->view('user/create',array('error' => ' ' ));
+        $this->load->view('templates/footer', $data);
       }
       else
       {
@@ -54,8 +60,9 @@ class User extends CI_Controller
           $data['title']='Register';
           //go to the 'creat' view again
           $error = array('error' => $this->upload->display_errors());
-          $this->load->view('templates/header', $data);
+          $this->load->view('templates/header2', $data);
           $this->load->view('user/create',$error);
+          $this->load->view('templates/footer', $data);
         }else{
           $data = array('upload_data' => $this->upload->data());
           $this->user_model->set($data['upload_data']);
@@ -66,15 +73,7 @@ class User extends CI_Controller
       }
     }
   }
-/*
-  public function index()
-  {
-    $data['title']='All Registered users:';
-    $data['table']= $this->user_model->get('0');//'0' means to get the whole tabel
-    $this->load->view('templates/header', $data);
-    $this->load->view('user/index',$data);
-  }
-*/
+
   public function verify()
   {
     $this->form_validation->set_rules('email', 'Email', 'trim|required');
@@ -83,7 +82,9 @@ class User extends CI_Controller
     if($this->form_validation->run() == FALSE)
     {
       //Field validation failed.  User redirected to login page
+      $this->load->view('templates/header2');
       $this->load->view('user/login');
+      $this->load->view('templates/footer');
     }
     else
     {
@@ -107,6 +108,7 @@ class User extends CI_Controller
         $data['table']= $this->user_model->get('0');//'0' means to get the whole tabel
         $this->load->view('templates/header', $data);
         $this->load->view('user/index',$data);
+        $this->load->view('templates/footer', $data);
       }else{
         redirect("activity/index/$location/$user_id");
       }
@@ -140,27 +142,7 @@ class User extends CI_Controller
       }
     }
   }
-/*
-  public function view_a_user($id = '0')
-  {
-    if($this->session->userdata('logged_in') and $this->session->userdata('logged_in')['id']==1)
-    {
-      $data['contacts_item']=$this->user_model->get($id);
 
-      //concatenate 'Contact List' ,first name and last name
-      $temp_string='User: '.$data['contacts_item']['firstname'].' '.$data['contacts_item']['lastname'];
-      //show item title information
-      echo "<h1>".$temp_string."</h1>" ;
-
-      //load item view page
-      $this->load->view('user/view_a_user',$data);
-    }
-    else
-    {
-      redirect('user/a_user', 'refresh');
-    }
-  }
-*/
   public function delete($id)
   {
     if($this->session->userdata('logged_in') && $this->session->userdata('logged_in')['id'] == 1)
@@ -226,6 +208,7 @@ class User extends CI_Controller
       $data['check']=$this->check_friend($user_id);
       $this->load->view("templates/header",$data);
       $this->load->view("user/information",$data);
+      $this->load->view('templates/footer', $data);
     }else{
       redirect('user/login', 'refresh');
     }
@@ -268,6 +251,7 @@ class User extends CI_Controller
       $data['title']="Friend List";
       $this->load->view("templates/header",$data);
       $this->load->view("user/friendlist",$data);
+      $this->load->view('templates/footer', $data);
     }else{
       redirect('user/login', 'refresh');
     }
@@ -297,6 +281,7 @@ class User extends CI_Controller
       $data['user_id']=$user_id;
       $this->load->view("templates/header",$data);
       $this->load->view("user/user_information",$data);
+      $this->load->view('templates/footer', $data);
     }else{
       redirect('user/login', 'refresh');
     }
@@ -324,6 +309,7 @@ class User extends CI_Controller
         //go to the 'creat' view again
         $this->load->view('templates/header', $data);
         $this->load->view('user/edit',array('error' => ' ' ));
+        $this->load->view('templates/footer', $data);
       }
       else
       {
@@ -333,6 +319,7 @@ class User extends CI_Controller
           $this->load->view('templates/header', $data);
           echo'the email has been used,please enter another one';
           $this->load->view('user/edit',array('error' => ' ' ));
+          $this->load->view('templates/footer', $data);
         }
         else
         {
@@ -344,6 +331,7 @@ class User extends CI_Controller
             $error = array('error' => $this->upload->display_errors());
             $this->load->view('templates/header', $data);
             $this->load->view('user/edit',$error);
+            $this->load->view('templates/footer', $data);
           }else{
             $data = array('upload_data' => $this->upload->data());
             $this->user_model->edit_account($user_id, $data['upload_data']);

@@ -42,6 +42,7 @@ class Activity extends CI_Controller
                     {
                          $this->load->view('templates/header',$data);
                          $this->load->view('activity/create',array('error' => ' ' ));
+                         $this->load->view('templates/footer', $data);
                     }
                     else
                     {
@@ -51,6 +52,7 @@ class Activity extends CI_Controller
                           $error = array('error' => $this->upload->display_errors());
                           $this->load->view('templates/header',$data);
                           $this->load->view('activity/create',$error);
+                          $this->load->view('templates/footer', $data);
                         }else{
                          $data = array('upload_data' => $this->upload->data());
 
@@ -165,6 +167,7 @@ class Activity extends CI_Controller
                      $data['calendar_1']=$this->calendar->generate(strtotime(date('y')),strtotime(date('m')),$set);
                      $this->load->view('templates/header',$data);
                      $this->load->view("activity/index",$data);
+                     $this->load->view('templates/footer', $data);
               }
               else
               {
@@ -263,6 +266,7 @@ class Activity extends CI_Controller
 
                          $this->load->view('templates/header',$data);
                          $this->load->view('activity/show_all',$data);
+                         $this->load->view('templates/footer', $data);
                    }
                    else
                    {
@@ -288,6 +292,7 @@ class Activity extends CI_Controller
                            $data["google"]=$this->google_map_add_location('0',$this->input->post('search'));
                            $this->load->view('templates/header',$data);
                            $this->load->view('activity/show_all',$data);
+                           $this->load->view('templates/footer', $data);
                    }
            }
            else
@@ -394,7 +399,9 @@ class Activity extends CI_Controller
 
                       $data['map'] = $this->googlemaps->create_map();
 
+                      $this->load->view('templates/header', $data);
                       $this->load->view("activity/view",$data);
+                      $this->load->view('templates/footer', $data);
                     }
                     else
                     {
@@ -453,7 +460,9 @@ class Activity extends CI_Controller
 
                             $data['map'] = $this->googlemaps->create_map();
 
+                            $this->load->view('templates/header', $data);
                             $this->load->view("activity/view",$data);
+                            $this->load->view('templates/footer', $data);
                           }
                           else
                           {
@@ -493,6 +502,7 @@ class Activity extends CI_Controller
                     {
                          $this->load->view('templates/header',$data);
                          $this->load->view('activity/edit',array('error' => ' ' ));
+                         $this->load->view('templates/footer', $data);
                     }
                     else
                     {
@@ -503,6 +513,7 @@ class Activity extends CI_Controller
                         $error = array('error' => $this->upload->display_errors());
                         $this->load->view('templates/header', $data);
                         $this->load->view('activity/edit',$error);
+                        $this->load->view('templates/footer', $data);
 
                         }else{
                          $data = array('upload_data' => $this->upload->data());
@@ -552,6 +563,7 @@ class Activity extends CI_Controller
                       }
                       $this->load->view("templates/header",$data);
                       $this->load->view("activity/friendactivity",$data);
+                      $this->load->view('templates/footer', $data);
             }
             else
             {
