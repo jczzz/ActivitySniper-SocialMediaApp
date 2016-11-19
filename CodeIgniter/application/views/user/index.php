@@ -2,17 +2,17 @@
 <?php
 	//needed variable for the index : $table
 	//show all tuples with their links in this page
-?>	
+?>
 
 <?php foreach ($table as $tuples): ?>
 
     <?php echo"&nbsp"; ?>
     <B>·</B>
     <a href="<?php echo site_url('user/a_user/'.$tuples['id']); //parameter for the 'view' function is this id?>">
-    	<?php echo $tuples['lastname'] ;?> 
+    	<?php echo $tuples['email'] ;?> 
     </a>
 
-	<?php  
+	<?php
 		if($tuples['id']==1)
 		{
 			echo '(admin)';
@@ -23,22 +23,14 @@
 		}
 
 	?>
-    
-	
+
+
 	<a href="<?php echo site_url('user/delete/'.$tuples['id']);?>">delete</a>
 
 
-	
+
 
 
     <br/>
 
 <?php endforeach; ?>
-
-
-
-
-
-
-
-
