@@ -1,9 +1,14 @@
 Activity-sniper
+URL: localhost:9000/index.php/
+initial admin user:
 
+Register page:
+	1. Users can input their information to get a new account. (Email must be unique, Phone Number (if entered) must in the specified format)
+	2. Users can upload a picture for their account. (default picture is a smiling face)
 
-Register page: Users can input their information to get a new account.(Email must be unique, Phone Number must in the specified format)
+Login page: Users can log into the application by typing email and password.
 
-Login page: Users can log into the application by typing email and password. 
+Admin page: list all users, and admin can view a user's information and can delete a user.
 
 See your account page: Users can see their own account information in this page.
 
@@ -13,13 +18,12 @@ Activity List page: This is the main page for each user. User can see their join
 	3. User can create a new activity by clicking on "Add a new activity"
 	4. User can see all activities in database by clicking on "See All activities"
 	5. User can see his/her friends by clicking on "Friend List".
-	6. User can see their joined activities information on the google map or clicking on the name of activity or clicking on the date of calendar. 
-	7. User can see their own information by clicking on "see your account".
-	8. User can logout their account by clicking on "logout".
+	6. User can see their joined activities information by clicking on the google map dots or clicking on the name of activity or clicking on the date of calendar.
 
-Add a new activity page: 
+
+Add a new activity page:
 	1. User can input the information to create a new activity.
-	2. User can get some hints in the input field of address.
+	2. User can get some hints (address auto complete) in the input field of address.
 	3. User can show the chosen address on the google map.
 	4. User can upload a picture for this activity.
 
@@ -27,7 +31,7 @@ Add a new activity page:
 See all activities page:
 	1. User can see all activities which are in database.
 	2. User can type the key word to search the specified activities.
-	3. User can join into activites by clicking on "join".
+	3. User can join into activities by clicking on "join".
 	4. User can edit or delete their own activities by clicking on "Delete" or "edit"
 	5. User can see the detail information for each activity by clicking on the name of activity.
 	6. User can see the location of all searched activities in the google map, and can also see the details of each activity by clicking on "show details".
@@ -48,5 +52,3 @@ Activity information page:
 	1. User can see the information of this activity.
 	2. User can see the location of this activity on the google map.
 	3. User can add some comments in the bottom.
-
-	
