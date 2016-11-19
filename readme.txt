@@ -1,6 +1,8 @@
 Activity-sniper
 URL: localhost:9000/index.php/
 initial admin user:
+	email: admin@admin.com
+	password: admin
 
 Register page:
 	1. Users can input their information to get a new account. (Email must be unique, Phone Number (if entered) must in the specified format)

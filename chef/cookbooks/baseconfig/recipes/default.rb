@@ -79,6 +79,6 @@ cookbook_file "g_map_css.css" do
     path "/home/ubuntu/static/g_map_css.css"
 end
 # insert initial activities to db
-execute 'initial activities' do
-    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/initial_act.sql'
-end
+#execute 'initial activities' do
+#    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/initial_act.sql'
+#end
