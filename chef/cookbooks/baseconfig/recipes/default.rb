@@ -78,6 +78,15 @@ end
 cookbook_file "g_map_css.css" do
     path "/home/ubuntu/static/g_map_css.css"
 end
+
+remote_directory '/home/ubuntu/static/bootstrap' do
+  source 'bootstrap'
+  owner 'ubuntu'
+  group 'ubuntu'
+  mode '0755'
+  action :create
+end
+
 # insert initial activities to db
 #execute 'initial activities' do
 #    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/initial_act.sql'
