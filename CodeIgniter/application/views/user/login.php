@@ -5,11 +5,9 @@
     <link rel="stylesheet" type="text/css" href="/static/mystyle.css">
   </head>
   <body>
-
-  <h1>Welcome To Activity Sniper</h1>
-
             <div class="row vertical-offset-100">
-              <div class="col-md-4 col-md-offset-4">
+                <h1>Welcome To Activity Sniper</h1>
+              <div class="col-sm-4 col-sm-offset-4">
             		<div class="panel panel-default">
         			  	<div class="panel-heading">
         			    	<h3 class="panel-title">Please Log In</h3>
@@ -48,8 +46,5 @@
         			</div>
             </div>
         	</div>
-      </div>
-    </div>
-</div>
   </body>
 </html>

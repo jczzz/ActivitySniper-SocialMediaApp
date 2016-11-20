@@ -1,28 +1,83 @@
-<?php echo validation_errors(); ?>
 <?php echo $error;?>
-<h1>Register</h1>
-<?php echo form_open_multipart('user/create');
-//form data is for the create function,after submit, doing create function again with the new form input?>
-        <lable for="Firstname">First name: (must needed)</lable><br />
-        <input type="input" name="firstname" /><br />
+<link rel="stylesheet" type="text/css" href="/static/mystyle.css">
 
-        <lable for="Lastname">Last name: (must needed)</lable><br />
-        <input type="input" name="lastname" /><br />
+<div class="row vertical-offset-100">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Please Sign up</h3>
+    </div>
+      <div class="panel-body">
+        <?php echo validation_errors(); ?>
+  <?php echo form_open('user/create'); ?>
+        <form accept-charset="UTF-8" role="form">
+            <fieldset>
+              <div class="form-group">
+              <label for="Firstname" class="cols-sm-2 control-label">First name: (required)</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                  <input type="input" class="form-control" name="firstname"  placeholder="Enter your Firstname"/>
+                </div>
+              </div>
+            </div>
 
-        <label for="password">Password: (must needed)</label><br />
-        <input type="password" size="20" id="passowrd" name="password"/><br />
+            <div class="form-group">
+              <label for="Lastname" class="cols-sm-2 control-label">Last name: </label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                  <input type="input"  class="form-control" name="lastname"  placeholder="Enter your Lastname"/>
+                </div>
+              </div>
+            </div>
 
-        <lable for="Email">Email: (must be unique,and needed)</lable><br />
-        <input type="input" name="email" /><br />
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Password: (required)</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+                  <input type="password" size="20" id="passowrd" name="password"  class="form-control" placeholder="Enter your Password"/>
+                </div>
+              </div>
+            </div>
 
-        <lable for="Phone Number">Phone Number: (XXX-XXX-XXXX)</lable><br />
-        <input type="input" name="phonenum"><br />
+            <div class="form-group">
+              <label for="Email" class="cols-sm-2 control-label">Email: (must be unique,and required)</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i></span>
+                  <input type="input" name="email"  class="form-control" placeholder="Enter your Email"/>
+                </div>
+              </div>
+            </div>
 
-        <lable "file">Choose a picture: </lable><br />
-        <input type="file" name="userfile" size="20" /><br>
+            <div class="form-group">
+              <label for="Phone Number" class="cols-sm-2 control-label">Phone Number: (XXX-XXX-XXXX)</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i></span>
+                  <input type="input" name="phonenum"  class="form-control" placeholder="Enter your Phone number"/>
+                </div>
+              </div>
+            </div>
 
-        <lable for="Notes">Notes:</lable>  <br />
-        <textarea cols="40" rows="10" name="notes"></textarea><br />
+            <div class="form-group">
+              <label  for="file" >Choose a picture here :</label><br />
+              <label class="btn btn-warning" for="my-file-selector" >Choose file</label>
+                <input id="my-file-selector" type="file" name="userfile"  size="20" style="display:none;" onchange="$('#upload-file-info').html($(this).val());"/>
 
-        <input type="submit" name="submit" value="Regisger">
-</form>
+                <span class='label label-info' id="upload-file-info"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="Notes" class="cols-sm-2 control-label">Notes: </label>
+                  <textarea cols="40" rows="3" name="notes" class="form-control"></textarea><br />
+            </div>
+          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign up">
+            </fieldset>
+          </form>
+      </div>
+  </div>
+</div>
+</div>
