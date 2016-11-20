@@ -5,10 +5,10 @@
   }
 </style>
 <div class="row vertical-offset-100">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Please Sign up</h3>
+        <h3 class="panel-title">Edit your account</h3>
     </div>
       <div class="panel-body">
         <?php echo validation_errors(); ?>
@@ -70,7 +70,6 @@
               <label  for="file" >Choose a picture here :</label><br />
               <label class="btn btn-warning" for="my-file-selector" >Choose file</label>
                 <input id="my-file-selector" type="file" name="userfile"  size="20" style="display:none;" onchange="$('#upload-file-info').html($(this).val());"/>
-
                 <span class='label label-info' id="upload-file-info"></span>
             </div>
 

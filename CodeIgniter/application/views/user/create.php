@@ -1,7 +1,12 @@
-<link rel="stylesheet" type="text/css" href="/static/mystyle.css">
-
+<style>
+  h1
+  {
+     text-align:center
+  }
+</style>
+<h1>Sign Up</h1>
 <div class="row vertical-offset-100">
-  <div class="col-md-4 col-md-offset-4">
+  <div class="col-md-6 col-md-offset-3">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Please Sign up</h3>

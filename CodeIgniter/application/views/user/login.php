@@ -7,7 +7,7 @@
   <body>
             <div class="row vertical-offset-100">
                 <h1>Welcome To Activity Sniper</h1>
-              <div class="col-sm-4 col-sm-offset-4">
+              <div class="col-sm-6 col-sm-offset-3">
             		<div class="panel panel-default">
         			  	<div class="panel-heading">
         			    	<h3 class="panel-title">Please Log In</h3>
