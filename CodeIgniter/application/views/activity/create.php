@@ -12,9 +12,6 @@
   <div class="row vertical-offset-100">
     <div class="col-sm-5">
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">New Activity</h3>
-        </div>
         <div class="panel-body">
           <?php echo validation_errors(); ?>
           <?php echo $error;?>

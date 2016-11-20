@@ -498,6 +498,17 @@ class Activity extends CI_Controller
                     $this->form_validation->set_rules('time', 'activity_time', 'required');
                     $this->form_validation->set_rules('catagory', 'catagory', 'required');
 
+                    //google map
+                    $this->load->library('googlemaps');
+                    $config['center'] = '8888 University Drive, Burnaby, BC, Canada';
+                    $config['zoom'] = "auto";
+                    $config['places'] = TRUE;
+                    $config['placesAutocompleteInputID'] = 'myPlaceTextBox';
+                    $config['placesAutocompleteBoundsMap'] = TRUE;
+                    $this->googlemaps->initialize($config);
+                    $data['map'] = $this->googlemaps->create_map();
+
+
                     if($this->form_validation->run()==FALSE)
                     {
                          $this->load->view('templates/header',$data);

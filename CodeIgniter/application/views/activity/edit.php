@@ -1,32 +1,3 @@
-<?php echo validation_errors(); ?>
-<?php echo $error;?>
-<?php
-  date_default_timezone_set("America/Vancouver");
-?>
-
-<?php echo form_open_multipart("activity/edit/$a_id"); ?>
-      <lable "activity name">Activity name: <lable><br />
-      <input type="input" name="name" value="<?php echo $result['name']  ?>"/><br />
-      <lable "activity date">Activity date: <lable><br />
-      <input type="date" name="date"  value="<?php echo $result['date']  ?>"/><br />
-      <lable "activity time">Activity time: <lable><br />
-      <input type="time" name="time" value="<?php echo $result['time']  ?>"/><br />
-      <lable "catagory">Catagory: <lable><br />
-      <input type="input" name="catagory" value="<?php echo $result['catagory']  ?>"/><br />
-      <lable "address">address: <lable><br />
-      <input type="input" name="address" value="<?php echo $result['address']  ?>" /><br />
-      <lable "file">Choose a picture: </lable><br />
-      <input type="file" name="userfile" size="20" /><br>
-      <lable "description">Description: <lable><br />
-      <textarea cols="40" rows="10" name="description" ><?php echo $result['description']?></textarea><br />
-
-      <input type="submit" name="submit" value="Edit activity" >
-</form>
-
-<br><br><br>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,15 +6,11 @@
     <script type="text/javascript" src="/static/g_map_js.js"></script>
     <?php echo $map['js']; ?>
 
-
 </head>
 <body onload="initialize()">
   <div class="row vertical-offset-100">
     <div class="col-sm-5">
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">New Activity</h3>
-        </div>
         <div class="panel-body">
           <?php echo validation_errors(); ?>
           <?php echo $error;?>
@@ -58,7 +25,7 @@
                 <label for="activity name" class="cols-sm-2 control-label">Activity name</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                    <input type="input" class="form-control" name="name"  placeholder="Enter activity name" value="<?php echo $result['name']  ?>"/>
+                    <input type="input" class="form-control" name="name"   value="<?php echo $result['name']  ?>"/>
                   </div>
 
               </div>
@@ -85,7 +52,7 @@
                 <label for="catagory" class="cols-sm-2 control-label">Catagory</label>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                    <input type="input" class="form-control" name="catagory"  placeholder="Enter the catagory"/>
+                    <input type="input" class="form-control" name="catagory"  value="<?php echo $result['catagory']  ?>"/>
                   </div>
 
               </div>
@@ -95,9 +62,9 @@
 
                   <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="address" id="myPlaceTextBox" />
+                    <input type="text" class="form-control" name="address" id="myPlaceTextBox" value="<?php echo $result['address']  ?>"/>
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" onclick="codeAddress()">Show on map</button>
+                      <button class="btn btn-default" type="button" onclick="codeAddress()" id="showOnMap">Show on map</button>
                     </span>
                   </div>
 
@@ -112,10 +79,10 @@
 
               <div class="form-group">
                 <label for="description" class="cols-sm-2 control-label">Description </label>
-                <textarea rows="10" name="description" class="form-control" placeholder="Enter the description"></textarea><br />
+                <textarea rows="10" name="description" class="form-control" ><?php echo $result['description']?></textarea><br />
               </div>
 
-              <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Create an activity">
+              <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Edit activity">
 
             </fieldset>
           </form>
