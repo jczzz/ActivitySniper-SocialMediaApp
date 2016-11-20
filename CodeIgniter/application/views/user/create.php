@@ -1,4 +1,3 @@
-<?php echo $error;?>
 <link rel="stylesheet" type="text/css" href="/static/mystyle.css">
 
 <div class="row vertical-offset-100">
@@ -9,7 +8,8 @@
     </div>
       <div class="panel-body">
         <?php echo validation_errors(); ?>
-  <?php echo form_open('user/create'); ?>
+        <?php echo $error;?>
+  <?php echo form_open_multipart('user/create'); ?>
         <form accept-charset="UTF-8" role="form">
             <fieldset>
               <div class="form-group">
