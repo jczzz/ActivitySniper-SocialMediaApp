@@ -2,21 +2,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Please log in</title>
+    <link rel="stylesheet" type="text/css" href="/static/login.css">
   </head>
   <body>
-    <h1>Please log in</h1>
 
-    <?php echo validation_errors(); ?>
-    <?php echo form_open('user/verify'); ?>
-        <lable for="Email">Email: </lable>
-        <input type="input" name="email" /><br />
-      <br/>
-      <label for="password">Password:</label>
-      <input type="password" size="20" id="passowrd" name="password"/>
-      <br/>
-      <input type="submit" value="Login" class="btn btn-default"/>
-    </form>
+  <h1>Welcome To Activity Sniper</h1>
 
-    <p><a href="http://localhost:9000/index.php/user/create" class="btn btn-default">Register</a></p>
+            <div class="row vertical-offset-100">
+              <div class="col-md-4 col-md-offset-4">
+            		<div class="panel panel-default">
+        			  	<div class="panel-heading">
+        			    	<h3 class="panel-title">Please Log In</h3>
+        			 	</div>
+        			  	<div class="panel-body">
+                    <?php echo validation_errors(); ?>
+                    <?php echo form_open('user/verify'); ?>
+        			    	<form accept-charset="UTF-8" role="form">
+                        <fieldset>
+                          <div class="form-group">
+  							<label for="name" class="cols-sm-2 control-label">Your Email</label>
+  							<div class="cols-sm-10">
+  								<div class="input-group">
+  									<span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+  									<input type="input" class="form-control" name="email"  placeholder="Enter your Email"/>
+  								</div>
+  							</div>
+  						</div>
+
+  						<div class="form-group">
+  							<label for="email" class="cols-sm-2 control-label">Your Password</label>
+  							<div class="cols-sm-10">
+  								<div class="input-group">
+  									<span class="input-group-addon"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i></span>
+  									<input type="password" size="20" id="passowrd" class="form-control" name="password"  placeholder="Enter your Password"/>
+  								</div>
+  							</div>
+  						</div>
+        			    		<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+                      <div class="login-help">
+        					           <p><a href="http://localhost:9000/index.php/user/create">No account? Sign up</a></p>
+        				      </div>
+        			    	    </fieldset>
+        			      	</form>
+        			    </div>
+        			</div>
+            </div>
+        	</div>
+      </div>
+    </div>
+</div>
   </body>
 </html>
