@@ -16,5 +16,26 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <title>Activity Sniper</title>
   </head>
   <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="<?php echo site_url();?>">Activity Sniper</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="<?php echo site_url("user/create");?>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="<?php echo site_url("user/login");?>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <?php
+      if(isset($succ_info)){
+        echo $succ_info;
+      }
+    ?>

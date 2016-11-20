@@ -16,10 +16,41 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <title>Activity Sniper</title>
   </head>
   <body>
-                <h1><?php echo $title; ?></h1>
-      <a href="<?php echo site_url("user/checkinfor/");?>">See your account</a><?php echo "&nbsp", "&nbsp", "&nbsp", "&nbsp", "&nbsp";?><a href="<?php echo site_url("logout");?>">Logout</a>
-        <br />
-        <br />
-        <br />
+    <?php
+      if($this->session->userdata('logged_in')['id'] == 1){
+        $default_URL = site_url("user/a_user");
+      }else{
+        $default_URL = site_url("activity/index/SFU/");
+      }
+    ?>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="<?php echo $default_URL;?>">Activity Sniper</a>
+        </div>
+        <?php
+          if($this->session->userdata('logged_in')['id'] != 1){
+            echo '<ul class="nav navbar-nav">
+              <li><a href="'.$default_URL.'">My Activities</a></li>
+              <li><a href="'.site_url("activity/showall/").'">All Activities</a></li>
+              <li><a href="'.site_url("user/friendlist/").'">Friend List</a></li>
+            </ul>';
+          }
+        ?>
+        <ul class="nav navbar-nav navbar-right">
+          <?php
+            if($this->session->userdata('logged_in')['id'] == 1){
+              $default_URL = site_url("user/a_user");
+              echo '<li><a href="'.$default_URL.'"><span class="glyphicon glyphicon-list-alt"></span> List All Users</a></li>';
+            }
+          ?>
+          <li><a href="<?php echo site_url("user/checkinfor/");?>"><span class="glyphicon glyphicon-user"></span> View your account</a></li>
+          <li><a href="<?php echo site_url("logout");?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <h1><?php echo $title; ?></h1><br>

@@ -115,7 +115,7 @@ class Activity extends CI_Controller
 
                       $data['user_result']=null;
                       $data['success']=null;
-                      $data['title']="Activity List";
+                      $data['title']="My Activity List";
                       $data['result']=null;
                       $data['result1']=null;
                       //show activities in databases.

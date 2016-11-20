@@ -13,11 +13,12 @@ class User extends CI_Controller
   }
   public function login($flag = null)
   {
+    $data = array();
     if($flag =='notNull')
     {
-      echo 'Successfully registered!';
+      $data['succ_info'] = 'Successfully registered!';
     }
-    $this->load->view('templates/header2');
+    $this->load->view('templates/header2',$data);
     $this->load->view('user/login');
     $this->load->view('templates/footer');
   }
@@ -47,7 +48,7 @@ class User extends CI_Controller
       {
         $data['title']='Register';
         //go to the 'creat' view again
-        echo'the email has been used,please enter another one';
+        $data['succ_info'] = 'the email has been used,please enter another one';
         $this->load->view('templates/header2', $data);
         $this->load->view('user/create',array('error' => ' ' ));
         $this->load->view('templates/footer', $data);
@@ -317,7 +318,7 @@ class User extends CI_Controller
         {
           $data['title']='Edit your Account';
           $this->load->view('templates/header', $data);
-          echo'the email has been used,please enter another one';
+          $data['succ_info'] = 'the email has been used,please enter another one';
           $this->load->view('user/edit',array('error' => ' ' ));
           $this->load->view('templates/footer', $data);
         }
