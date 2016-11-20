@@ -79,6 +79,10 @@ cookbook_file "g_map_css.css" do
     path "/home/ubuntu/static/g_map_css.css"
 end
 
+cookbook_file "mystyle.css" do
+    path "/home/ubuntu/static/mystyle.css"
+end
+
 remote_directory '/home/ubuntu/static/bootstrap' do
   source 'bootstrap'
   owner 'ubuntu'

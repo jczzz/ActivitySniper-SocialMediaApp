@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Please log in</title>
-    <link rel="stylesheet" type="text/css" href="/static/login.css">
+    <link rel="stylesheet" type="text/css" href="/static/mystyle.css">
   </head>
   <body>
 
