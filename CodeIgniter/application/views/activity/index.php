@@ -6,7 +6,7 @@
     #mapshow {  float:right; margin-top:0em;  }
 </style>
 </head>
-  <div class="col-md-6 col-md-offset-0">
+  <div class="col-sm-6">
     <div class="panel panel-default">
       <div class="panel-body">
 <!-- show a hint information to user-->
