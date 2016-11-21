@@ -60,8 +60,7 @@
    <?php
      }
     ?>
-    <br />
-    <br />
+
     <?php $x=$x+1; ?>
   </li>
 <?php endforeach; ?>
