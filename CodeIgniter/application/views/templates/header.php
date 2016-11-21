@@ -38,7 +38,7 @@
               <li><a href="<?php echo site_url("activity/index/SFU/")?>">My Activities</a></li>
               <li><a href="<?php echo site_url("activity/showall/")?>">All Activities</a></li>
               <!--<li><a href="<?php echo site_url("user/friendlist")?>">Friend List</a></li>-->
-              <li><a class="dropdown" data-toggle="dropdown" >Friend List<span class="caret"></span></a>
+              <li><a class="dropdown" data-toggle="dropdown" href="">Friend List<span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <?php
                         if(count($friend_result)>0){
