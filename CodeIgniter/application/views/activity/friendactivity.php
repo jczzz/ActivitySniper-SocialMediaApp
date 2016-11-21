@@ -1,6 +1,16 @@
+<head>
+<?php echo $google['map']['js']; ?>
+<style>
+  #mapshow {  float:right; margin-top:0em;  }
+</style>
+</head>
+<div class="col-sm-6 col-md-offset-0">
+  <div class="panel panel-default">
+    <div class="panel-body">
 <?php $x=0; ?>
+<ul class="list-group">
 <?php foreach ($result as $activity_item): ?>
-  <a href="<?php echo site_url("activity/view_friend_activity/".$activity_item['id']."/".$user_id);?>"><?php echo $activity_item['name']; ?></a>
+  <li class="list-group-item"><a href="<?php echo site_url("activity/view_friend_activity/".$activity_item['id']."/".$user_id);?>"><?php echo $activity_item['name']; ?></a>
   <?php echo "&nbsp","&nbsp"; ?>
   <!--determine the owner-->
   <?php echo "created by  "; ?>
@@ -33,7 +43,14 @@
     <?php
       }
      ?>
+   </li>
 <?php $x=$x+1; ?>
-<br /><br />
 <?php endforeach ?>
-<a href="<?php echo site_url("activity/index/SFU");?>">Go back to your activities</a>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="mapshow" class="col-md-6 col-md-offset-0">
+  <?php echo $google['map']['html']; ?>
+</div>

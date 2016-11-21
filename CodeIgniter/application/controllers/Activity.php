@@ -582,6 +582,8 @@ class Activity extends CI_Controller
                       //friendlist.
                       $data['friend_result']=$this->user_model->get_user_by_view($view_user_id);
 
+
+
                       foreach($data['result'] as $a_result)
                       {
                           $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
@@ -595,6 +597,9 @@ class Activity extends CI_Controller
                               $data['array_1'][]="flase";
                           }
                       }
+
+                      $data["google"]=$this->google_map_add_location($user_id);
+                      
                       $this->load->view("templates/header",$data);
                       $this->load->view("activity/friendactivity",$data);
                       $this->load->view('templates/footer', $data);

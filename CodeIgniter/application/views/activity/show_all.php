@@ -11,19 +11,19 @@
 <?php echo form_open("activity/showall"); ?>
       <fieldset>
         <div class="form-group">
-        <label for="Search" class="cols-sm-2 control-label">Type some key words here: </label>
-        <div class="cols-sm-4">
+          <label for="Search" class="cols-sm-2 control-label">Type some key words here: </label>
+          <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
             <input type="input" class="form-control" name="search"  placeholder="Enter some key words"/>
-        </div>
-        <input class="btn btn-default" type="submit" name="submit" value="search" >
+             <span class="input-group-btn"><input class="btn btn-default" type="submit" name="submit" value="search" >
+            </span>
       </div>
+    </div>
       </fieldset>
 
 </form>
 <br />
-<br />
-<br />
-<br />
+
 <!--show all activities-->
 <?php $x=0; ?>
 <label for="Search" class="cols-sm-2 control-label">Activity List:  </label>
