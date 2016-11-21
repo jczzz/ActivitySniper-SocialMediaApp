@@ -62,12 +62,13 @@
                       <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>"/>
                       <input type="hidden" name="time" value="<?php echo date('H:i:s'); ?>"/>
                       <div class="form-group">
-                      <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
-                      <input type="text" id="myComment" name="comment" placeholder="Type some comments"/><br />
+                          <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
+                              <input type="text" class="form-control" id="myComment" name="comment" placeholder="Type some comments"/><br />
+                              <span class="input-group-btn"><input class="btn btn-default" type="submit" name="submit" value="Make a comment"  >
+                              </span>
+                        </div>
                     </div>
-                    </div>
-                      <input class="btn btn-default" type="submit" name="submit" value="Make a comment"  >
                 </fieldset>
                 </form>
                 </ul>
