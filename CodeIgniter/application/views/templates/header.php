@@ -40,10 +40,23 @@
               <!--<li><a href="<?php echo site_url("user/friendlist")?>">Friend List</a></li>-->
               <li><a class="dropdown" data-toggle="dropdown" >Friend List<span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <?php
+                        if(count($friend_result)>0){
+                        ?>
                         <?php foreach ($friend_result as $friend_item): ?>
                         <li><a href="<?php echo site_url("user/information/".$friend_item['id']."/")?>"><?php echo $friend_item['email']; ?></a>
-                        <br /><br /></li>
+                        </li>
                         <?php endforeach; ?>
+                        <?php
+                         }
+                         ?>
+                         <?php
+                         if(count($friend_result)==0){
+                         ?>
+                         <?php  echo "&nbsp","&nbsp","None"; ?>
+                         <?php
+                          }
+                          ?>
                       </ul>
               </li>
             </ul>
