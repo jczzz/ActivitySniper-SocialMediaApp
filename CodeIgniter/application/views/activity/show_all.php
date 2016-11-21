@@ -13,9 +13,9 @@
         <div class="form-group">
           <label for="Search" class="cols-sm-2 control-label">Type some key words here: </label>
           <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></span>
             <input type="input" class="form-control" name="search"  placeholder="Enter some key words"/>
-             <span class="input-group-btn"><input class="btn btn-default" type="submit" name="submit" value="search" >
+             <span class="input-group-btn"><input class="btn btn-default" type="submit" name="submit" value="Search">
             </span>
       </div>
     </div>
@@ -28,7 +28,7 @@
 <?php $x=0; ?>
 <label for="Search" class="cols-sm-2 control-label">Activity List:  </label>
 <?php foreach($result as $activity_item): ?>
-  <li class="list-group-item"><a class="btn btn-default" href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name'];?></a>
+  <li class="list-group-item"><a href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name'];?></a>
   <?php echo "&nbsp","&nbsp"; ?>
   <?php echo "created by "?>
   <?php

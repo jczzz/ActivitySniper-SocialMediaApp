@@ -22,7 +22,7 @@
 <ul class="list-group">
 <?php $count=count($result);?>
  <?php foreach ($result as $activity_item): ?>
-   <li class="list-group-item"><a class="btn btn-default" href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name']; ?></a>
+   <li class="list-group-item"><a  href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name']; ?></a>
    <?php echo "&nbsp","&nbsp"; ?>
    <?php echo "created by "?>
    <?php
