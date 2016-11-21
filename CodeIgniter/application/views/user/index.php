@@ -1,4 +1,4 @@
-<div class="col-sm-6">
+<div class="col-sm-6 col-sm-offset-3">
   <div class="panel panel-default">
     <div class="panel-body">
       <ul class="list-group">
