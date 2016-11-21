@@ -205,7 +205,8 @@ class Activity extends CI_Controller
                }
 
                $this->googlemaps->initialize($config);
-
+            if(count($data2['coords'])>0)
+            {
                foreach ($data2['coords'] as $coordinate) {
                  $marker = array();
                  $id=$coordinate['id'];
@@ -221,6 +222,7 @@ class Activity extends CI_Controller
                  }
                  $this->googlemaps->add_marker($marker);
                }
+            }
                $data['map'] = $this->googlemaps->create_map();
                return $data;
          }
