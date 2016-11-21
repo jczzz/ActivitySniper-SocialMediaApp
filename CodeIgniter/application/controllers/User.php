@@ -202,6 +202,10 @@ class User extends CI_Controller
     if($this->session->userdata('logged_in')){
       $session_data = $this->session->userdata('logged_in');
       $view_user_id = $session_data['id'];
+
+      //friendlist.
+      $data['friend_result']=$this->user_model->get_user_by_view($view_user_id);
+
       $data['result']=$this->user_model->get($user_id);
       $data['title']=$data['result']['firstname'].",".$data['result']['lastname'];
       $data['user_id']=$user_id;
@@ -241,6 +245,7 @@ class User extends CI_Controller
     }
   }
 
+  /*
   //friend List
   public function friendlist()
   {
@@ -257,6 +262,7 @@ class User extends CI_Controller
       redirect('user/login', 'refresh');
     }
   }
+  */
 
   //delete friend
   public function deletefriend($user_id)
@@ -277,6 +283,8 @@ class User extends CI_Controller
     if($this->session->userdata('logged_in')){
       $session_data = $this->session->userdata('logged_in');
       $user_id = $session_data['id'];
+      //friendlist.
+      $data['friend_result']=$this->user_model->get_user_by_view($user_id);
       $data['result']=$this->user_model->get($user_id);
       $data['title']=$data['result']['firstname'].",".$data['result']['lastname'];
       $data['user_id']=$user_id;
@@ -297,6 +305,10 @@ class User extends CI_Controller
       $data['result']=$this->user_model->get($user_id);
       $data['user_id']=$user_id;
       $this->load->helper('form',$user_id);
+
+      //friendlist.
+      $data['friend_result']=$this->user_model->get_user_by_view($user_id);
+
       //firstly make sure the just got form is valid or not,initial empty form is invalid
       $this->form_validation->set_rules('firstname','First Name ','required');
       $this->form_validation->set_rules('lastname','Last Name ','required');

@@ -33,11 +33,21 @@
         </div>
         <?php
           if($this->session->userdata('logged_in')['id'] != 1){
-            echo '<ul class="nav navbar-nav">
-              <li><a href="'.$default_URL.'">My Activities</a></li>
-              <li><a href="'.site_url("activity/showall/").'">All Activities</a></li>
-              <li><a href="'.site_url("user/friendlist/").'">Friend List</a></li>
-            </ul>';
+        ?>
+          <ul class="nav navbar-nav">
+              <li><a href="<?php echo site_url("activity/index/SFU/")?>">My Activities</a></li>
+              <li><a href="<?php echo site_url("activity/showall/")?>">All Activities</a></li>
+              <!--<li><a href="<?php echo site_url("user/friendlist")?>">Friend List</a></li>-->
+              <li><a class="dropdown" data-toggle="dropdown" >Friend List<span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <?php foreach ($friend_result as $friend_item): ?>
+                        <li><a href="<?php echo site_url("user/information/".$friend_item['id']."/")?>"><?php echo $friend_item['email']; ?></a>
+                        <br /><br /></li>
+                        <?php endforeach; ?>
+                      </ul>
+              </li>
+            </ul>
+        <?php
           }
         ?>
         <ul class="nav navbar-nav navbar-right">

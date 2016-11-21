@@ -122,6 +122,10 @@ class Activity extends CI_Controller
                       $data['result']=$this->activity_model->get_activity_by_user($user_id);
                       $data['user_id']=$user_id;
 
+                      //friendlist.
+                      $data['friend_result']=$this->user_model->get_user_by_view($user_id);
+
+
                       foreach($data['result'] as $a_result)
                       {
                            $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
@@ -242,6 +246,10 @@ class Activity extends CI_Controller
                    $data['user_id']=$user_id;
                    $data['array_1']=array();
                    $data['user_result']=null;
+
+                   //friendlist.
+                   $data['friend_result']=$this->user_model->get_user_by_view($user_id);
+
                    $this->load->helper('form',$data);
                    if($this->input->post('search')==null )
                    {
@@ -364,6 +372,9 @@ class Activity extends CI_Controller
                     $this->load->library('form_validation');
                     $data['friend']=$suc;
 
+                    //friendlist.
+                    $data['friend_result']=$this->user_model->get_user_by_view($u_id);
+
                     $this->form_validation->set_rules('comment','Comment','required');
                     if($this->form_validation->run() === FALSE){
                       $data['success']=null;
@@ -423,6 +434,9 @@ class Activity extends CI_Controller
               {
                           $session_data=$this->session->userdata('logged_in');
                           $view_user_id=$session_data['id'];
+
+                          //friendlist.
+                          $data['friend_result']=$this->user_model->get_user_by_view($view_user_id);
 
                           $this->load->helper('form');
                           $this->load->library('form_validation');
@@ -495,6 +509,10 @@ class Activity extends CI_Controller
                     $this->load->helper('form',$data);
                     $this->load->library('form_validation');
                     $data['title']="Edit your activity";
+
+                    //friendlist.
+                    $data['friend_result']=$this->user_model->get_user_by_view($u_id);
+
                     $this->form_validation->set_rules('name', 'activity_name', 'required');
                     $this->form_validation->set_rules('date', 'activity_date', 'required');
                     $this->form_validation->set_rules('time', 'activity_time', 'required');
@@ -560,6 +578,9 @@ class Activity extends CI_Controller
                       $data['user_result']=null;
                       $data['array_1']=null;
                       $data['result_1']=null;
+
+                      //friendlist.
+                      $data['friend_result']=$this->user_model->get_user_by_view($view_user_id);
 
                       foreach($data['result'] as $a_result)
                       {
