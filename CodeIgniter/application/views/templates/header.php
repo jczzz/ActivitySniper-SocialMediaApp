@@ -70,7 +70,7 @@
               echo '<li><a href="'.$default_URL.'"><span class="glyphicon glyphicon-list-alt"></span> List All Users</a></li>';
             }
           ?>
-          <li><p class="navbar-text">logged in as: <b><?php echo $this->session->userdata('logged_in')['email'] ?></b></p></li>
+          <li><p class="navbar-text">Logged in as: <b><?php echo $this->session->userdata('logged_in')['email'] ?></b></p></li>
           <li><a href="<?php echo site_url("user/checkinfor/");?>"><span class="glyphicon glyphicon-user"></span> View your account</a></li>
           <li><a href="<?php echo site_url("logout");?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
