@@ -24,7 +24,7 @@
               <div class="form-group">
                 <label for="activity name" class="cols-sm-2 control-label">Activity name</label>
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-tag" aria-hidden="true"></i></span>
                     <input type="input" class="form-control" name="name"   value="<?php echo $result['name']  ?>"/>
                   </div>
 
@@ -33,7 +33,7 @@
               <div class="form-group">
                 <label for="activity date" class="cols-sm-2 control-label">Activity date</label>
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" aria-hidden="true"></i></span>
                     <input type="date" class="form-control" name="date"  value="<?php echo $result['date']  ?>"/>
                   </div>
 
@@ -42,7 +42,7 @@
               <div class="form-group">
                 <label for="activity time" class="cols-sm-2 control-label">Activity time</label>
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-time" aria-hidden="true"></i></span>
                     <input type="time" class="form-control" name="time"  value="<?php echo $result['time']  ?>"/>
                   </div>
 
@@ -51,7 +51,7 @@
               <div class="form-group">
                 <label for="catagory" class="cols-sm-2 control-label">Catagory</label>
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-th-list" aria-hidden="true"></i></span>
                     <input type="input" class="form-control" name="catagory"  value="<?php echo $result['catagory']  ?>"/>
                   </div>
 
@@ -61,7 +61,7 @@
                 <label for="address" class="cols-sm-2 control-label">Address</label>
 
                   <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-flag" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" name="address" id="myPlaceTextBox" value="<?php echo $result['address']  ?>"/>
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button" onclick="codeAddress()" id="showOnMap">Show on map</button>
