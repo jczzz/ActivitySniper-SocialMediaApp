@@ -17,6 +17,12 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <title>Activity Sniper</title>
+    <style type="text/css">
+        body
+        {
+           background-color:#f9f9f9;
+        }
+    </style>
   </head>
   <body>
 
