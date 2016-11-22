@@ -11,8 +11,10 @@
         <h3 class="panel-title">Edit your account</h3>
     </div>
       <div class="panel-body">
-        <?php echo validation_errors(); ?>
-        <?php echo $error;?>
+        <div class="list-group-item-danger">
+          <?php echo validation_errors(); ?>
+          <?php echo $error;?>
+        </div>
 <?php echo form_open_multipart("user/edit/$user_id");?>
         <form accept-charset="UTF-8" role="form">
             <fieldset>

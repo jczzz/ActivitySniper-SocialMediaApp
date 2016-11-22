@@ -6,12 +6,14 @@
 <div class="col-md-6 col-md-offset-0">
   <div class="panel panel-default">
     <div class="panel-body">
+      <div class="list-group-item-success">
               <?php
                 if($success !=null)
                 {
                   echo "&nbsp","&nbsp",$success,"<br>","<br>";
                 }
               ?>
+      </div>
             <ul class="list-group">
               <li class="list-group-item"><label for="activity name" class="cols-sm-2 control-label">Activity name:</label><br >
               <?php  echo "&nbsp","&nbsp",$result['name'];?><br /></li>
@@ -53,9 +55,10 @@
                 <?php
                   date_default_timezone_set("America/Vancouver");
                 ?>
-
-                <?php echo validation_errors(); ?>
-                <?php echo form_open("activity/view/$aid/$user_id"); ?>
+                <div class="list-group-item-danger">
+                  <?php echo validation_errors(); ?>
+                  <?php echo form_open("activity/view/$aid/$user_id"); ?>
+                </div>
                   <fieldset>
                       <input type="hidden" name="uid" value="<?php echo $user_id; ?>"/>
                       <input type="hidden" name="aid" value="<?php echo $result['id']; ?>"/>

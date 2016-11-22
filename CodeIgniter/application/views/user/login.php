@@ -13,8 +13,10 @@
         			    	<h3 class="panel-title">Please Log In</h3>
         			 	</div>
         			  	<div class="panel-body">
-                    <?php echo validation_errors(); ?>
-                    <?php echo form_open('user/verify'); ?>
+                    <div class="list-group-item-danger">
+                      <?php echo validation_errors(); ?>
+                      <?php echo form_open('user/verify'); ?>
+                    </div>
         			    	<form accept-charset="UTF-8" role="form">
                         <fieldset>
                           <div class="form-group">

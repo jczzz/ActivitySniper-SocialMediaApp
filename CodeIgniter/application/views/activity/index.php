@@ -11,12 +11,14 @@
     <div class="panel panel-default">
       <div class="panel-body">
 <!-- show a hint information to user-->
+<div class="list-group-item-success">
 <?php
       if($success != null)
       {
          echo "&nbsp","&nbsp",$success,"<br>","<br>";
       }
  ?>
+ </div>
  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
   <?php $x=0; ?>
 <!-- user delete, remove, join the activities!-->

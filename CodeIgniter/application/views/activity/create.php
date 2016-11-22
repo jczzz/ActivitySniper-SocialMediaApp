@@ -13,8 +13,10 @@
     <div class="col-sm-5">
       <div class="panel panel-default">
         <div class="panel-body">
-          <?php echo validation_errors(); ?>
-          <?php echo $error;?>
+          <div class="list-group-item-danger">
+            <?php echo validation_errors(); ?>
+            <?php echo $error;?>
+          </div>
           <?php
             date_default_timezone_set("America/Vancouver");
           ?>

@@ -40,8 +40,6 @@
     </nav>
 
 
-    <?php
-      if(isset($succ_info)){
-        echo $succ_info;
-      }
-    ?>
+    <?php if(isset($succ_info)){ ?>
+        <div class="text-center alert alert-success"><?php echo $succ_info;?></div>
+    <?php } ?>

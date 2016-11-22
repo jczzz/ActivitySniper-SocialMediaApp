@@ -5,7 +5,9 @@
   <div class="panel panel-default">
     <div class="panel-body">
 <!-- show a hint information to user-->
+<div class="list-group-item-danger">
 <?php echo "&nbsp","&nbsp",$success,"<br>","<br>"; ?>
+</div>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--search-->
 <?php echo form_open("activity/showall"); ?>

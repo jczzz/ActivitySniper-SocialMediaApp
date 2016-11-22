@@ -207,7 +207,7 @@ class User extends CI_Controller
       $data['friend_result']=$this->user_model->get_user_by_view($view_user_id);
 
       $data['result']=$this->user_model->get($user_id);
-      $data['title']=$data['result']['firstname'].",".$data['result']['lastname'];
+      $data['title']=$data['result']['firstname']." ".$data['result']['lastname'];
       $data['user_id']=$user_id;
       $data['view_user_id']=$view_user_id;
       $data['check']=$this->check_friend($user_id);
@@ -286,7 +286,7 @@ class User extends CI_Controller
       //friendlist.
       $data['friend_result']=$this->user_model->get_user_by_view($user_id);
       $data['result']=$this->user_model->get($user_id);
-      $data['title']=$data['result']['firstname'].",".$data['result']['lastname'];
+      $data['title']=$data['result']['firstname']." ".$data['result']['lastname'];
       $data['user_id']=$user_id;
       $this->load->view("templates/header",$data);
       $this->load->view("user/user_information",$data);
@@ -310,8 +310,8 @@ class User extends CI_Controller
       $data['friend_result']=$this->user_model->get_user_by_view($user_id);
 
       //firstly make sure the just got form is valid or not,initial empty form is invalid
-      $this->form_validation->set_rules('firstname','First Name ','required');
-      $this->form_validation->set_rules('lastname','Last Name ','required');
+      $this->form_validation->set_rules('firstname','First Name','required');
+      $this->form_validation->set_rules('lastname','Last Name','required');
       $this->form_validation->set_rules('password',"Password",'required');
       $this->form_validation->set_rules('email',"Email",'required|valid_email');
       $this->form_validation->set_rules('phonenum',"phonenum",'trim|callback_check_phone_number');
