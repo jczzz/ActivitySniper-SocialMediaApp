@@ -2,7 +2,7 @@
 <html>
 <head>
   <!--  <link rel="stylesheet" type="text/css" href="/static/g_map_css.css">-->
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAnmxUGSXw3yYnu9tW-FLkaO1qGBb0pDfI&sensor=SET_TO_TRUE_OR_FALSE"></script>
+    <!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyAnmxUGSXw3yYnu9tW-FLkaO1qGBb0pDfI&sensor=SET_TO_TRUE_OR_FALSE"></script>-->
     <script type="text/javascript" src="/static/g_map_js.js"></script>
     <?php echo $map['js']; ?>
 

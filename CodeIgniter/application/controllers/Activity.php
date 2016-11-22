@@ -520,12 +520,23 @@ class Activity extends CI_Controller
 
                     //google map
                     $this->load->library('googlemaps');
-                    $config['center'] = '8888 University Drive, Burnaby, BC, Canada';
-                    $config['zoom'] = "auto";
+                    $config['center'] = $data['result']['address'];
+                    $config['zoom'] = "15";
                     $config['places'] = TRUE;
                     $config['placesAutocompleteInputID'] = 'myPlaceTextBox';
                     $config['placesAutocompleteBoundsMap'] = TRUE;
                     $this->googlemaps->initialize($config);
+                    $marker = array();
+                    $marker['position'] = $data['result']['address'];
+                    $marker['animation'] = 'DROP';
+                    date_default_timezone_set("America/Vancouver");
+                    $activity_time_stamp = strtotime($data['result']['date']." ".$data['result']['time']);
+                    $current_time_stamp = strtotime(date('Y-m-d H:i:s'));
+                    if($activity_time_stamp < $current_time_stamp){
+                      $marker['icon'] = 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png';
+                    }
+
+                    $this->googlemaps->add_marker($marker);
                     $data['map'] = $this->googlemaps->create_map();
 
 
@@ -599,7 +610,7 @@ class Activity extends CI_Controller
                       }
 
                       $data["google"]=$this->google_map_add_location($user_id);
-                      
+
                       $this->load->view("templates/header",$data);
                       $this->load->view("activity/friendactivity",$data);
                       $this->load->view('templates/footer', $data);
