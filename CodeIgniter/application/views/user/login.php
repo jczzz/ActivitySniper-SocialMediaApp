@@ -36,7 +36,7 @@
   								</div>
   							</div>
   						</div>
-        			    		<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+        			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                       <div class="login-help">
         					           <p><a href="http://localhost:9000/index.php/user/create">No account? Sign up</a></p>
         				      </div>

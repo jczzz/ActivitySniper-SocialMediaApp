@@ -19,7 +19,7 @@
         <?php
         if($check == "true" && $user_id != $view_user_id && $view_user_id != 1){
           ?>
-          <li class="list-group-item text-center"><a class="btn btn-default" href="<?php echo site_url("user/friend/$user_id/")?>">Add To Friend List</a></li>
+          <li class="list-group-item text-center"><a class="btn btn-info" href="<?php echo site_url("user/friend/$user_id/")?>">Add To Friend List</a></li>
           <?php
         }
         ?>
@@ -27,8 +27,8 @@
         <?php
         if($check == "false" && $user_id != $view_user_id){
           ?>
-          <li class="list-group-item text-center"><a class="btn btn-default" href="<?php echo site_url("activity/friendactivity/$user_id/")?>">See your friend's Activities</a>
-            <a class="btn btn-default" href="<?php echo site_url("user/deletefriend/$user_id/")?>">Delete from friend List</a>
+          <li class="list-group-item text-center"><a class="btn btn-info" href="<?php echo site_url("activity/friendactivity/$user_id/")?>">See your friend's Activities</a>
+            <a class="btn btn-danger" href="<?php echo site_url("user/deletefriend/$user_id/")?>">Delete from friend List</a>
           </li>
 
           <?php

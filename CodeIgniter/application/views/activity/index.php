@@ -44,7 +44,7 @@
    <?php
    if($user_id != $activity_item['create_user_id']){
    ?>
-          <a class="btn btn-default" href="<?php echo site_url("activity/remove/".$activity_item['id']);?>">Cancel</a>
+          <a class="btn btn-danger" href="<?php echo site_url("activity/remove/".$activity_item['id']);?>">Cancel</a>
           <?php echo "&nbsp","&nbsp"; ?>
    <?php
    }
@@ -53,9 +53,9 @@
    <?php
    if($user_id == $activity_item['create_user_id']){
    ?>
-           <a class="btn btn-default" href="<?php echo site_url("activity/delete/".$activity_item['id']);?>">Delete</a>
+           <a class="btn btn-danger" href="<?php echo site_url("activity/delete/".$activity_item['id']);?>">Delete</a>
            <?php echo "&nbsp","&nbsp"; ?>
-           <a class="btn btn-default" href="<?php echo site_url("activity/edit/".$activity_item['id']);?>">Edit</a>
+           <a class="btn btn-info" href="<?php echo site_url("activity/edit/".$activity_item['id']);?>">Edit</a>
    <?php
    }
    ?>
@@ -67,7 +67,7 @@
 </ul>
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 <!--link to another page!-->
-<p><a class="btn btn-default" href="<?php echo site_url("activity/create/");?>">Add a new activity</a>
+<p><a class="btn btn-success" href="<?php echo site_url("activity/create/");?>">Add a new activity</a>
 
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 </div>

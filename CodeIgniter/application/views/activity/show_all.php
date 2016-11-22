@@ -15,7 +15,7 @@
           <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></span>
             <input type="input" class="form-control" name="search"  placeholder="Enter some key words"/>
-             <span class="input-group-btn"><input class="btn btn-default" type="submit" name="submit" value="Search">
+             <span class="input-group-btn"><input class="btn btn-success" type="submit" name="submit" value="Search">
             </span>
       </div>
     </div>
@@ -48,15 +48,15 @@
   <?php echo "&nbsp","&nbsp"; ?>
   <?php if($user_id != $activity_item['create_user_id'] && $array_1[$x]=="true"){
   ?>
-      <a class="btn btn-default" href="<?php echo site_url("activity/join/".$activity_item['id']);?>">Join</a>
+      <a class="btn btn-info" href="<?php echo site_url("activity/join/".$activity_item['id']);?>">Join</a>
   <?php
     }
    ?>
    <?php if($user_id == $activity_item['create_user_id']){
    ?>
-       <a class="btn btn-default" href="<?php echo site_url("activity/delete/".$activity_item['id']);?>">Delete</a>
+       <a class="btn btn-danger" href="<?php echo site_url("activity/delete/".$activity_item['id']);?>">Delete</a>
        <?php echo "&nbsp","&nbsp"; ?>
-       <a class="btn btn-default" href="<?php echo site_url("activity/edit/".$activity_item['id']);?>">Edit</a>
+       <a class="btn btn-info" href="<?php echo site_url("activity/edit/".$activity_item['id']);?>">Edit</a>
    <?php
      }
     ?>

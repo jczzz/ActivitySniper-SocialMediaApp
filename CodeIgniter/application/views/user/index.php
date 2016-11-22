@@ -16,7 +16,7 @@
             else
             {
               echo '(regular user)';
-              echo "&nbsp","&nbsp",'<a class="btn btn-default" href="'.site_url('user/delete/'.$tuples['id']).'">Delete</a>';
+              echo "&nbsp","&nbsp",'<a class="btn btn-danger" href="'.site_url('user/delete/'.$tuples['id']).'">Delete</a>';
             }
             ?>
 

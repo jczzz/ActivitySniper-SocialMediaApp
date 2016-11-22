@@ -77,7 +77,7 @@
               <label for="Notes" class="cols-sm-2 control-label">Notes: </label>
                   <textarea cols="40" rows="3" name="notes" class="form-control"><?php echo $result['notes'] ?></textarea><br />
             </div>
-          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Edit">
+          <input class="btn btn-lg btn-success btn-block" type="submit" value="Edit">
             </fieldset>
           </form>
       </div>

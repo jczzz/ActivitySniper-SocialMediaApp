@@ -39,7 +39,7 @@
     <?php echo "&nbsp","&nbsp"; ?>
     <?php if($view_user_id != $activity_item['create_user_id'] && $array_1[$x]=="true"){
     ?>
-        <a class="btn btn-default" href="<?php echo site_url("activity/join_friend_activity/".$activity_item['id']."/".$user_id);?>">Join</a>
+        <a class="btn btn-info" href="<?php echo site_url("activity/join_friend_activity/".$activity_item['id']."/".$user_id);?>">Join</a>
     <?php
       }
      ?>

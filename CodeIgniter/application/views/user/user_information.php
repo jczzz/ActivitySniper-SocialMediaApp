@@ -15,7 +15,7 @@
         <li class="list-group-item"><label for="Notes" class="cols-sm-2 control-label">Notes:</label><br >
           <?php  echo "&nbsp","&nbsp",$result['notes'];?><br />
         </li>
-        <li class="list-group-item text-center"><a class="btn btn-default" href="<?php echo site_url("user/edit/");?>">Edit your account</a></li>
+        <li class="list-group-item text-center"><a class="btn btn-info" href="<?php echo site_url("user/edit/");?>">Edit your account</a></li>
       </ul>
     </div>
   </div>

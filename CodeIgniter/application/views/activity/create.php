@@ -9,7 +9,7 @@
 
 </head>
 <body onload="initialize()">
-  <div class="row vertical-offset-100">
+  <div class="vertical-offset-100">
     <div class="col-sm-5">
       <div class="panel panel-default">
         <div class="panel-body">
@@ -65,7 +65,7 @@
                     <span class="input-group-addon"><i class="glyphicon glyphicon-flag" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" name="address" id="myPlaceTextBox" />
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" onclick="codeAddress()">Show on map</button>
+                      <button class="btn btn-info" type="button" onclick="codeAddress()">Show on map</button>
                     </span>
                   </div>
 
@@ -83,7 +83,7 @@
                 <textarea rows="10" name="description" class="form-control" placeholder="Enter the description"></textarea><br />
               </div>
 
-              <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Create an activity">
+              <input class="btn btn-lg btn-success btn-block" type="submit" name="submit" value="Create an activity">
 
             </fieldset>
           </form>

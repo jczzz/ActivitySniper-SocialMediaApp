@@ -65,7 +65,7 @@
                           <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
                               <input type="text" class="form-control" id="myComment" name="comment" placeholder="Type some comments"/><br />
-                              <span class="input-group-btn"><input class="btn btn-default" type="submit" name="submit" value="Make a comment"  >
+                              <span class="input-group-btn"><input class="btn btn-info" type="submit" name="submit" value="Make a comment"  >
                               </span>
                         </div>
                     </div>

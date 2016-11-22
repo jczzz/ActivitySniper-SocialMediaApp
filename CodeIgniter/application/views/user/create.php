@@ -79,7 +79,7 @@
               <label for="Notes" class="cols-sm-2 control-label">Notes: </label>
                   <textarea cols="40" rows="3" name="notes" class="form-control"></textarea><br />
             </div>
-          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign up">
+          <input class="btn btn-lg btn-success btn-block" type="submit" value="Sign up">
             </fieldset>
           </form>
       </div>
