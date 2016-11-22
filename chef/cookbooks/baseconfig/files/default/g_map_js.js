@@ -48,7 +48,7 @@ function codeAddress()
           }
           else
           {
-                alert("Geocode was not successful for the following reason: " + status);
+                alert("You haven't enter an address!");
           }
       });
 }
