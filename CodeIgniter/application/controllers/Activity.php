@@ -27,6 +27,9 @@ class Activity extends CI_Controller
                    $this->form_validation->set_rules('time', 'activity_time', 'required');
                    $this->form_validation->set_rules('catagory', 'catagory', 'required');
 
+                   //friendlist.
+                   $data['friend_result']=$this->user_model->get_user_by_view($user_id);
+
                     //google map
                     $this->load->library('googlemaps');
                     $config['center'] = '8888 University Drive, Burnaby, BC, Canada';
