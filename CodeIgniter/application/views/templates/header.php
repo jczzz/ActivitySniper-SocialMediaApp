@@ -82,4 +82,4 @@
         </ul>
       </div>
     </nav>
-    <h1><?php echo $title; ?></h1>
+    <div class="text-center"><h2><?php echo $title; ?></h2></div>
