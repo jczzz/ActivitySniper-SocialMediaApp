@@ -8,12 +8,22 @@
   <div class="panel panel-default">
     <div class="panel-body">
 <?php $x=0; ?>
-<ul class="list-group">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Activity Name</th>
+      <th>Created By</th>
+      <th class="text-right">Control</th>
+    </tr>
+  </thead>
+  <tbody>
 <?php foreach ($result as $activity_item): ?>
-  <li class="list-group-item"><a href="<?php echo site_url("activity/view_friend_activity/".$activity_item['id']."/".$user_id);?>"><?php echo $activity_item['name']; ?></a>
+  <tr>
+  <td><a href="<?php echo site_url("activity/view_friend_activity/".$activity_item['id']."/".$user_id);?>"><?php echo $activity_item['name']; ?></a></td>
   <?php echo "&nbsp","&nbsp"; ?>
   <!--determine the owner-->
-  <?php echo "created by  "; ?>
+  <td>
    <?php
    if(($activity_item['create_user_id'] != $user_id) && ($activity_item['create_user_id'] != $view_user_id)){
    ?>
@@ -35,7 +45,9 @@
     <?php
     }
     ?>
+  </td>
     <!--can join-->
+    <td class="text-right">
     <?php echo "&nbsp","&nbsp"; ?>
     <?php if($view_user_id != $activity_item['create_user_id'] && $array_1[$x]=="true"){
     ?>
@@ -43,10 +55,12 @@
     <?php
       }
      ?>
-   </li>
+   </td>
+   </tr>
 <?php $x=$x+1; ?>
 <?php endforeach ?>
-</ul>
+</table>
+</tbody>
 </div>
 </div>
 </div>

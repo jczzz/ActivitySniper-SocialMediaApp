@@ -25,45 +25,57 @@
 <br />
 
 <!--show all activities-->
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Activity Name</th>
+      <th>Created By</th>
+      <th class="text-right">Control</th>
+    </tr>
+  </thead>
+  <tbody>
 <?php $x=0; ?>
-<label for="Search" class="cols-sm-2 control-label">Activity List:  </label>
 <?php foreach($result as $activity_item): ?>
-  <li class="list-group-item"><a href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name'];?></a>
+  <tr>
+  <td><a href="<?php echo site_url("activity/".$activity_item['id']);?>"><?php echo $activity_item['name'];?></a></td>
   <?php echo "&nbsp","&nbsp"; ?>
-  <?php echo "created by "?>
   <?php
   if($user_id != $user_result[$x]['id']){
   ?>
-        <a href="<?php echo site_url("user/information/".$user_result[$x]['id']);?>"><?php echo $user_result[$x]['email'];?></a>
+        <td><a href="<?php echo site_url("user/information/".$user_result[$x]['id']);?>"><?php echo $user_result[$x]['email'];?></a></td>
    <?php
    }
    ?>
    <?php
    if($user_id == $user_result[$x]['id']){
    ?>
-         <?php echo "You";?>
+         <td><?php echo "You";?></td>
    <?php
    }
    ?>
   <?php echo "&nbsp","&nbsp"; ?>
+  <td class="text-right">
   <?php if($user_id != $activity_item['create_user_id'] && $array_1[$x]=="true"){
   ?>
-      <a class="btn btn-info" href="<?php echo site_url("activity/join/".$activity_item['id']);?>">Join</a>
+        <a class="btn btn-info" href="<?php echo site_url("activity/join/".$activity_item['id']);?>">Join</a>
   <?php
     }
    ?>
    <?php if($user_id == $activity_item['create_user_id']){
    ?>
-       <a class="btn btn-danger" href="<?php echo site_url("activity/delete/".$activity_item['id']);?>">Delete</a>
-       <?php echo "&nbsp","&nbsp"; ?>
-       <a class="btn btn-info" href="<?php echo site_url("activity/edit/".$activity_item['id']);?>">Edit</a>
+         <a class="btn btn-info" href="<?php echo site_url("activity/edit/".$activity_item['id']);?>">Edit</a>
+         <?php echo "&nbsp","&nbsp"; ?>
+         <a class="btn btn-danger"  href="<?php echo site_url("activity/delete/".$activity_item['id']);?>">Delete</a>
    <?php
      }
     ?>
+    </td>
 
     <?php $x=$x+1; ?>
-  </li>
+  </tr>
 <?php endforeach; ?>
+</tbody>
+</table>
 </div>
 </div>
 </div>
