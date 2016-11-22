@@ -5,7 +5,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
 <!-- show a hint information to user-->
-<div class="list-group-item-danger">
+<div class="list-group-item-success">
 <?php echo "&nbsp","&nbsp",$success,"<br>","<br>"; ?>
 </div>
 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
