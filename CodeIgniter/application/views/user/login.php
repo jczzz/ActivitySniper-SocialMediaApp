@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Please log in</title>
-    <link rel="stylesheet" type="text/css" href="/static/mystyle.css">
+    <!--<link rel="stylesheet" type="text/css" href="/static/mystyle.css">-->
   </head>
   <body>
             <div class="row vertical-offset-100">
-                <h1>Welcome To Activity Sniper</h1>
+                <div class="text-center"><h1 style="line-height:800%">Welcome To Activity Sniper</h1></div>
               <div class="col-sm-6 col-sm-offset-3">
             		<div class="panel panel-default">
         			  	<div class="panel-heading">
