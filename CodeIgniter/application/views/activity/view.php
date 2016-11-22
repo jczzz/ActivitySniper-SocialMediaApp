@@ -30,7 +30,7 @@
               <br />
 
               <li class="list-group-item"><label for="description" class="cols-sm-2 control-label">Picture:</label><br/>
-              <img src="/static/<?php echo $result['picture'];?>" ><br /></li>
+              <img src="/static/<?php echo $result['picture'];?>" class="img-responsive"><br /></li>
               <br/>
               <li class="list-group-item"><label for="comments" class="cols-sm-2 control-label">Comments:</label><br/><br>
 

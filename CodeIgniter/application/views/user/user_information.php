@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <ul class="list-group">
-        <img src="/static/<?php echo $result['picture'];?>" class="img-thumbnail center-block">
+        <img src="/static/<?php echo $result['picture'];?>" class="img-thumbnail center-block img-responsive">
         <br>
         <li class="list-group-item"><label for="Email" class="cols-sm-2 control-label">Email:</label><br >
           <?php  echo "&nbsp","&nbsp",$result['email'];?><br />

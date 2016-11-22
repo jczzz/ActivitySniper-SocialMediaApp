@@ -82,7 +82,35 @@ end
 cookbook_file "mystyle.css" do
     path "/home/ubuntu/static/mystyle.css"
 end
+#################################
+cookbook_file "61536_1.jpg" do
+    path "/home/ubuntu/static/61536_1.jpg"
+end
 
+cookbook_file "3021636-8076666672-CdPe6.jpg" do
+    path "/home/ubuntu/static/3021636-8076666672-CdPe6.jpg"
+end
+
+cookbook_file "basketball.jpg" do
+    path "/home/ubuntu/static/basketball.jpg"
+end
+
+cookbook_file "images.jpg" do
+    path "/home/ubuntu/static/images.jpg"
+end
+
+cookbook_file "nike-football.jpg" do
+    path "/home/ubuntu/static/nike-football.jpg"
+end
+
+cookbook_file "pikachu_hi_pokemon.jpg" do
+    path "/home/ubuntu/static/pikachu_hi_pokemon.jpg"
+end
+
+cookbook_file "pokemon-go.jpg" do
+    path "/home/ubuntu/static/pokemon-go.jpg"
+end
+##################################
 remote_directory '/home/ubuntu/static/bootstrap' do
   source 'bootstrap'
   owner 'ubuntu'
@@ -92,6 +120,6 @@ remote_directory '/home/ubuntu/static/bootstrap' do
 end
 
 # insert initial activities to db
-#execute 'initial activities' do
-#    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/initial_act.sql'
-#end
+execute 'initial activities' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/initial_act.sql'
+end
