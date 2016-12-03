@@ -125,6 +125,16 @@ class Activity_model extends CI_Model
                 $query = $this -> db -> query($sql);
                 return $query->result_array();
             }
+            public function get_user_by_activity($a_id)
+            {
+                $sql="select A.firstname, A.lastname, A.email,A.id
+                      from users A, user_activity B 
+                      where $a_id=B.activity_id and B.user_id=A.id";
+                $query = $this -> db -> query($sql);
+                return $query->result_array();
+            }
+
+            
 
             public function remove_activity($id = '0')
             {

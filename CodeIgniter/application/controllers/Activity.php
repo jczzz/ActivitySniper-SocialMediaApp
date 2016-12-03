@@ -389,6 +389,7 @@ class Activity extends CI_Controller
                       $data['comments']=$this->activity_model->get_comments();
                       $data['title']=$data['result']['name'];
                       $data['user_id']=$u_id;
+                      $data['activity_related_users'] = $this->activity_model->get_user_by_activity($a_id);
 
                       // google map
                       $this->load->library('googlemaps');
