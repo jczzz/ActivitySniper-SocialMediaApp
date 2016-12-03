@@ -32,9 +32,9 @@
               <li class="list-group-item"><label for="participants" class="cols-sm-2 control-label">Participants:</label><br/>
               <?php foreach ($activity_related_users as $user_item): ?><br />
                 <?php echo $user_item['firstname'],",&nbsp", $user_item['lastname'], "&nbsp &nbsp";?>
-                <?php if ($user_item['id'] != $user_id ) { ?>
+                
                   <a href="<?php echo site_url("user/information/".$user_item['id']);?>"><?php echo $user_item['email'];?></a>
-                <?php } ?>
+                
 
               <?php endforeach ?>
               </li>
