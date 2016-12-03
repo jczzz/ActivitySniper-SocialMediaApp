@@ -35,35 +35,32 @@ class User extends CI_Controller
 
     if($this->form_validation->run() === FALSE)//invalid
     {
-      $data['title']='Register';
       //go to the 'creat' view again
-      $this->load->view('templates/header2', $data);
+      $this->load->view('templates/header2');
       $this->load->view('user/create',array('error' => ' ' ));
-      $this->load->view('templates/footer', $data);
+      $this->load->view('templates/footer');
     }
     else
     {
       //check email and phonenum are unique,if not redirect to create again
       if($this->user_model->check_unique()==false)//not unique
       {
-        $data['title']='Register';
         //go to the 'creat' view again
         $data['succ_info'] = 'the email has been used,please enter another one';
         $this->load->view('templates/header2', $data);
         $this->load->view('user/create',array('error' => ' ' ));
-        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/footer');
       }
       else
       {
         $this->load->library('upload', $this->upload_config());
         if ((isset($_FILES['userfile']) && $_FILES['userfile']['size'] > 0) && ! $this->upload->do_upload('userfile'))
         {
-          $data['title']='Register';
           //go to the 'creat' view again
           $error = array('error' => $this->upload->display_errors());
-          $this->load->view('templates/header2', $data);
+          $this->load->view('templates/header2');
           $this->load->view('user/create',$error);
-          $this->load->view('templates/footer', $data);
+          $this->load->view('templates/footer');
         }else{
           $data = array('upload_data' => $this->upload->data());
           $this->user_model->set($data['upload_data']);
@@ -109,7 +106,7 @@ class User extends CI_Controller
         $data['table']= $this->user_model->get('0');//'0' means to get the whole tabel
         $this->load->view('templates/header', $data);
         $this->load->view('user/index',$data);
-        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/footer');
       }else{
         redirect("activity/index/$location/$user_id");
       }
@@ -213,7 +210,7 @@ class User extends CI_Controller
       $data['check']=$this->check_friend($user_id);
       $this->load->view("templates/header",$data);
       $this->load->view("user/information",$data);
-      $this->load->view('templates/footer', $data);
+      $this->load->view('templates/footer');
     }else{
       redirect('user/login', 'refresh');
     }
@@ -290,7 +287,7 @@ class User extends CI_Controller
       $data['user_id']=$user_id;
       $this->load->view("templates/header",$data);
       $this->load->view("user/user_information",$data);
-      $this->load->view('templates/footer', $data);
+      $this->load->view('templates/footer');
     }else{
       redirect('user/login', 'refresh');
     }
@@ -322,7 +319,7 @@ class User extends CI_Controller
         //go to the 'creat' view again
         $this->load->view('templates/header', $data);
         $this->load->view('user/edit',array('error' => ' ' ));
-        $this->load->view('templates/footer', $data);
+        $this->load->view('templates/footer');
       }
       else
       {
@@ -332,7 +329,7 @@ class User extends CI_Controller
           $this->load->view('templates/header', $data);
           $data['succ_info'] = 'the email has been used,please enter another one';
           $this->load->view('user/edit',array('error' => ' ' ));
-          $this->load->view('templates/footer', $data);
+          $this->load->view('templates/footer');
         }
         else
         {
@@ -344,7 +341,7 @@ class User extends CI_Controller
             $error = array('error' => $this->upload->display_errors());
             $this->load->view('templates/header', $data);
             $this->load->view('user/edit',$error);
-            $this->load->view('templates/footer', $data);
+            $this->load->view('templates/footer');
           }else{
             $data = array('upload_data' => $this->upload->data());
             $this->user_model->edit_account($user_id, $data['upload_data']);
