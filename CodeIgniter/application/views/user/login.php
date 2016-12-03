@@ -1,3 +1,19 @@
+ <!-- 
+
+  1.used global parameter: validation_errors()
+
+  2.parameter given to this view: none
+
+  3.form values collected for 'user/verify':
+    post('email')     //type:input
+    post('password')  //type:password
+
+  4.external link: "No account? Sign up"  ->  'user/create'
+
+  -->
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
