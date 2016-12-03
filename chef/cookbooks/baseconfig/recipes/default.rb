@@ -8,10 +8,11 @@ end
 
 # Base configuration recipe in Chef.
 package "wget"
+package "mysql-server"
 package "ntp"
 package "nginx"
 package "php7.0"
-package "mysql-server"
+
 package "php7.0-mysqlnd"
 package "php7.0-xml"
 
@@ -54,6 +55,13 @@ end
 execute 'create comment_board table' do
     command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/comment_board.sql'
 end
+
+
+execute 'create message_board table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/message_board.sql'
+end
+
+
 
 execute 'create static folder' do
   command 'mkdir /home/ubuntu/static'

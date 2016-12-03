@@ -193,28 +193,56 @@ class User extends CI_Controller
     }
   }
 
+
+
+
   //show user information
   public function information($user_id)
   {
     if($this->session->userdata('logged_in')){
-      $session_data = $this->session->userdata('logged_in');
-      $view_user_id = $session_data['id'];
 
-      //friendlist.
-      $data['friend_result']=$this->user_model->get_user_by_view($view_user_id);
+      $this->form_validation->set_rules('message','Message','required');
+      
+        $session_data = $this->session->userdata('logged_in');
+        $view_user_id = $session_data['id'];
 
-      $data['result']=$this->user_model->get($user_id);
-      $data['title']=$data['result']['firstname']." ".$data['result']['lastname'];
-      $data['user_id']=$user_id;
-      $data['view_user_id']=$view_user_id;
-      $data['check']=$this->check_friend($user_id);
-      $this->load->view("templates/header",$data);
-      $this->load->view("user/information",$data);
-      $this->load->view('templates/footer');
+        //friendlist.
+        $data['friend_result']=$this->user_model->get_user_by_view($view_user_id);
+
+        $data['result']=$this->user_model->get($user_id);
+        $data['title']=$data['result']['firstname']." ".$data['result']['lastname'];
+        $data['user_id']=$user_id;
+        $data['view_user_id']=$view_user_id;
+        $data['check']=$this->check_friend($user_id);
+      if($this->form_validation->run() === FALSE){
+        $data['messages']=$this->user_model->get_message($view_user_id);
+
+        $this->load->view("templates/header",$data);
+        $this->load->view("user/information",$data);
+        $this->load->view('templates/footer');
+      }
+      else{
+
+              $this->user_model->set_message();
+            redirect("user/information/$user_id");
+      }
+
+
     }else{
       redirect('user/login', 'refresh');
     }
   }
+
+
+
+
+
+
+
+
+
+
+
 
   //add friend. make relationship.
   public function friend($user_id)
@@ -285,6 +313,13 @@ class User extends CI_Controller
       $data['result']=$this->user_model->get($user_id);
       $data['title']=$data['result']['firstname']." ".$data['result']['lastname'];
       $data['user_id']=$user_id;
+
+
+      $data['view_user_id']=$user_id;
+      $data['messages']=$this->user_model->get_message($user_id);
+
+
+
       $this->load->view("templates/header",$data);
       $this->load->view("user/user_information",$data);
       $this->load->view('templates/footer');

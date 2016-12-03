@@ -215,5 +215,13 @@ class Activity_model extends CI_Model
               );
               return $this->db->insert('comment_board',$data);
             }
+
+
+
+
+
+
+
+
 }
 ?>

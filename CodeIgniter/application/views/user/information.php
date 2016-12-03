@@ -34,6 +34,68 @@
           <?php
           }
           ?>
+
+
+
+
+
+
+
+
+              <li class="list-group-item"><label for="messages" class="cols-sm-2 control-label">Leaved messages:</label><br/><br>
+
+                <?php foreach ($messages as $m_item): ?>
+
+                <?php 
+                if($m_item['user_id1']===$user_id)   
+                {         
+                    echo "&nbsp";
+                    echo "(",$m_item['date'],",&nbsp", $m_item['time'],")",",&nbsp &nbsp";
+                    echo $m_item['firstname'],"&nbsp",$m_item['lastname'],"&nbsp","has said:","&nbsp",$m_item['comment'];
+                    echo "<br>";
+                }
+                ?>
+                
+
+                <?php endforeach; ?>
+                </li>
+
+
+                <?php $aid = $result['id']; ?>
+                <?php
+                  date_default_timezone_set("America/Vancouver");
+                ?>
+                <div class="list-group-item-danger">
+                  
+                  <?php echo form_open("user/information/$user_id"); ?>
+                </div>
+                  <fieldset>
+                      <input type="hidden" name="user_id1" value="<?php echo $user_id; ?>"/>
+                      <input type="hidden" name="user_id2" value="<?php echo  $view_user_id; ?>"/>
+                      <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>"/>
+                      <input type="hidden" name="time" value="<?php echo date('H:i:s'); ?>"/>
+                      <div class="form-group">
+                          <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
+                              <input type="text" class="form-control" id="myComment" name="message" placeholder="Type some messages"/><br />
+                              <span class="input-group-btn"><input class="btn btn-info" type="submit" name="submit" value="Send"  >
+                              </span>
+                        </div>
+                    </div>
+                </fieldset>
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
       </ul>
     </div>
   </div>

@@ -154,5 +154,40 @@ class User_model extends CI_Model
 		$this->db->where('id',$user_id);
 		$this->db->update('users',	$data);
 	}
+
+
+
+
+
+
+
+
+            public function set_message(){
+              $data = array(
+                'user_id1' => $this->input->post('user_id1'),
+                'user_id2' => $this->input->post('user_id2'),
+                'date' => $this->input->post('date'),
+                'time' => $this->input->post('time'),
+                'comment' => $this->input->post('message')
+              );
+              return $this->db->insert('message_board',$data);            
+            }
+
+              public function get_message($user_id){
+              $sql = "select A.*,B.firstname,B.lastname
+              from message_board A, users B
+              where  A.user_id2 =B.id
+              ORDER BY date asc, time asc";
+              $query = $this->db->query($sql);
+              return $query->result_array();           
+            }
+
+
+
+
+
+
+
+
 }
 ?>
