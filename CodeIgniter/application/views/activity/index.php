@@ -27,6 +27,7 @@
     <tr>
       <th>Activity Name</th>
       <th>Created By</th>
+      <th>Happen in</th>
       <th class="text-right">Control</th>
     </tr>
   </thead>
@@ -54,6 +55,44 @@
     <?php
     }
     ?>
+
+
+
+
+
+     <?php
+         if ($activity_item['date']>date('Y-m-d'))
+          {
+            $activity_date = DateTime::createFromFormat('Y-m-d', $activity_item['date']);
+            $today = new DateTime('now');
+            $diff=$activity_date->diff($today)->days;
+      ?>                      
+             <td>  <?php echo $diff,"&nbsp","Days";?> </td>
+     <?php  } ?>
+
+     <?php 
+          if ($activity_item['date']==date('Y-m-d'))
+          {
+            $activity_date = DateTime::createFromFormat('Y-m-d', $activity_item['date']);
+            $today = new DateTime('now');
+            $diff=$activity_date->diff($today)->days;
+      ?>
+          <td style=" color: red;">  <?php echo "Today ! Hurry!"; ?> </td>
+      <?php  } ?>
+
+       <?php 
+          if ($activity_item['date']<date('Y-m-d'))
+          {
+      ?>
+          <td style=" color: grey;">  <?php echo "Past";?> </td>
+      <?php  } ?>
+
+
+
+
+
+
+
 
    <!--user can remove another activities off his list!-->
 
