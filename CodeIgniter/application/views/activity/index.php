@@ -13,7 +13,7 @@
   float: left;
     width: 100%;
  }
- 
+
  </style>
 
 <?php echo $google['map']['js']; ?>
@@ -26,7 +26,7 @@
     header: {
     left: 'prev,next today',
     center: 'title',
-    right: 'month,basicWeek,basicDay'
+    right: ''
         },
    defaultDate: '<?php echo date("Y-m-d");//$today_date; ?>',
    editable: true,
@@ -41,11 +41,11 @@
       // organizer: 'Event Organizer: <?php //echo $event["event_organizer"]; ?>' ,
       // eventTime: '10:00'
      },
-        <?php endforeach; ?> 
-    
+        <?php endforeach; ?>
+
    ]
   });
-  
+
  });
 
 </script>
@@ -114,11 +114,11 @@
             $activity_date = DateTime::createFromFormat('Y-m-d', $activity_item['date']);
             $today = new DateTime('now');
             $diff=$activity_date->diff($today)->days;
-      ?>                      
+      ?>
              <td>  <?php echo $diff,"&nbsp","Days";?> </td>
      <?php  } ?>
 
-     <?php 
+     <?php
           if ($activity_item['date']==date('Y-m-d'))
           {
             $activity_date = DateTime::createFromFormat('Y-m-d', $activity_item['date']);
@@ -128,7 +128,7 @@
           <td style=" color: red;">  <?php echo "Today ! Hurry!"; ?> </td>
       <?php  } ?>
 
-       <?php 
+       <?php
           if ($activity_item['date']<date('Y-m-d'))
           {
       ?>

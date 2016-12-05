@@ -12,7 +12,7 @@
 			 header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,basicWeek,basicDay'
+        right: ''
       		},
 			defaultDate: '<?php echo date("Y-m-d");//$today_date; ?>',
 			editable: true,
@@ -27,11 +27,11 @@
 					 // organizer: 'Event Organizer: <?php //echo $event["event_organizer"]; ?>' ,
 					 // eventTime: '10:00'
 					},
-      		<?php endforeach; ?> 
-				
+      		<?php endforeach; ?>
+
 			]
 		});
-		
+
 	});
 
 </script>
@@ -60,9 +60,9 @@
             </span>
       </div>
 
-              <input type="checkbox" name="t" value="t" >today 
+              <input type="checkbox" name="t" value="t" >today
               <input type="checkbox" name="f" value="f" >future 5 days
-              <input type="checkbox" name="b" value="b" >beyond 5 days 
+              <input type="checkbox" name="b" value="b" >beyond 5 days
 
     </div>
       </fieldset>
@@ -77,7 +77,7 @@
       <th>Activity Name</th>
       <th>Created By</th>
       <th>Happen in</th>
-      <th class="text-right">Control</th>     
+      <th class="text-right">Control</th>
     </tr>
   </thead>
   <tbody>
@@ -91,8 +91,8 @@
 
 
 <?php   //filter wanted date activities according to happening time
-      
-        if(   $activity_item['date']<date('Y-m-d') and 
+
+        if(   $activity_item['date']<date('Y-m-d') and
             (
                 $this->input->post('t') or
                 $this->input->post('f') or
@@ -101,7 +101,7 @@
         )
         {continue;}
 
-        if(   $activity_item['date']==date('Y-m-d') and 
+        if(   $activity_item['date']==date('Y-m-d') and
             (
                 !$this->input->post('t') and
                 (
@@ -117,7 +117,7 @@
         $today = new DateTime('now');
         $diff=$activity_date->diff($today)->days;
 
-        if(  $diff >0 and $diff <=5 and 
+        if(  $diff >0 and $diff <=5 and
             (
                 !$this->input->post('f') and
                 (
@@ -128,7 +128,7 @@
         )
         {continue;}
 
-        if(   $diff >5 and 
+        if(   $diff >5 and
             (
                 !$this->input->post('b') and
                 (
@@ -173,11 +173,11 @@
         $activity_date = DateTime::createFromFormat('Y-m-d', $activity_item['date']);
         $today = new DateTime('now');
         $diff=$activity_date->diff($today)->days;
-  ?>                      
+  ?>
          <td>  <?php echo $diff,"&nbsp","Days";?> </td>
  <?php  } ?>
 
- <?php 
+ <?php
       if ($activity_item['date']==date('Y-m-d'))
       {
         $activity_date = DateTime::createFromFormat('Y-m-d', $activity_item['date']);
@@ -187,7 +187,7 @@
       <td style=" color: red;">  <?php echo "Today ! Hurry!"; ?> </td>
   <?php  } ?>
 
-   <?php 
+   <?php
       if ($activity_item['date']<date('Y-m-d'))
       {
   ?>
@@ -230,7 +230,3 @@
 <div style="margin-top:20px; margin-left:20px;background-color:white;" class="col-md-10 col-md-offset-0">
 <div style="float:left;margin:0px;width:100%;" id='calendar'></div>
 </div>
-
-
-
-
