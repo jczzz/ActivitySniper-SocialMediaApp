@@ -131,7 +131,7 @@ class Activity extends CI_Controller
 
                       foreach($data['result'] as $a_result)
                       {
-                           $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                           $data['user_result'][]=$this->activity_model->get_owner_email($a_result['create_user_id']);
                       }
 
                       if($suc === "success")
@@ -272,7 +272,7 @@ class Activity extends CI_Controller
 
                          foreach($data['result'] as $a_result)
                          {
-                              $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                              $data['user_result'][]=$this->activity_model->get_owner_email($a_result['create_user_id']);
                          }
 
                          $data["google"]=$this->google_map_add_location();
@@ -299,7 +299,7 @@ class Activity extends CI_Controller
                            }
                            foreach($data['result'] as $a_result)
                            {
-                                $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                                $data['user_result'][]=$this->activity_model->get_owner_email($a_result['create_user_id']);
                            }
 
                            $data["google"]=$this->google_map_add_location('0',$this->input->post('search'));
@@ -602,7 +602,7 @@ class Activity extends CI_Controller
 
                       foreach($data['result'] as $a_result)
                       {
-                          $data['user_result'][]=$this->activity_model->get_owner_email($a_result['id']);
+                          $data['user_result'][]=$this->activity_model->get_owner_email($a_result['create_user_id']);
                           $data['result1']=$this->activity_model->check_rel_user_activity($view_user_id,$a_result['id']);
                           if($data['result1'] === null)
                           {

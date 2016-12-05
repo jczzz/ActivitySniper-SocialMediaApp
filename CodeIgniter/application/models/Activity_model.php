@@ -121,15 +121,31 @@ class Activity_model extends CI_Model
             //new //get the activity according to user id.
             public function get_activity_by_user($user_id)
             {
-                $sql="select A.name, A.id, A.create_user_id, A.date, A.time from activity A, user_activity B where $user_id=B.user_id and B.activity_id=A.id";
+                //improve sql speed
+                $sql="select A.name, A.id, A.create_user_id, A.date, A.time 
+                from activity A where A.id in 
+                ( select activity_id from user_activity
+                  where $user_id=user_id 
+                ) ";
+
+                //$sql="select A.name, A.id, A.create_user_id, A.date, A.time 
+                //      from activity A, user_activity B 
+                //      where $user_id=B.user_id and B.activity_id=A.id";
                 $query = $this -> db -> query($sql);
                 return $query->result_array();
             }
             public function get_user_by_activity($a_id)
             {
+                //improve sql speed
                 $sql="select A.firstname, A.lastname, A.email,A.id
-                      from users A, user_activity B 
-                      where $a_id=B.activity_id and B.user_id=A.id";
+                from users A where A.id in 
+                ( select user_id from user_activity
+                  where $a_id=activity_id 
+                ) ";
+
+                //$sql="select A.firstname, A.lastname, A.email,A.id
+                //      from users A, user_activity B 
+                //      where $a_id=B.activity_id and B.user_id=A.id";
                 $query = $this -> db -> query($sql);
                 return $query->result_array();
             }
@@ -142,9 +158,9 @@ class Activity_model extends CI_Model
                return $this->db->delete('activity',$data);
             }
 
-            public function get_owner_email($a_id ='0')
+            public function get_owner_email($create_user_id ='0')
             {
-               $sql="select A.email, A.id from activity B, users A where $a_id=B.id and B.create_user_id=A.id";
+               $sql="select A.email, A.id from users A where $create_user_id=A.id";
                $query= $this-> db ->query($sql);
                return $query->row_array();
             }

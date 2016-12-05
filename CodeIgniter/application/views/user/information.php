@@ -78,7 +78,7 @@
                           <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
                               <input type="text" class="form-control" id="myComment" name="message" placeholder="Type some messages"/><br />
-                              <span class="input-group-btn"><input class="btn btn-info" type="submit" name="submit" value="Send"  >
+                              <span class="input-group-btn"><input class="btn btn-info" type="submit" name="submit" value="Post"  >
                               </span>
                         </div>
                     </div>
