@@ -34,14 +34,6 @@
           <?php
           }
           ?>
-
-
-
-
-
-
-
-
               <li class="list-group-item"><label for="messages" class="cols-sm-2 control-label">Leaved messages:</label><br/><br>
 
                 <?php foreach ($messages as $m_item): ?>
@@ -85,17 +77,35 @@
                 </fieldset>
                 </form>
 
-
-
-
-
-
-
-
-
-
-
-
+                <?php
+      $session_data=$this->session->userdata('logged_in');
+        $logged_user_id=$session_data['id'];
+       ?>
+        <div style="margin-top:15px;" class="col-lg-12 col-sm-12 col-xs-12 msg-outer"> 
+          <form method="post" action="<?php echo site_url('messages/send_message'); ?>">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-xs-4 lbl-inner">
+                   <span>
+                     <label>Send New Message</label>
+                   </span> 
+                </div> 
+      
+                <div class="col-lg-6 col-md-6 col-xs-6 field-inner">
+                   <span class="reg-field">
+                     <textarea placeholder="Write your message..." required class="form-control" name="message" rows="3" ></textarea>
+                     <input type="hidden" name="sender_id" value="<?php echo  $logged_user_id; ?>">
+                     <input type="hidden" name="receiver_id" value="<?php echo $result['id']; ?>">
+                     
+                   </span> 
+                </div>
+                <div class="col-lg-2 col-md-2 col-xs-2 field-submit">
+                    <button class="btn btn-success" type="submit" class="move">Send</button>
+                </div>
+           
+            </div> 
+         </form> 
+        
+        </div>
       </ul>
     </div>
   </div>

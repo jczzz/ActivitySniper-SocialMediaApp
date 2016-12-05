@@ -1,6 +1,54 @@
-
 <head>
+<link rel='stylesheet' href='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.css' />
+
+      <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
+  <script src='https://fullcalendar.io/js/fullcalendar-3.1.0/fullcalendar.min.js'></script>
+
+
+
+<style>
+#calendar {
+  /*max-width: 900px;*/
+  margin: 0 auto;
+  float: left;
+    width: 100%;
+ }
+ 
+ </style>
+
 <?php echo $google['map']['js']; ?>
+
+<script>
+
+ $(document).ready(function() {
+
+  $('#calendar').fullCalendar({
+    header: {
+    left: 'prev,next today',
+    center: 'title',
+    right: 'month,basicWeek,basicDay'
+        },
+   defaultDate: '<?php echo date("Y-m-d");//$today_date; ?>',
+   editable: true,
+   eventLimit: true, // allow "more" link when too many events
+   events: [
+     <?php foreach ($result as $activity_item): ?>
+     {
+       title: '<?php echo $activity_item['name']; ?>',
+       start: '<?php echo $activity_item['date']; ?>',
+       url: '<?php echo site_url("activity/".$activity_item['id']);?>' ,
+      //slots: 'Event Slots: <?php //echo $event["event_slots"]; ?>' ,
+      // organizer: 'Event Organizer: <?php //echo $event["event_organizer"]; ?>' ,
+      // eventTime: '10:00'
+     },
+        <?php endforeach; ?> 
+    
+   ]
+  });
+  
+ });
+
+</script>
 <style type="text/css">
     #calendar { float:right; width:40%; height: 40%; margin: -120px; margin-top:0px; margin-right:-250px; }
     #mapshow {  float:right; margin-top:0em;  }
@@ -138,4 +186,7 @@
 
 <div id="mapshow" class="col-md-6 col-md-offset-0">
   <?php echo $google['map']['html']; ?>
+</div>
+<div style="margin-top:20px; margin-left:20px;background-color:white;" class="col-md-10 col-md-offset-0">
+<div style="float:left;margin:0px;width:100%;" id='calendar'></div>
 </div>

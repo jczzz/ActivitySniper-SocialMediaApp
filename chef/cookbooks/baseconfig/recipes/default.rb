@@ -61,7 +61,13 @@ execute 'create message_board table' do
     command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/message_board.sql'
 end
 
+execute 'create private_messages table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/private_messages.sql'
+end
 
+execute 'create tbl_conversation table' do
+    command 'mysql -u ubuntu -p"ubuntu" mydb < /home/ubuntu/project/mysql/tbl_conversation.sql'
+end
 
 execute 'create static folder' do
   command 'mkdir /home/ubuntu/static'

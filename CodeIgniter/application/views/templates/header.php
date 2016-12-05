@@ -9,7 +9,9 @@
 
     <!-- Bootstrap -->
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    
+    <!-- <script src='<?php echo site_url(); ?>/assets/calendar//lib/jquery.min.js'></script> -->
+    <script src='/static/bootstrap/calendar/lib/jquery.min.js'></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,6 +45,7 @@
           <ul class="nav navbar-nav">
               <li><a href="<?php echo site_url("activity/index/SFU/")?>">My Activities</a></li>
               <li><a href="<?php echo site_url("activity/showall/")?>">All Activities</a></li>
+              <li><a href="<?php echo site_url("messages/index")?>">My Messages (<?php echo countMyNewMessages(); ?>)</a></li>
               <!--<li><a href="<?php echo site_url("user/friendlist")?>">Friend List</a></li>-->
               <li><a class="dropdown" data-toggle="dropdown" href="">Friend List<span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
