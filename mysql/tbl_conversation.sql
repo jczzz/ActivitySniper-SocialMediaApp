@@ -26,13 +26,17 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_conversation`
 --
 
-CREATE TABLE IF NOT EXISTS `tbl_conversation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user1` int(11) NOT NULL,
-  `user2` int(11) NOT NULL,
-  `delete_by_user1` int(11) NOT NULL DEFAULT '0',
-  `update_time` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE IF NOT EXISTS tbl_conversation (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  user1 int(11) NOT NULL,
+  user2 int(11) NOT NULL,
+  delete_by_user1 int(11) NOT NULL DEFAULT '0',
+  update_time datetime NOT NULL,
+  PRIMARY KEY (`id`),
+
+	foreign key (user1) references users (id) on delete cascade,
+	foreign key (user2) references users (id) on delete cascade
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

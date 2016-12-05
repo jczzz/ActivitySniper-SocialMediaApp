@@ -69,7 +69,7 @@
                       <div class="form-group">
                           <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span>
-                              <input type="text" class="form-control" id="myComment" name="message" placeholder="Type some messages"/><br />
+                              <input type="text" class="form-control" id="myComment" name="message" placeholder="Leave some comments"/><br />
                               <span class="input-group-btn"><input class="btn btn-info" type="submit" name="submit" value="Post"  >
                               </span>
                         </div>
@@ -78,6 +78,8 @@
                 </form>
 
                 <?php
+                if($samePerson==false){
+
       $session_data=$this->session->userdata('logged_in');
         $logged_user_id=$session_data['id'];
        ?>
@@ -106,6 +108,8 @@
          </form> 
         
         </div>
+        <?php } ?>
+
       </ul>
     </div>
   </div>

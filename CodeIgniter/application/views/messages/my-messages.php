@@ -9,7 +9,7 @@
         <li class="list-group-item">
           <h3><a href="<?php echo site_url("user/information/".$msg['mem_id']."/")?>"><?php echo ucfirst($msg['member_fname']).' '.ucfirst($msg['member_lname']); ?>:</a></h3>
           <span style="font-size:16px;"><?php echo $msg['message']; ?></span>
-          <span><a style="float: right;" href="<?php echo base_url().'messages/detail/'.$msg['receiver_id'].'/'.$msg['conversation_id']; ?>"><strong>View All Conversation</strong></a>
+          <span><a style="float: right;" href="<?php echo base_url().'messages/detail/'.$msg['receiver_id'].'/'.$msg['conversation_id']; ?>"><strong>View All Conversation with this person</strong></a>
         </span>
         <br />
         </li>

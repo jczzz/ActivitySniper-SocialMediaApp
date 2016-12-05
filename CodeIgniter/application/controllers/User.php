@@ -213,6 +213,12 @@ class User extends CI_Controller
         $data['title']=$data['result']['firstname']." ".$data['result']['lastname'];
         $data['user_id']=$user_id;
         $data['view_user_id']=$view_user_id;
+        if($view_user_id==$user_id){
+          $data['samePerson']=true;
+        }
+        else{
+          $data['samePerson']=false;
+        }
         $data['check']=$this->check_friend($user_id);
       if($this->form_validation->run() === FALSE){
         $data['messages']=$this->user_model->get_message($view_user_id);
