@@ -146,7 +146,7 @@ class User_model extends CI_Model
 			'email' =>$this->input->post('email'),
 			'phonenum' =>$this->input->post('phonenum'),
 			'notes' =>$this->input->post('notes'),
-			'password' =>$this->input->post('password')
+			'password' =>md5($this->input->post('password'))
 		);
 		if($upload_data['file_name'] != ''){
 			$data['picture'] = $upload_data['file_name'];
@@ -170,7 +170,7 @@ class User_model extends CI_Model
                 'time' => $this->input->post('time'),
                 'comment' => $this->input->post('message')
               );
-              return $this->db->insert('message_board',$data);            
+              return $this->db->insert('message_board',$data);
             }
 
               public function get_message($user_id){
@@ -179,7 +179,7 @@ class User_model extends CI_Model
               where  A.user_id2 =B.id
               ORDER BY date asc, time asc";
               $query = $this->db->query($sql);
-              return $query->result_array();           
+              return $query->result_array();
             }
 
 
