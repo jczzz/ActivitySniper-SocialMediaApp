@@ -227,6 +227,6 @@
 <div id="mapshow" class="col-md-6 col-md-offset-0">
   <?php echo $google['map']['html']; ?>
 </div>
-<div style="margin-top:20px; margin-left:20px;background-color:white;" class="col-md-10 col-md-offset-0">
+<div style="margin-top:0px; margin-left:0px;background-color:white;" class="col-md-12 col-md-offset-0">
 <div style="float:left;margin:0px;width:100%;" id='calendar'></div>
 </div>
