@@ -46,12 +46,12 @@ If the user logged in as admin(email:admin@admin.com, password:admin),
 The page will list all registered users, and admin can view a user's information and can delete a user.
 
 Each user (admin or regular users) can 
-    see own account information, edit own account information by clicking 'view your account in the right-up corner'.
+    see own account information, edit own account information by clicking 'view your account' in the right-up corner.
     
 Each user can leave comments on all other people's account informaiton page when visiting the information page(including himself).
 The leaved comments can be seen by everyone.
 
-Each regular user can send messages to all people other than himself in the information page of other people,
+Each regular user can send messages to all people other than himself in the information page of the other people,
 and other people will get the messages by clicking the messages button in the header.
 (the number in the button will show how many people have sent him messages). After clicking 'view all conversation with this person', 
 the number will drop by 1.
@@ -98,7 +98,7 @@ See all activities page:
 
 	7. User can see the information of activities' owner by clicking on their email.
 
-	8. User can back to the "main page" by clicking on "Back to your activities".
+	8. User can go back to the "main page" by clicking on "Back to your activities".
 
 	9. When searching the wanted activities, user can check some additional time requirement, to search activities more detaily
 
@@ -127,11 +127,11 @@ Activity information page:
 
 	3. User can add some comments in the bottom.
 
-	4. User can see all the participants for this activities, and clicking their email to see the information page of this person.
+	4. User can see all the participants for this activities, and click their email to see the information page of this person.
 
     
 Calendar:
 
     1. There is a big calendar in 'My Activities' and 'All Activities' page to show all activities in corresponding time slot in the calendar
 
-    2. User can clicking a activity in the calendar to see the detaild infomation page of the activity.
+    2. User can click a activity in the calendar to see the detaild infomation page of the activity.
