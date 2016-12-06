@@ -3,6 +3,16 @@ URL: localhost:9000/index.php/
 initial admin user:
 	email: admin@admin.com
 	password: admin
+	
+3 automatically registerd accounts that you can use once the system is ready:
+  	email: hza83@sfu.ca
+	password: 12345
+	
+	email: junbob@sfu.ca
+	password: 12345
+	
+	email: zgeng@sfu.ca
+	password: 12345
 
 Register page:
 	1. Users can input their information to create a new account. 
