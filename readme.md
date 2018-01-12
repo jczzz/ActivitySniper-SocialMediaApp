@@ -1,6 +1,4 @@
-##Activity-sniper
-![Image of screenshot]
-(https://github.com/jczzz/ActivitySniper-SocialMediaApp/blob/master/Screen%20Shot%202.png)
+# Activity-sniper
 
 
 URL: localhost:9000/index.php/
