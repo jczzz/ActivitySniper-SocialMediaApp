@@ -1,5 +1,7 @@
 Activity-sniper
-
+![Image of screen shot]
+(https://github.com/jczzz/ActivitySniper-SocialMediaApp/blob/master/Screen%20Shot%202.png)
+(https://github.com/jczzz/ActivitySniper-SocialMediaApp/blob/master/Screen%20Shot%201.png)
 
 URL: localhost:9000/index.php/
 
