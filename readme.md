@@ -1,4 +1,6 @@
 # Activity-sniper
+<img width="1226" alt="screen shot 1" src="https://user-images.githubusercontent.com/15047211/34860219-f14635f6-f710-11e7-90e6-eb3030ed5d93.png">
+<img width="1280" alt="screen shot 2" src="https://user-images.githubusercontent.com/15047211/34860220-f1599894-f710-11e7-8770-3290e47cf7cb.png">
 
 
 URL: localhost:9000/index.php/
