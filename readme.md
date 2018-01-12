@@ -46,7 +46,7 @@ If the user logged in as admin(email:admin@admin.com, password:admin),
 The page will list all registered users, and admin can view a user's information and can delete a user.
 
 Each user (admin or regular users) can 
-    see own account information, edit own account information by clicking 'view your account' in the right-up corner.
+    see own account information, edit own account information by clicking 'view your account' in the right-up corner.s
     
 Each user can leave comments on all other people's account informaiton page when visiting the information page(including himself).
 The leaved comments can be seen by everyone.
